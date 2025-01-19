@@ -1,91 +1,62 @@
-<div id="adContainer"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Manager Example</title>
+    <style>
+        #adContainer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: none; }
+        #contentVideo { width: 100%; height: auto; }
+    </style>
+    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+</head>
+<body>
+    <div style="position: relative; width: 640px; margin: auto;">
+        <video id="contentVideo" controls autoplay>
+            <source src="https://live-par-2-abr.livepush.io/vod/bigbuckbunnyclip.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="adContainer"></div>
+    </div>
 
-  <script>
-    (function () {
-      const IMA_SDK_URL = "https://imasdk.googleapis.com/js/sdkloader/ima3.js";
-      let adsLoader, adsManager;
+    <script>
+        const videoElement = document.getElementById('contentVideo');
+        const adContainer = document.getElementById('adContainer');
 
-      // Dynamically load the IMA SDK
-      const loadIMASDK = () => {
-        return new Promise((resolve, reject) => {
-          const script = document.createElement("script");
-          script.src = IMA_SDK_URL;
-          script.async = true;
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-      };
+        const adDisplayContainer = new google.ima.AdDisplayContainer(adContainer, videoElement);
+        const adsLoader = new google.ima.AdsLoader(adDisplayContainer);
 
-      // Initialize the ad container and IMA SDK
-      const initAds = async () => {
-        try {
-          await loadIMASDK();
+        adsLoader.addEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, onAdsManagerLoaded);
+        adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
 
-          const adContainer = document.getElementById("adContainer");
-          const adDisplayContainer = new google.ima.AdDisplayContainer(adContainer);
-          adDisplayContainer.initialize();
+        const adsRequest = new google.ima.AdsRequest();
+        adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/22818991658/2025&description_url=[placeholder]&tfcd=0&npa=0&sz=640x480%7C580x400&ciu_szs=580x400&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator='; // Replace with your ad tag URL
+        adsRequest.linearAdSlotWidth = 640;
+        adsRequest.linearAdSlotHeight = 360;
+        adsRequest.nonLinearAdSlotWidth = 640;
+        adsRequest.nonLinearAdSlotHeight = 150;
 
-          // Set up the AdsLoader
-          adsLoader = new google.ima.AdsLoader(adDisplayContainer);
-          adsLoader.addEventListener(
-            google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
-            onAdsManagerLoaded,
-            false
-          );
-          adsLoader.addEventListener(
-            google.ima.AdErrorEvent.Type.AD_ERROR,
-            onAdError,
-            false
-          );
+        adsLoader.requestAds(adsRequest);
 
-          // Request ads
-          const adsRequest = new google.ima.AdsRequest();
-          adsRequest.adTagUrl = "https://pubads.g.doubleclick.net/gampad/ads?iu=/22818991658/2025&description_url=[placeholder]&tfcd=0&npa=0&sz=640x480%7C580x400&ciu_szs=580x400&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=";
-          adsRequest.linearAdSlotWidth = adContainer.offsetWidth;
-          adsRequest.linearAdSlotHeight = adContainer.offsetHeight;
-          adsRequest.nonLinearAdSlotWidth = adContainer.offsetWidth;
-          adsRequest.nonLinearAdSlotHeight = adContainer.offsetHeight;
+        function onAdsManagerLoaded(event) {
+            const adsManager = event.getAdsManager(videoElement);
+            adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+            adsManager.addEventListener(google.ima.AdEvent.Type.ALL_ADS_COMPLETED, () => videoElement.play());
 
-          adsLoader.requestAds(adsRequest);
-        } catch (error) {
-          console.error("Error initializing ads:", error);
+            try {
+                adDisplayContainer.initialize();
+                adsManager.init(640, 360, google.ima.ViewMode.NORMAL);
+                adsManager.start();
+            } catch (error) {
+                console.error('Ad playback error:', error);
+                videoElement.play();
+            }
         }
-      };
 
-      // Handle the adsManagerLoaded event
-      const onAdsManagerLoaded = (event) => {
-        const adContainer = document.getElementById("adContainer");
-        adsManager = event.getAdsManager(adContainer);
-
-        // Attach event listeners for ad events
-        adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, () => {
-          console.log("Ad started");
-        });
-        adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, () => {
-          console.log("Ad complete");
-        });
-        adsManager.addEventListener(google.ima.AdEvent.Type.ALL_ADS_COMPLETED, () => {
-          console.log("All ads completed");
-        });
-        adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
-
-        try {
-          adsManager.init(adContainer.offsetWidth, adContainer.offsetHeight, google.ima.ViewMode.NORMAL);
-          adsManager.start();
-        } catch (error) {
-          console.error("Error starting adsManager:", error);
-          adContainer.style.display = "none";
+        function onAdError() {
+            console.error('Ad error occurred.');
+            videoElement.play();
         }
-      };
-
-      // Handle ad errors
-      const onAdError = (error) => {
-        console.error("Ad error:", error.getError());
-        document.getElementById("adContainer").style.display = "none";
-      };
-
-      // Start the process
-      window.onload = initAds;
-    })();
-  </script>
+    </script>
+</body>
+</html>
