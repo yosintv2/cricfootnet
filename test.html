@@ -1,62 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Manager Example</title>
-    <style>
-        #adContainer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: none; }
-        #contentVideo { width: 100%; height: auto; }
+<!-- /22818991658/rewarddd -->
+<div id='div-gpt-ad-1737390438656-0' style='min-width: 250px; min-height: 250px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1737390438656-0'); });
+  </script>
+</div>
+
+
+
+
+
+<div class='AlbaE3lan lanheader container'>
+<style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 300px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            margin: auto;
+            padding: 25px;
+            background-color: #fefefe;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
-    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-</head>
-<body>
-    <div style="position: relative; width: 640px; margin: auto;">
-        <video id="contentVideo" controls autoplay>
-            <source src="https://live-par-2-abr.livepush.io/vod/bigbuckbunnyclip.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div id="adContainer"></div>
-    </div>
+<script>
+        googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(() => {
+            const rewardedSlot = googletag.defineOutOfPageSlot('/22818991658/BOKeTE',
+                googletag.enums.OutOfPageFormat.REWARDED).addService(googletag.pubads());
+            rewardedSlot.setForceSafeFrame(true);
+            googletag.pubads().enableAsyncRendering();
+            googletag.enableServices();
 
-    <script>
-        const videoElement = document.getElementById('contentVideo');
-        const adContainer = document.getElementById('adContainer');
+            const showRewardedAd = () => {
+                const trigger = document.getElementById('rewardModal');
+                trigger.style.display = 'block';
 
-        const adDisplayContainer = new google.ima.AdDisplayContainer(adContainer, videoElement);
-        const adsLoader = new google.ima.AdsLoader(adDisplayContainer);
+                googletag.pubads().addEventListener('impressionViewable', () => {
+                    console.log('Impression viewable!');
+                });
 
-        adsLoader.addEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, onAdsManagerLoaded);
-        adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+                googletag.pubads().addEventListener('slotRenderEnded', (event) => {
+                    if (event.isEmpty) {
+                        console.log('Ad is empty or failed to load');
+                        setTimeout(() => {
+                            trigger.style.display = 'none';
+                        }, 3000);
+                    }
+                });
 
-        const adsRequest = new google.ima.AdsRequest();
-        adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/22818991658/2025&description_url=[placeholder]&tfcd=0&npa=0&sz=640x480%7C580x400&ciu_szs=580x400&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator='; // Replace with your ad tag URL
-        adsRequest.linearAdSlotWidth = 640;
-        adsRequest.linearAdSlotHeight = 360;
-        adsRequest.nonLinearAdSlotWidth = 640;
-        adsRequest.nonLinearAdSlotHeight = 150;
+                googletag.pubads().addEventListener('rewardedSlotReady', evt => {
+                    evt.makeRewardedVisible();
+                });
 
-        adsLoader.requestAds(adsRequest);
+                googletag.pubads().addEventListener('rewardedSlotClosed', () => {
+                    trigger.style.display = 'none';
+                });
 
-        function onAdsManagerLoaded(event) {
-            const adsManager = event.getAdsManager(videoElement);
-            adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
-            adsManager.addEventListener(google.ima.AdEvent.Type.ALL_ADS_COMPLETED, () => videoElement.play());
+                googletag.display(rewardedSlot);
+            };
 
-            try {
-                adDisplayContainer.initialize();
-                adsManager.init(640, 360, google.ima.ViewMode.NORMAL);
-                adsManager.start();
-            } catch (error) {
-                console.error('Ad playback error:', error);
-                videoElement.play();
-            }
-        }
-
-        function onAdError() {
-            console.error('Ad error occurred.');
-            videoElement.play();
-        }
+            // Show the rewarded ad every time the page loads
+            showRewardedAd();
+        });
     </script>
-</body>
-</html>
+<div class='modal' id='rewardModal'>
+<!-- Modal content -->
+<div class='modal-content'></div>
+</div>
+</div>
