@@ -508,6 +508,91 @@ $(document).ready(function() {$('img#closed').click(function(){$('#bl_banner').h
 
 
 
+<!--Pop Up Start-->
+ <style>
+        #popup {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #popup h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #popup p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #popup a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #popup a:hover {
+            text-decoration: underline;
+        }
+
+        #close {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <button id="close">🅧</button>
+        <h1>CricFoot.net</h1>
+        <p>Our 2nd Website <a href="https://www.cricfoot.net/" target="_blank">cricfoot.net</a> for more live streams.</p>
+    </div>
+
+    <script>
+        const closeButton = document.getElementById('close');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+
+        closeButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Show the overlay and popup initially
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+
+        // Optionally, you can add a timer to show the popup after a delay
+        // setTimeout(() => {
+        //     popup.style.display = 'block';
+        //     overlay.style.display = 'block';
+        // }, 3000); // 3 seconds delay
+    </script>
+
+  
 
 </body> 
 </html>
