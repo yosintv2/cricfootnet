@@ -3,60 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase Text Editor</title>
+    <title>Stylish Firebase Text Editor</title>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 20px;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .editor-container {
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #252525;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .toolbar button {
+            background: #ff4757;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .toolbar button:hover {
+            background: #e84118;
         }
         textarea {
-            width: 80%;
-            height: 400px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+            flex: 1;
+            background: transparent;
+            color: #fff;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            padding: 15px;
+            resize: none;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
-    <h2>Firebase Text Editor</h2>
-    <textarea id="editor"></textarea>
-    <br>
-    <button onclick="saveText()">Save</button>
-    <button onclick="deleteText()">Delete</button>
+
+    <div class="editor-container">
+        <div class="toolbar">
+            <span>🔥 Firebase Text Editor</span>
+            <button onclick="deleteText()">🗑 Delete</button>
+        </div>
+        <textarea id="editor" placeholder="Start typing..."></textarea>
+    </div>
 
     <script>
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+        // 🔥 Your Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBEKyWXUg36To9TQH_ryvMGG8vWjQOgBks",
+            authDomain: "texteditor-9aaec.firebaseapp.com",
+            projectId: "texteditor-9aaec",
+            storageBucket: "texteditor-9aaec.appspot.com",
+            messagingSenderId: "573168375129",
+            appId: "1:573168375129:web:f26d4e3141ce901bba6848",
+            measurementId: "G-3P777H4YTC"
+        };
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBEKyWXUg36To9TQH_ryvMGG8vWjQOgBks",
-  authDomain: "texteditor-9aaec.firebaseapp.com",
-  projectId: "texteditor-9aaec",
-  storageBucket: "texteditor-9aaec.firebasestorage.app",
-  messagingSenderId: "573168375129",
-  appId: "1:573168375129:web:f26d4e3141ce901bba6848",
-  measurementId: "G-3P777H4YTC"
-};
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const docRef = db.collection("notes").doc("myText");
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+        const editor = document.getElementById("editor");
 
         // Load saved text
         docRef.get().then((doc) => {
@@ -65,10 +103,10 @@ const analytics = getAnalytics(app);
             }
         });
 
-        function saveText() {
-            docRef.set({ content: editor.value })
-                .then(() => alert("Text saved successfully!"));
-        }
+        // Auto-save after typing
+        editor.addEventListener("input", () => {
+            docRef.set({ content: editor.value });
+        });
 
         function deleteText() {
             docRef.delete().then(() => {
@@ -77,5 +115,6 @@ const analytics = getAnalytics(app);
             });
         }
     </script>
+
 </body>
 </html>
