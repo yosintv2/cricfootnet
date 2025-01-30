@@ -36,27 +36,27 @@
     <button onclick="deleteText()">Delete</button>
 
     <script>
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBEKyWXUg36To9TQH_ryvMGG8vWjQOgBks",
-  authDomain: "texteditor-9aaec.firebaseapp.com",
-  projectId: "texteditor-9aaec",
-  storageBucket: "texteditor-9aaec.firebasestorage.app",
-  messagingSenderId: "573168375129",
-  appId: "1:573168375129:web:f26d4e3141ce901bba6848",
-  measurementId: "G-3P777H4YTC"
-};
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBEKyWXUg36To9TQH_ryvMGG8vWjQOgBks",
+    authDomain: "texteditor-9aaec.firebaseapp.com",
+    projectId: "texteditor-9aaec",
+    storageBucket: "texteditor-9aaec.firebasestorage.app",
+    messagingSenderId: "573168375129",
+    appId: "1:573168375129:web:f26d4e3141ce901bba6848",
+    measurementId: "G-3P777H4YTC"
+  };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 
         // Load saved text
         docRef.get().then((doc) => {
