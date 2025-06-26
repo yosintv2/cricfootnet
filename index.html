@@ -67,7 +67,7 @@
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); }
+      0% {pro transform: scale(1); }
       50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
@@ -145,7 +145,6 @@
       color: #bbdefb;
     }
 
-    /* -VS- styling */
     .highlight-card .vs {
       font-size: 1.3rem;
       font-weight: 900;
@@ -307,7 +306,7 @@
       const cardDiv = document.createElement('div');
       cardDiv.className = 'col';
       cardDiv.innerHTML = `
-        <a href="${match.link}" class="highlight-card" data-category="${match.category}" target="_blank" rel="noopener noreferrer">
+        <a href="highlight-details.html?id=${match.id}" class="highlight-card" data-category="${match.category}" rel="noopener noreferrer">
           <h2>${match.team1}</h2>
           <div class="vs">VS</div>
           <h2>${match.team2}</h2>
@@ -346,7 +345,5 @@
   <!-- BEGIN: Powered by Supercounters.com -->
 <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;"><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
 <script type="text/javascript">sc_online_i(1714446,"ffffff","ffffff");</script><noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript></div>
-
-  
 </body>
 </html>
