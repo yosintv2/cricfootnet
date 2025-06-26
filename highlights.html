@@ -227,7 +227,7 @@
     </div>
 
     <div id="highlight-details"></div>
-    <a href="index.html" class="back-button">Back to Homepage </a>
+    <a href="/" class="back-button">Back to Homepage </a>
   </div>
 
   <footer class="footer mt-4">
@@ -246,7 +246,7 @@
       const matchId = urlParams.get('id');
       
       if (!matchId) {
-        document.getElementById('highlight-details').innerHTML = '<p>No match selected.</p>';
+        document.getElementById('highlights').innerHTML = '<p>No match selected.</p>';
         return;
       }
 
