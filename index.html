@@ -184,8 +184,13 @@
       margin-bottom: 1rem;
     }
 
-    #ad-bottom-container {
+    .ad-bottom-container {
       margin-bottom: 1rem;
+      background: #f0f4fa;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .footer {
@@ -289,7 +294,7 @@
       <a href="#">Twitter</a>
       <a href="#">YouTube</a>
       <a href="#">Instagram</a>
-      <p class="mt-1">© 2025 CricFoot. All rights reserved.</p>
+      <p class="mt-1">© 2025 Yosintv Live. All rights reserved.</p>
     </div>
   </footer>
 
@@ -324,7 +329,7 @@
       const adDiv = document.createElement('div');
       adDiv.className = 'col-12';
       adDiv.innerHTML = `
-        <div id="ad-bottom-container">
+        <div class="ad-bottom-container">
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-5525538810839147"
@@ -333,7 +338,6 @@
                data-full-width-responsive="true"></ins>
         </div>
       `;
-      (adsbygoogle = window.adsbygoogle || []).push({});
       return adDiv;
     }
 
@@ -349,6 +353,9 @@
           grid.appendChild(createAdContainer());
         }
       });
+
+      // Run adsbygoogle push after ads inserted
+      (adsbygoogle = window.adsbygoogle || []).push({});
     }
 
     function filterMatches(category) {
