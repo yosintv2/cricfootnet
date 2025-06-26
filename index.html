@@ -184,15 +184,6 @@
       margin-bottom: 1rem;
     }
 
-    .ad-bottom-container {
-      margin-bottom: 1rem;
-      background: #f0f4fa;
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
     .footer {
       background: #fff;
       padding: 1rem;
@@ -270,7 +261,7 @@
   </div>
 
   <div class="container">
-    <!-- Fixed Ad Container (Never removed) -->
+    <!-- Fixed Ad Container (Always shown) -->
     <div id="ad-top-container">
       <ins class="adsbygoogle"
            style="display:block"
@@ -284,7 +275,7 @@
     </div>
 
     <div id="highlight-grid" class="row row-cols-1 row-cols-md-2 g-2">
-      <!-- Highlight cards and dynamic ads inserted here -->
+      <!-- Highlight cards inserted here -->
     </div>
   </div>
 
@@ -325,37 +316,13 @@
       return cardDiv;
     }
 
-    function createAdContainer() {
-      const adDiv = document.createElement('div');
-      adDiv.className = 'col-12';
-      adDiv.innerHTML = `
-        <div class="ad-bottom-container">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5525538810839147"
-               data-ad-slot="4345862479"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-      `;
-      return adDiv;
-    }
-
     function renderHighlights() {
       const grid = document.getElementById('highlight-grid');
       grid.innerHTML = '';
 
-      filteredData.forEach((match, index) => {
+      filteredData.forEach(match => {
         grid.appendChild(createHighlightCard(match));
-
-        // Insert ad container after every 4 cards except last
-        if ((index + 1) % 4 === 0 && (index + 1) !== filteredData.length) {
-          grid.appendChild(createAdContainer());
-        }
       });
-
-      // Run adsbygoogle push after ads inserted
-      (adsbygoogle = window.adsbygoogle || []).push({});
     }
 
     function filterMatches(category) {
