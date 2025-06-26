@@ -299,8 +299,6 @@
     <div id="highlight-grid" class="row row-cols-1 row-cols-md-2 g-2">
       <!-- Highlight cards and dynamic ads inserted here -->
     </div>
-
-    <button id="load-more-btn">Load More</button>
   </div>
 
   <footer class="footer mt-4">
@@ -377,14 +375,6 @@
 
       displayedCount += nextSlice.length;
 
-      // Hide load more if all displayed
-      const loadMoreBtn = document.getElementById('load-more-btn');
-      if (displayedCount >= filteredData.length) {
-        loadMoreBtn.style.display = 'none';
-      } else {
-        loadMoreBtn.style.display = 'block';
-      }
-    }
 
     function filterMatches(category) {
       const navLinks = document.querySelectorAll('.nav-menu a');
@@ -403,7 +393,6 @@
       renderHighlights();
     }
 
-    document.getElementById('load-more-btn').addEventListener('click', renderHighlights);
 
     window.onload = async () => {
       await loadHighlights();
