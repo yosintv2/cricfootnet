@@ -6,160 +6,195 @@
   <title>CricFoot - Match Highlights</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      transition: all 0.3s ease;
-      overflow-x: hidden;
-    }
-    .header {
-      background: linear-gradient(90deg, #4a90e2, #357abd);
-      color: #fff;
-      padding: 1.5rem 1rem;
-      border-radius: 10px 10px 0 0;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      animation: pulse 10s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .nav-container {
-      background: #ffffff;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      margin-bottom: 1.5rem;
-    }
-    .nav-menu {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      gap: 0.5rem;
-      white-space: nowrap;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      justify-content: center;
-    }
-    .nav-menu::-webkit-scrollbar {
-      display: none;
-    }
-    .nav-menu a {
-      color: #357abd;
-      background-color: #f1f5f9;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 0.45rem 1rem;
-      border-radius: 20px;
-      transition: all 0.25s ease;
-      box-shadow: inset 0 0 0 1px rgba(53, 122, 189, 0.1);
-    }
-    .nav-menu a:hover {
-      background-color: #357abd;
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 2px 8px rgba(53, 122, 189, 0.25);
-    }
-    .nav-menu a.active {
-      background-color: #357abd;
-      color: #fff;
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(53, 122, 189, 0.3);
-    }
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  .header {
+    background: linear-gradient(90deg, #4a90e2, #357abd);
+    color: #fff;
+    padding: 1.5rem 1rem;
+    border-radius: 10px 10px 0 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    animation: pulse 10s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .nav-container {
+    background: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.5rem;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0.25rem;
+    justify-content: flex-start;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-menu a {
+    color: #357abd;
+    background-color: #f1f5f9;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .nav-menu a:hover {
+    background-color: #357abd;
+    color: #fff;
+  }
+
+  .nav-menu a.active {
+    background-color: #357abd;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .highlight-card {
+    background: linear-gradient(145deg, #1e3a8a, #2a4587);
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .highlight-card h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0.25rem 0;
+    text-transform: uppercase;
+    color: #bbdefb;
+  }
+
+  .highlight-card .vs {
+    font-size: 1.2rem;
+    color: #90caf9;
+    margin: 0.25rem 0;
+    font-weight: 900;
+  }
+
+  .highlight-card .footer {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 0.4rem;
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .footer {
+    background: #fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .footer a {
+    color: #357abd;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer a:hover {
+    color: #4a90e2;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .container {
+    max-width: 960px;
+  }
+
+  /* Improved for small devices */
+  @media (max-width: 576px) {
     .highlight-card {
-      background: linear-gradient(145deg, #1e3a8a, #2a4587);
-      color: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 0.75rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-decoration: none;
-      display: block;
-      max-width: 100%;
-      margin: 0 auto;
+      padding: 1rem;
     }
-    .highlight-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
+
     .highlight-card h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 0.25rem 0;
-      text-transform: uppercase;
-      color: #bbdefb;
+      font-size: 1.1rem;
     }
+
     .highlight-card .vs {
-      font-size: 1.4rem;
-      color: #90caf9;
-      margin: 0.25rem 0;
-      font-weight: 900;
+      font-size: 1rem;
     }
-    .highlight-card .footer {
-      background: rgba(26, 26, 26, 0.9);
-      padding: 0.4rem;
-      font-size: 0.9rem;
-      color: #e0e0e0;
-      border-radius: 0 0 8px 8px;
-      text-align: center;
+
+    .nav-menu a {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.75rem;
     }
-    .footer {
-      background: #fff;
-      padding: 0.75rem;
-      text-align: center;
-      border-radius: 10px;
-      margin-top: 1rem;
-      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+
+    .header {
+      font-size: 1.5rem;
+      padding: 1rem;
     }
-    .footer a {
-      color: #357abd;
-      text-decoration: none;
-      margin: 0 0.5rem;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
+
+    #ad-container {
+      padding: 0.5rem !important;
     }
-    .footer a:hover {
-      color: #4a90e2;
-    }
-    .hidden {
-      display: none;
-    }
-    @media (max-width: 768px) {
-      .header {
-        font-size: 1.8rem;
-        padding: 1rem;
-      }
-      .highlight-card {
-        max-width: 90%;
-      }
-    }
-    .container {
-      max-width: 900px;
-    }
-  </style>
+  }
+</style>
+
 
   <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147"
