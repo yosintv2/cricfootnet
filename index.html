@@ -6,200 +6,242 @@
   <title>CricFoot - Match Highlights</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
-<style>
-  body {
-    font-family: 'Roboto', sans-serif;
-    background: #f5f7fa;
-    color: #333;
-    transition: all 0.3s ease;
-    overflow-x: hidden;
-  }
 
-  .header {
-    background: linear-gradient(90deg, #4a90e2, #357abd);
-    color: #fff;
-    padding: 1.5rem 1rem;
-    border-radius: 10px 10px 0 0;
-    font-size: 2.2rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-    animation: pulse 10s infinite;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-  }
-
-  .nav-container {
-    background: #fff;
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1rem;
-  }
-
-  .nav-menu {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    gap: 0.5rem;
-    white-space: nowrap;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-bottom: 0.25rem;
-    justify-content: flex-start;
-  }
-
-  .nav-menu::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-menu a {
-    color: #357abd;
-    background-color: #f1f5f9;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
-    transition: all 0.25s ease;
-    white-space: nowrap;
-  }
-
-  .nav-menu a:hover {
-    background-color: #357abd;
-    color: #fff;
-  }
-
-  .nav-menu a.active {
-    background-color: #357abd;
-    color: #fff;
-    font-weight: 600;
-  }
-
-  .highlight-card {
-    background: linear-gradient(145deg, #1e3a8a, #2a4587);
-    color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 0.75rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .highlight-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .highlight-card h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0.25rem 0;
-    text-transform: uppercase;
-    color: #bbdefb;
-  }
-
-  .highlight-card .vs {
-    font-size: 1.2rem;
-    color: #90caf9;
-    margin: 0.25rem 0;
-    font-weight: 900;
-  }
-
-  .highlight-card .footer {
-    background: rgba(26, 26, 26, 0.9);
-    padding: 0.4rem;
-    font-size: 0.85rem;
-    color: #e0e0e0;
-    border-radius: 0 0 8px 8px;
-  }
-
-  .footer {
-    background: #fff;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 10px;
-    margin-top: 1.5rem;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .footer a {
-    color: #357abd;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-  }
-
-  .footer a:hover {
-    color: #4a90e2;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .container {
-    max-width: 960px;
-  }
-
-  /* Improved for small devices */
-  @media (max-width: 576px) {
-    .highlight-card {
-      padding: 1rem;
-    }
-
-    .highlight-card h2 {
-      font-size: 1.1rem;
-    }
-
-    .highlight-card .vs {
-      font-size: 1rem;
-    }
-
-    .nav-menu a {
-      font-size: 0.85rem;
-      padding: 0.35rem 0.75rem;
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      transition: all 0.3s ease;
+      overflow-x: hidden;
     }
 
     .header {
-      font-size: 1.5rem;
+      background: linear-gradient(90deg, #4a90e2, #357abd);
+      color: #fff;
+      padding: 1.5rem 1rem;
+      border-radius: 10px 10px 0 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      animation: pulse 10s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .nav-container {
+      background: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.5rem;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 0.25rem;
+      justify-content: flex-start;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-menu a {
+      color: #357abd;
+      background-color: #f1f5f9;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .nav-menu a:hover {
+      background-color: #357abd;
+      color: #fff;
+    }
+
+    .nav-menu a.active {
+      background-color: #357abd;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .highlight-card {
+      background: linear-gradient(145deg, #1e3a8a, #2a4587);
+      color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 0.75rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .highlight-card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0.25rem 0;
+      text-transform: uppercase;
+      color: #bbdefb;
+    }
+
+    /* -VS- styling */
+    .highlight-card .vs {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #ffd700;
+      margin: 0.5rem 0;
+      position: relative;
+    }
+
+    .highlight-card .vs::before,
+    .highlight-card .vs::after {
+      content: '';
+      height: 2px;
+      width: 30px;
+      background: #ffd700;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 10px;
+    }
+
+    .highlight-card .footer {
+      background: rgba(26, 26, 26, 0.9);
+      padding: 0.4rem;
+      font-size: 0.9rem;
+      color: #e0e0e0;
+      border-radius: 0 0 8px 8px;
+      text-align: center;
+    }
+
+    #ad-top-container {
+      height: auto;
+      background: #f0f4fa;
+      border: 1px solid #ddd;
       padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
     }
 
-    #ad-container {
-      padding: 0.5rem !important;
+    #ad-bottom-container {
+      margin-bottom: 1rem;
     }
-  }
-</style>
 
+    .footer {
+      background: #fff;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 1.5rem;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer a {
+      color: #357abd;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #4a90e2;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .container {
+      max-width: 960px;
+    }
+
+    #load-more-btn {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background: #357abd;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(53, 122, 189, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    #load-more-btn:hover {
+      background: #2a5a94;
+    }
+
+    @media (max-width: 576px) {
+      .highlight-card {
+        padding: 1rem;
+      }
+
+      .highlight-card h2 {
+        font-size: 1.1rem;
+      }
+
+      .highlight-card .vs {
+        font-size: 1rem;
+      }
+
+      .nav-menu a {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.75rem;
+      }
+
+      .header {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+
+      #ad-top-container {
+        padding: 0.5rem !important;
+      }
+    }
+  </style>
 
   <!-- Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="header">CricFoot - Match Highlights</div>
 
@@ -215,27 +257,24 @@
   </div>
 
   <div class="container">
-    <!-- AdSense Ad -->
-    <div class="row">
-      <div class="col">
-        <div id="ad-container" style="height:auto; background: #f0f4fa; border: 1px solid #ddd; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 1rem;">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5525538810839147"
-               data-ad-slot="4345862479"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </div>
+    <!-- Fixed Ad Container (Never removed) -->
+    <div id="ad-top-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5525538810839147"
+           data-ad-slot="4345862479"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
 
-    <!-- Highlight Cards -->
-    <div class="row row-cols-1 row-cols-md-2 g-2" id="highlight-grid">
-      <!-- Cards from JSON will be inserted here -->
+    <div id="highlight-grid" class="row row-cols-1 row-cols-md-2 g-2">
+      <!-- Highlight cards and dynamic ads inserted here -->
     </div>
+
+    <button id="load-more-btn">Load More</button>
   </div>
 
   <footer class="footer mt-4">
@@ -249,44 +288,96 @@
   </footer>
 
   <script>
+    let allData = [];
+    let filteredData = [];
+    let displayedCount = 0;
+    const PAGE_SIZE = 8;
+
     async function loadHighlights() {
       const response = await fetch('https://linnk.pages.dev/highlights.json');
-      const data = await response.json();
-      const grid = document.getElementById('highlight-grid');
-      grid.innerHTML = '';
+      allData = await response.json();
+      filteredData = allData;
+      displayedCount = 0;
+      renderHighlights();
+    }
 
-      data.forEach(match => {
-        const card = document.createElement('div');
-        card.className = 'col';
-        card.innerHTML = `
-          <a href="${match.link}" class="highlight-card" data-category="${match.category}">
-            <h2>${match.team1}</h2>
-            <div class="vs">VS</div>
-            <h2>${match.team2}</h2>
-            <div class="footer">
-              <span>${match.category}</span>
-            </div>
-          </a>
-        `;
-        grid.appendChild(card);
+    function createHighlightCard(match) {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'col';
+      cardDiv.innerHTML = `
+        <a href="${match.link}" class="highlight-card" data-category="${match.category}">
+          <h2>${match.team1}</h2>
+          <div class="vs">VS</div>
+          <h2>${match.team2}</h2>
+          <div class="footer">
+            <span>${match.category}</span>
+          </div>
+        </a>
+      `;
+      return cardDiv;
+    }
+
+    function createAdContainer() {
+      const adDiv = document.createElement('div');
+      adDiv.className = 'col-12';
+      adDiv.innerHTML = `
+        <div id="ad-bottom-container">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5525538810839147"
+               data-ad-slot="4345862479"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>
+      `;
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      return adDiv;
+    }
+
+    function renderHighlights() {
+      const grid = document.getElementById('highlight-grid');
+
+      // Append next batch of cards without clearing existing
+      const nextSlice = filteredData.slice(displayedCount, displayedCount + PAGE_SIZE);
+      nextSlice.forEach((match, index) => {
+        grid.appendChild(createHighlightCard(match));
+
+        // Insert ad container after every 4 cards, considering total index in grid
+        const totalIndex = displayedCount + index + 1;
+        if (totalIndex % 4 === 0 && totalIndex !== filteredData.length) {
+          grid.appendChild(createAdContainer());
+        }
       });
+
+      displayedCount += nextSlice.length;
+
+      // Hide load more if all displayed
+      const loadMoreBtn = document.getElementById('load-more-btn');
+      if (displayedCount >= filteredData.length) {
+        loadMoreBtn.style.display = 'none';
+      } else {
+        loadMoreBtn.style.display = 'block';
+      }
     }
 
     function filterMatches(category) {
-      const cards = document.querySelectorAll('.highlight-card');
       const navLinks = document.querySelectorAll('.nav-menu a');
       navLinks.forEach(link => link.classList.remove('active'));
       document.querySelector(`.nav-menu a[onclick="filterMatches('${category}')"]`).classList.add('active');
 
-      cards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        if (category === 'all' || cardCategory === category) {
-          card.closest('a').classList.remove('hidden');
-        } else {
-          card.closest('a').classList.add('hidden');
-        }
-      });
+      filteredData = (category === 'all')
+        ? allData
+        : allData.filter(match => match.category === category);
+
+      // Clear only the highlight grid, keep top ad container
+      const grid = document.getElementById('highlight-grid');
+      grid.innerHTML = '';
+      displayedCount = 0;
+
+      renderHighlights();
     }
+
+    document.getElementById('load-more-btn').addEventListener('click', renderHighlights);
 
     window.onload = async () => {
       await loadHighlights();
