@@ -32,7 +32,6 @@
   }
   </script>
   
-  
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -92,7 +91,6 @@
       -ms-overflow-style: none;
       padding-bottom: 0.25rem;
       justify-content: flex-start;
-      position: relative;
     }
 
     .nav-menu::-webkit-scrollbar {
@@ -109,6 +107,7 @@
       border-radius: 20px;
       transition: all 0.25s ease;
       white-space: nowrap;
+      cursor: pointer;
     }
 
     .nav-menu a:hover {
@@ -120,14 +119,6 @@
       background-color: #357abd;
       color: #fff;
       font-weight: 600;
-    }
-
-    .scroll-hint {
-      font-size: 0.8rem;
-      color: #555;
-      text-align: center;
-      margin-top: 4px;
-      user-select: none;
     }
 
     .highlight-card {
@@ -144,8 +135,6 @@
       display: block;
       max-width: 100%;
       margin: 0 auto;
-      min-height: 200px;
-      box-sizing: border-box;
     }
 
     .highlight-card h2 {
@@ -195,23 +184,13 @@
       margin-bottom: 1rem;
     }
 
-    #ad-bottom-container .ad-bottom-container {
-      width: 100%;
-      height: 200px; /* match highlight card height */
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      background: #1e3a8a;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    #ad-bottom-container ins.adsbygoogle {
-      width: 100% !important;
-      height: 100% !important;
+    .ad-bottom-container {
+      margin-bottom: 1rem;
+      background: #f0f4fa;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .footer {
@@ -280,15 +259,14 @@
   <div class="header">CricFoot - Match Highlights</div>
 
   <div class="container nav-container">
-    <nav class="nav-menu" id="nav-menu">
-      <a href="#" class="active" onclick="filterMatches('all')">All</a>
-      <a href="#" onclick="filterMatches('Club World Cup')">Club World Cup</a>
-      <a href="#" onclick="filterMatches('EPL')">EPL</a>
-      <a href="#" onclick="filterMatches('LaLiga')">LaLiga</a>
-      <a href="#" onclick="filterMatches('Serie A')">Serie A</a>
-      <a href="#" onclick="filterMatches('Bundesliga')">Bundesliga</a>
+    <nav class="nav-menu" role="navigation" aria-label="Match categories navigation">
+      <a class="active" onclick="filterMatches('all')">All</a>
+      <a onclick="filterMatches('Club World Cup')">Club World Cup</a>
+      <a onclick="filterMatches('EPL')">EPL</a>
+      <a onclick="filterMatches('LaLiga')">LaLiga</a>
+      <a onclick="filterMatches('Serie A')">Serie A</a>
+      <a onclick="filterMatches('Bundesliga')">Bundesliga</a>
     </nav>
-    <div class="scroll-hint">Scroll right for more categories →</div>
   </div>
 
   <div class="container">
@@ -317,23 +295,17 @@
       <a href="#">YouTube</a>
       <a href="#">Instagram</a>
       <p class="mt-1">© 2025 Yosintv Live. All rights reserved.</p>
-      <p style="font-size:0.85rem; color:#666; margin-top: 0.5rem;">
-        Watch the latest football highlights, videos and matches from top leagues including EPL, LaLiga, Serie A, Bundesliga and more.
-      </p>
     </div>
   </footer>
 
   <script>
     let allData = [];
     let filteredData = [];
-    let displayedCount = 0;
-    const PAGE_SIZE = 1000; // large number to show all cards
 
     async function loadHighlights() {
       const response = await fetch('https://linnk.pages.dev/highlights.json');
       allData = await response.json();
       filteredData = allData;
-      displayedCount = 0;
       renderHighlights();
     }
 
@@ -355,62 +327,50 @@
 
     function createAdContainer() {
       const adDiv = document.createElement('div');
-      adDiv.className = 'col';  // same col as highlight cards
+      adDiv.className = 'col-12';
       adDiv.innerHTML = `
-        <a href="#" class="highlight-card" style="padding: 0; cursor: default;">
-          <div id="ad-bottom-container" class="ad-bottom-container">
-            <ins class="adsbygoogle"
-                 style="display:block; width: 100%; height: 100%;"
-                 data-ad-client="ca-pub-5525538810839147"
-                 data-ad-slot="4345862479"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-          </div>
-        </a>
+        <div class="ad-bottom-container">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5525538810839147"
+               data-ad-slot="4345862479"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>
       `;
-      (adsbygoogle = window.adsbygoogle || []).push({});
       return adDiv;
     }
 
     function renderHighlights() {
       const grid = document.getElementById('highlight-grid');
+      grid.innerHTML = '';
 
-      // Append next batch of cards without clearing existing
-      const nextSlice = filteredData.slice(displayedCount, displayedCount + PAGE_SIZE);
-      nextSlice.forEach((match, index) => {
+      filteredData.forEach((match, index) => {
         grid.appendChild(createHighlightCard(match));
 
-        // Insert ad container after every 4 cards, but not after last card
-        const totalIndex = displayedCount + index + 1;
-        if (totalIndex % 4 === 0 && totalIndex !== filteredData.length) {
+        // Insert ad container after every 4 cards except last
+        if ((index + 1) % 4 === 0 && (index + 1) !== filteredData.length) {
           grid.appendChild(createAdContainer());
         }
       });
 
-      displayedCount += nextSlice.length;
+      // Run adsbygoogle push after ads inserted
+      (adsbygoogle = window.adsbygoogle || []).push({});
     }
 
     function filterMatches(category) {
       const navLinks = document.querySelectorAll('.nav-menu a');
       navLinks.forEach(link => link.classList.remove('active'));
-      document.querySelector(`.nav-menu a[onclick="filterMatches('${category}')"]`).classList.add('active');
+      Array.from(navLinks).find(link => link.textContent.trim() === category || (category === 'all' && link.textContent.trim() === 'All')).classList.add('active');
 
       filteredData = (category === 'all')
         ? allData
         : allData.filter(match => match.category === category);
 
-      // Clear only the highlight grid, keep top ad container
-      const grid = document.getElementById('highlight-grid');
-      grid.innerHTML = '';
-      displayedCount = 0;
-
       renderHighlights();
     }
 
-    window.onload = async () => {
-      await loadHighlights();
-      filterMatches('all');
-    };
+    window.onload = loadHighlights;
   </script>
 </body>
 </html>
