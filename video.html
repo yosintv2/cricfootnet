@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+</head>
+<body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const customId = urlParams.get('url');
+    const newurl = `https://yosintv.github.io/player/player3.html?url=${customId}`;
+    window.location.replace(newurl);
+</script>
+</body>
+</html>
