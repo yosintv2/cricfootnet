@@ -1,119 +1,119 @@
 [
 
 {
-  "id": "bayern_munich_vs_tottenham_match_highlights",
+  "id": "baytot",
   "team1": "BAYERN MUNICH",
   "team2": "TOTTENHAM",
   "category": "Friendly",
   "link": "video?src=https://highlight.api-football.xyz/2025/08/07/1754600497881/index.m3u8"
 },
 {
-  "id": "rio_ave_vs_al_nassr_match_highlights",
+  "id": "rioaln",
   "team1": "RIO AVE",
   "team2": "AL NASSR",
   "category": "Friendly",
   "link": "video?src=https://highlight.api-football.xyz/2025/08/07/1754605894096/index.m3u8"
 },
 {
-  "id": "chelsea_vs_psg_match_highlights",
+  "id": "chepso",
   "team1": "CHELSEA",
   "team2": "PSG",
   "category": "Club World Cup Final",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/13/1752444687642/index.m3u8"
 },
 {
-  "id": "psg_vs_real_madrid_match_highlights",
+  "id": "psgrma",
   "team1": "PSG",
   "team2": "REAL MADRID",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/09/1752099734322/index.m3u8"
 },
 {
-  "id": "fluminense_vs_chelsea_match_highlights",
+  "id": "fluvche",
   "team1": "FLUMINENSE",
   "team2": "CHELSEA",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/08/1752012806422/index.m3u8"
 },
 {
-  "id": "montreal_vs_inter_miami_match_highlights",
+  "id": "monint",
   "team1": "MONTREAL",
   "team2": "INTER MIAMI",
   "category": "MLS",
   "link": "video?src=https://www.youtube.com/embed/yIY_lsZdJLY?si=JvosmRtO9b_n7t9p"
 },
 {
-  "id": "psg_vs_bayern_munich_match_highlights",
+  "id": "psgbay",
   "team1": "PSG",
   "team2": "BAYERN MUNICH",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/05/1751755023501/index.m3u8"
 },
 {
-  "id": "real_madrid_vs_borussia_dortmund_match_highlights",
+  "id": "rmador",
   "team1": "REAL MADRID",
   "team2": "BORUSSIA DORTMUND",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/05/1751757052062/index.m3u8"
 },
 {
-  "id": "real_madrid_vs_juventus_match_highlights",
+  "id": "rmajuv",
   "team1": "REAL MADRID",
   "team2": "JUVENTUS",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/01/1751405254317/index.m3u8"
 },
 {
-  "id": "man_city_vs_al_hilal_match_highlights",
+  "id": "mcihil",
   "team1": "MAN CITY",
   "team2": "AL HILAL",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/07/01/1751342895783/index.m3u8"
 },
 {
-  "id": "inter_milan_vs_fluminense_match_highlights",
+  "id": "intflu",
   "team1": "INTER MILAN",
   "team2": "FLUMINENSE",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/06/30/1751318219686/index.m3u8"
 },
 {
-  "id": "psg_vs_inter_miami_match_highlights",
+  "id": "psgint",
   "team1": "PSG",
   "team2": "INTER MIAMI",
   "category": "Club World Cup",
   "link": "video?src=https://www.youtube.com/watch?v=2eY74BW4SbE"
 },
 {
-  "id": "benfica_vs_chelsea_match_highlights",
+  "id": "benche",
   "team1": "BENFICA",
   "team2": "CHELSEA",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/06/29/1751158726949/index.m3u8"
 },
 {
-  "id": "salzburg_vs_real_madrid_match_highlights",
+  "id": "salrma",
   "team1": "SALZBURG",
   "team2": "REAL MADRID",
   "category": "Club World Cup",
   "link": "video?src=https://hoofootay4.spotlightmoment.com/embed/jmz1kEPk0KfqV"
 },
 {
-  "id": "juventus_vs_man_city_match_highlights",
+  "id": "juvmci",
   "team1": "JUVENTUS",
   "team2": "MAN CITY",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/06/26/1750975222976/index.m3u8"
 },
 {
-  "id": "wydad_ac_vs_al_ain_fc_match_highlights",
+  "id": "wydaln",
   "team1": "WYDAD AC",
   "team2": "AL AIN FC",
   "category": "Club World Cup",
   "link": "video?src=https://highlight.api-football.xyz/2025/06/26/1750974481507/index.m3u8"
 },
 {
-  "id": "inter_milan_vs_river_plate_match_highlights",
+  "id": "intriv",
   "team1": "INTER MILAN",
   "team2": "RIVER PLATE",
   "category": "Club World Cup",
