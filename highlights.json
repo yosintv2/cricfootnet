@@ -1,6 +1,21 @@
 [
   
 {
+  "id": "barcom",
+  "team1": "BARCELONA",
+  "team2": "COMO",
+  "category": "Friendly",
+  "link": "video?src=https://highlight.api-football.xyz/2025/08/10/1754864825724/index.m3u8"
+},
+{
+  "id": "dorjuv",
+  "team1": "DORTMUND",
+  "team2": "JUVENTUS",
+  "category": "Friendly",
+  "link": "video?src=https://highlight.api-football.xyz/2025/08/10/1754864598987/index.m3u8"
+},
+  
+  {
   "id": "baytot",
   "team1": "BAYERN MUNICH",
   "team2": "TOTTENHAM",
