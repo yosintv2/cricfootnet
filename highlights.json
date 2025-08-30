@@ -1,282 +1,240 @@
 [
-  
-{
-  "id": "mv638804",
-  "team1": "AL TAAWOUN",
-  "team2": "AL NASSR",
-  "category": "Saudi PL",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756506392571/index.m3u8"
-},
-
-{
-  "id": "ba102992",
-  "team1": "LECCE",
-  "team2": "AC MILAN",
-  "category": "Serie A",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756506447898/index.m3u8"
-},
-  
-{
-  "id": "da644323",
-  "team1": "VALENCIA",
-  "team2": "GETAFE",
-  "category": "LaLiga",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756505670988/index.m3u8"
-},
-
-{
-  "id": "ck498016",
-  "team1": "LEICESTER",
-  "team2": "BIRMINGHAM",
-  "category": "EFL",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756505790171/index.m3u8"
-},
-  
-{
-  "id": "yu382920",
-  "team1": "GRIMSBY TOWN",
-  "team2": "MAN UNITED",
-  "category": "Carbao Cup",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/27/1756334272523/index.m3u8"
-},
-
-{
-  "id": "xe771625",
-  "team1": "BENFICA",
-  "team2": "FENERBAHCE",
-  "category": "UCL",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/27/1756334175180/index.m3u8"
-},
-
-{
-  "id": "uh240073",
-  "team1": "RC CELTA",
-  "team2": "REAL BETIS",
-  "category": "LaLiga",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/27/1756333245008/index.m3u8"
-},
-  
   {
-  "id": "mh308277",
-  "team1": "NEWCASTLE",
-  "team2": "LIVERPOOL",
-  "category": "EPL",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/25/1756160272529/index.m3u8"
-},
-
-{
-  "id": "dv829924",
-  "team1": "INTER MILAN",
-  "team2": "TORINO",
-  "category": "Serie A",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/25/1756159857430/index.m3u8"
-},
-
-{
-  "id": "uw895258",
-  "team1": "SEVILLA",
-  "team2": "GETAFE",
-  "category": "La Liga",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/25/1756159532464/index.m3u8"
-},
-  
-{
-  "id": "ng811310",
-  "team1": "WEST HAM",
-  "team2": "CHELSEA",
-  "category": "EPL",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901425705/index.m3u8"
-},
-
-{
-  "id": "bf673983",
-  "team1": "PSG",
-  "team2": "ANGERS",
-  "category": "Ligue 1",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901215776/index.m3u8"
-},
-
-{
-  "id": "os238825",
-  "team1": "BAYERN MUNICH",
-  "team2": "RB LEIPZIG",
-  "category": "Bundesliga",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901324271/index.m3u8"
-},
-
-{
-  "id": "zb855106",
-  "team1": "REAL BETIS",
-  "team2": "ALAVÉS",
-  "category": "La Liga",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901145876/index.m3u8"
-},
-  
+    "id": "mv638804",
+    "team1": "Al Taawoun",
+    "team2": "Al Nassr",
+    "category": "Saudi PL",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756506392571/index.m3u8"
+  },
   {
-  "id": "ue182417",
-  "team1": "PSG",
-  "team2": "TOTTENHAM",
-  "category": "UEFA Super Cup Final",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/13/1755122052089/index.m3u8"
-},
-  
+    "id": "ba102992",
+    "team1": "Lecce",
+    "team2": "Ac Milan",
+    "category": "Serie A",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756506447898/index.m3u8"
+  },
   {
-  "id": "i86148",
-  "team1": "BARCELONA",
-  "team2": "COMO",
-  "category": "Friendly",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/10/1754864825724/index.m3u8"
-},
-
-{
-  "id": "r96480",
-  "team1": "DORTMUND",
-  "team2": "JUVENTUS",
-  "category": "Friendly",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/10/1754864598987/index.m3u8"
-},
-  
+    "id": "da644323",
+    "team1": "Valencia",
+    "team2": "Getafe",
+    "category": "LaLiga",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756505670988/index.m3u8"
+  },
   {
-  "id": "baytot",
-  "team1": "BAYERN MUNICH",
-  "team2": "TOTTENHAM",
-  "category": "Friendly",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/07/1754600497881/index.m3u8"
-},
-{
-  "id": "rioaln",
-  "team1": "RIO AVE",
-  "team2": "AL NASSR",
-  "category": "Friendly",
-  "link": "video?src=https://highlight.api-football.xyz/2025/08/07/1754605894096/index.m3u8"
-}, 
-  
+    "id": "ck498016",
+    "team1": "Leicester",
+    "team2": "Birmingham",
+    "category": "EFL",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/29/1756505790171/index.m3u8"
+  },
   {
-  "id": "chevpso",
-  "team1": "CHELSEA",
-  "team2": "PSG",
-  "category": "Club World Cup Final ",
-  "link": "video?src=https://highlight.api-football.xyz/2025/07/13/1752444687642/index.m3u8"
-},
-  
+    "id": "yu382920",
+    "team1": "Grimsby Town",
+    "team2": "Man United",
+    "category": "Carbao Cup",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/27/1756334272523/index.m3u8"
+  },
   {
-  "id": "psgvrma",
-  "team1": "PSG",
-  "team2": "REAL MADRID",
-  "category": "Club World Cup",
-  "link": "video?src=https://highlight.api-football.xyz/2025/07/09/1752099734322/index.m3u8"
-},
-  
-  
-{
-  "id": "fluvche",
-  "team1": "FLUMINENSE",
-  "team2": "CHELSEA",
-  "category": "Club World Cup",
-  "link": "video?src=https://highlight.api-football.xyz/2025/07/08/1752012806422/index.m3u8"
-},
-  
+    "id": "xe771625",
+    "team1": "Benfica",
+    "team2": "Fenerbahce",
+    "category": "UCL",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/27/1756334175180/index.m3u8"
+  },
   {
-  "id": "monvint",
-  "team1": "MONTREAL",
-  "team2": "INTER MIAMI",
-  "category": "MLS",
-  "link": " https://www.youtube.com/embed/yIY_lsZdJLY?si=JvosmRtO9b_n7t9p "
-},
-  
+    "id": "uh240073",
+    "team1": "Rc Celta",
+    "team2": "Real Betis",
+    "category": "LaLiga",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/27/1756333245008/index.m3u8"
+  },
+  {
+    "id": "mh308277",
+    "team1": "Newcastle",
+    "team2": "Liverpool",
+    "category": "EPL",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/25/1756160272529/index.m3u8"
+  },
+  {
+    "id": "dv829924",
+    "team1": "Inter Milan",
+    "team2": "Torino",
+    "category": "Serie A",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/25/1756159857430/index.m3u8"
+  },
+  {
+    "id": "uw895258",
+    "team1": "Sevilla",
+    "team2": "Getafe",
+    "category": "LaLiga",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/25/1756159532464/index.m3u8"
+  },
+  {
+    "id": "ng811310",
+    "team1": "West Ham",
+    "team2": "Chelsea",
+    "category": "EPL",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901425705/index.m3u8"
+  },
+  {
+    "id": "bf673983",
+    "team1": "Psg",
+    "team2": "Angers",
+    "category": "Ligue 1",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901215776/index.m3u8"
+  },
+  {
+    "id": "os238825",
+    "team1": "Bayern Munich",
+    "team2": "Rb Leipzig",
+    "category": "Bundesliga",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901324271/index.m3u8"
+  },
+  {
+    "id": "zb855106",
+    "team1": "Real Betis",
+    "team2": "Alavés",
+    "category": "LaLiga",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/22/1755901145876/index.m3u8"
+  },
+  {
+    "id": "ue182417",
+    "team1": "Psg",
+    "team2": "Tottenham",
+    "category": "UEFA Super Cup Final",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/13/1755122052089/index.m3u8"
+  },
+  {
+    "id": "i86148",
+    "team1": "Barcelona",
+    "team2": "Como",
+    "category": "Friendly",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/10/1754864825724/index.m3u8"
+  },
+  {
+    "id": "r96480",
+    "team1": "Dortmund",
+    "team2": "Juventus",
+    "category": "Friendly",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/10/1754864598987/index.m3u8"
+  },
+  {
+    "id": "baytot",
+    "team1": "Bayern Munich",
+    "team2": "Tottenham",
+    "category": "Friendly",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/07/1754600497881/index.m3u8"
+  },
+  {
+    "id": "rioaln",
+    "team1": "Rio Ave",
+    "team2": "Al Nassr",
+    "category": "Friendly",
+    "link": "video?src=https://highlight.api-football.xyz/2025/08/07/1754605894096/index.m3u8"
+  },
+  {
+    "id": "chevpso",
+    "team1": "Chelsea",
+    "team2": "Psg",
+    "category": "Club World Cup Final",
+    "link": "video?src=https://highlight.api-football.xyz/2025/07/13/1752444687642/index.m3u8"
+  },
+  {
+    "id": "psgvrma",
+    "team1": "Psg",
+    "team2": "Real Madrid",
+    "category": "Club World Cup",
+    "link": "video?src=https://highlight.api-football.xyz/2025/07/09/1752099734322/index.m3u8"
+  },
+  {
+    "id": "fluvche",
+    "team1": "Fluminense",
+    "team2": "Chelsea",
+    "category": "Club World Cup",
+    "link": "video?src=https://highlight.api-football.xyz/2025/07/08/1752012806422/index.m3u8"
+  },
+  {
+    "id": "monvint",
+    "team1": "Montreal",
+    "team2": "Inter Miami",
+    "category": "MLS",
+    "link": " https://www.youtube.com/embed/yIY_lsZdJLY?si=JvosmRtO9b_n7t9p "
+  },
   {
     "id": "psgvbay",
-    "team1": "PSG",
-    "team2": "BAYERN MUNICH",
+    "team1": "Psg",
+    "team2": "Bayern Munich",
     "category": "Club World Cup",
     "link": "video?src=https://highlight.api-football.xyz/2025/07/05/1751755023501/index.m3u8"
   },
   {
     "id": "rmavdor",
-    "team1": "REAL MADRID",
-    "team2": "BORUSSIA DORTMUND",
+    "team1": "Real Madrid",
+    "team2": "Borussia Dortmund",
     "category": "Club World Cup",
     "link": "video?src=https://highlight.api-football.xyz/2025/07/05/1751757052062/index.m3u8"
   },
-  
-  
   {
-    "id": " 9 ",
-    "team1": " Real Madrid ",
-    "team2": " Juventus ",
+    "id": "9",
+    "team1": "Real Madrid",
+    "team2": "Juventus",
     "category": "Club World Cup",
-    "link": " video?src=https://highlight.api-football.xyz/2025/07/01/1751405254317/index.m3u8 "
+    "link": "video?src=https://highlight.api-football.xyz/2025/07/01/1751405254317/index.m3u8"
   },
-  
-  
   {
     "id": "8",
-    "team1": " Man City ",
-    "team2": " Al Hilal ",
+    "team1": "Man City",
+    "team2": "Al Hilal",
     "category": "Club World Cup",
-    "link": " video?src=https://highlight.api-football.xyz/2025/07/01/1751342895783/index.m3u8  "
+    "link": "video?src=https://highlight.api-football.xyz/2025/07/01/1751342895783/index.m3u8"
   },
-  
-  
   {
     "id": "7",
-    "team1": " Inter Milan ",
-    "team2": " Fluminense ",
+    "team1": "Inter Milan",
+    "team2": "Fluminense",
     "category": "Club World Cup",
-    "link": " https://yosintv.github.io/player/player3.html?url=https://highlight.api-football.xyz/2025/06/30/1751318219686/index.m3u8  "
+    "link": "https://yosintv.github.io/player/player3.html?url=https://highlight.api-football.xyz/2025/06/30/1751318219686/index.m3u8"
   },
-  
-  
   {
     "id": "6",
-    "team1": " PSG ",
-    "team2": " Inter Miami ",
+    "team1": "Psg",
+    "team2": "Inter Miami",
     "category": "Club World Cup",
-    "link": "https://nirutv.online/Player/yt?id=2eY74BW4SbE "
+    "link": "https://nirutv.online/Player/yt?id=2eY74BW4SbE"
   },
-  
-  
   {
     "id": "5",
-    "team1": " Benfica ",
-    "team2": " Chelsea ",
+    "team1": "Benfica",
+    "team2": "Chelsea",
     "category": "Club World Cup",
-    "link": " https://yosintv.github.io/player/dmca.html?url=https://highlight.api-football.xyz/2025/06/29/1751158726949/index.m3u8 "
+    "link": "https://yosintv.github.io/player/dmca.html?url=https://highlight.api-football.xyz/2025/06/29/1751158726949/index.m3u8"
   },
-  
-  
   {
     "id": "4",
-    "team1": "SALZBURG",
-    "team2": "REAL MADRID",
+    "team1": "Salzburg",
+    "team2": "Real Madrid",
     "category": "Club World Cup",
-    "link": " https://yosintv.github.io/yosintv/jwplayers.html?src=https://hoofootay4.spotlightmoment.com/embed/jmz1kEPk0KfqV "
+    "link": "https://yosintv.github.io/yosintv/jwplayers.html?src=https://hoofootay4.spotlightmoment.com/embed/jmz1kEPk0KfqV"
   },
-
-    
-    {
+  {
     "id": "3",
-    "team1": "JUVENTUS",
-    "team2": "MAN CITY",
+    "team1": "Juventus",
+    "team2": "Man City",
     "category": "Club World Cup",
-    "link": "https://yosintv2.github.io/bkp/plyrr.html?url=https://highlight.api-football.xyz/2025/06/26/1750975222976/index.m3u8 "
+    "link": "https://yosintv2.github.io/bkp/plyrr.html?url=https://highlight.api-football.xyz/2025/06/26/1750975222976/index.m3u8"
   },
-  
-  
   {
     "id": "2",
-    "team1": "Wydad AC",
-    "team2": "AL AIN FC",
+    "team1": "Wydad Ac",
+    "team2": "Al Ain Fc",
     "category": "Club World Cup",
     "link": "https://yosintv2.github.io/bkp/plyrr.html?url=https://highlight.api-football.xyz/2025/06/26/1750974481507/index.m3u8"
   },
-
-  
-   {
+  {
     "id": "1",
-    "team1": "INTER MILAN",
-    "team2": "RIVER PLATE",
+    "team1": "Inter Milan",
+    "team2": "River Plate",
     "category": "Club World Cup",
-    "link": "https://yosintv2.github.io/bkp/plyrr.html?url=https://highlight.api-football.xyz/2025/06/26/1750918035573/index.m3u8 "
+    "link": "https://yosintv2.github.io/bkp/plyrr.html?url=https://highlight.api-football.xyz/2025/06/26/1750918035573/index.m3u8"
   }
 ]
