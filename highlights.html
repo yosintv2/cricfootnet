@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CricFoot - Latest Match Highlights</title>
+  <title>CricFoot - Match Highlights</title>
   <meta name="description" content="Watch detailed football match highlights on CricFoot." id="meta-description"/>
   <meta name="keywords" content="football highlights, soccer highlights, match highlights, football videos, sports highlights" id="meta-keywords"/>
-  <meta name="author" content="CricFoot" />
+  <meta name="author" content="Yosintv Live" />
   <!-- Canonical Tag -->
   <link rel="canonical" href="https://www.cricfoot.net/highlights.html" id="canonical-url"/>
   <!-- Open Graph Meta Tags -->
@@ -23,8 +23,7 @@
   <meta name="twitter:image" content="https://www.cricfoot.net/placeholder.jpg" loading="lazy"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <link href='/cf_favicon.ico' rel='icon' type='image/x-icon'/>
- <!-- Google AdSense Script -->
+  <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
   <style>
     body {
@@ -112,15 +111,26 @@
       color: #1e3a8a;
       font-weight: 600;
       padding: 0.75rem 1.5rem;
-      border-radius: 25px;
+      border-radius: 10px;
       text-decoration: none;
-      margin-top: 1rem;
       transition: all 0.3s ease;
     }
     .watch-button:hover {
       background: #ffea00;
       color: #2a4587;
       transform: scale(1.05);
+    }
+    .match-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+    .match-date {
+      font-size: 1rem;
+      color: #e0e0e0;
+      font-weight: 500;
     }
     .back-button {
       display: inline-block;
@@ -233,6 +243,11 @@
       font-size: 0.9rem;
       margin-left: 0.5rem;
     }
+    #related-matches .related-match-date {
+      color: #777;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
     @media (max-width: 576px) {
       .highlight-card {
         padding: 1rem;
@@ -248,7 +263,16 @@
         width: 30px;
       }
       .watch-button {
-        padding: 0.5rem 1rem;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .match-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .match-date {
         font-size: 0.9rem;
       }
       .header {
@@ -269,6 +293,9 @@
       #related-matches .related-match-item {
         padding: 0.5rem;
       }
+      #related-matches .related-match-date {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -276,29 +303,31 @@
   <h1 class="header" id="dynamic-header">CricFoot - Watch Highlights</h1>
   <div class="container">
     <!-- Ad Container (Top) -->
-    <center>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5525538810839147"
-     data-ad-slot="4345862479"
-     data-ad-format="horizontal"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>	
+    <center class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5525538810839147"
+           data-ad-slot="4345862479"
+           data-ad-format="auto"
+           data-full-width-responsive="true"
+           data-loading="lazy"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </center>
     <div id="highlight-details"></div>
     <!-- Ad Container (Before Related Matches) -->
-    <center>
+    <center class="ad-container">
       <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5525538810839147"
-     data-ad-slot="4345862479"
-     data-ad-format="horizontal"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>	
+           style="display:block"
+           data-ad-client="ca-pub-5525538810839147"
+           data-ad-slot="4345862479"
+           data-ad-format="auto"
+           data-full-width-responsive="true"
+           data-loading="lazy"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </center>
     <div id="related-matches"></div>
     <div id="faq-section"></div>
@@ -347,22 +376,22 @@
           document.getElementById('dynamic-header').textContent = 'CricFoot - Watch Highlights';
           return;
         }
-        // Set dynamic title and header
-        const matchTitle = `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights`;
+        // Set dynamic title and header with date
+        const matchTitle = `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights - ${match.date}`;
         document.title = `CricFoot - ${matchTitle}`;
         document.getElementById('dynamic-header').textContent = matchTitle;
 
-        // Update meta tags
-        document.getElementById('meta-description').content = `Watch ${matchTitle} on CricFoot.`;
-        document.getElementById('meta-keywords').content = `${match.team1} vs ${match.team2} highlights, ${match.category} highlights, football highlights, soccer highlights, CricFoot`;
+        // Update meta tags with date
+        document.getElementById('meta-description').content = `Watch ${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights from ${match.date} on CricFoot.`;
+        document.getElementById('meta-keywords').content = `${match.team1} vs ${match.team2} highlights, ${match.category} highlights, football highlights, soccer highlights, CricFoot, ${match.date}`;
         document.getElementById('og-title').content = `CricFoot - ${matchTitle}`;
-        document.getElementById('og-description').content = `Watch ${matchTitle} on CricFoot.`;
+        document.getElementById('og-description').content = `Watch ${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights from ${match.date} on CricFoot.`;
         document.getElementById('og-url').content = window.location.href;
         document.getElementById('twitter-title').content = `CricFoot - ${matchTitle}`;
-        document.getElementById('twitter-description').content = `Watch ${matchTitle} on CricFoot.`;
+        document.getElementById('twitter-description').content = `Watch ${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights from ${match.date} on CricFoot.`;
         document.getElementById('canonical-url').href = window.location.href;
 
-        // Create highlight card
+        // Create highlight card with date on left and button on right
         const highlightDiv = document.createElement('div');
         highlightDiv.className = 'highlight-card';
         highlightDiv.innerHTML = `
@@ -372,14 +401,17 @@
           <div class="footer">
             <span>${match.category}</span>
           </div>
-          <a href="${match.link}" class="watch-button" target="_blank" rel="noopener noreferrer">Watch Highlights</a>
+          <div class="match-info">
+            <span class="match-date">Match Date: ${match.date}</span>
+            <a href="${match.link}" class="watch-button" target="_blank" rel="noopener noreferrer">Watch Highlights</a>
+          </div>
         `;
         document.getElementById('highlight-details').appendChild(highlightDiv);
 
-        // Create related matches section as a list
+        // Create related matches section as a list with dates
         const relatedMatches = allData
           .filter(m => m.id !== matchId && m.category === match.category)
-          .slice(0, 4); // Limit to 3 related matches
+          .slice(0, 3); // Limit to 3 related matches
         const relatedDiv = document.createElement('div');
         relatedDiv.innerHTML = `<h3>Related ${match.category} Matches</h3>`;
         if (relatedMatches.length === 0) {
@@ -393,6 +425,7 @@
             listItem.innerHTML = `
               <a href="highlights.html?id=${relatedMatch.id}">${relatedMatch.team1} vs ${relatedMatch.team2}</a>
               <span>(${relatedMatch.category})</span>
+              <span class="related-match-date">${relatedMatch.date}</span>
             `;
             list.appendChild(listItem);
           });
@@ -400,7 +433,7 @@
         }
         document.getElementById('related-matches').appendChild(relatedDiv);
 
-        // Create FAQ section with 10 questions
+        // Create FAQ section with dynamic date
         const faqDiv = document.createElement('div');
         faqDiv.innerHTML = `
           <h3>Frequently Asked Questions</h3>
@@ -426,7 +459,7 @@
           </div>
           <div class="faq-item">
             <div class="faq-question">When was the ${match.team1} vs ${match.team2} match played?</div>
-            <div class="faq-answer">The ${match.team1} vs ${match.team2} ${match.category} match was played on August 30, 2025. Check the official ${match.category} schedule for exact dates.</div>
+            <div class="faq-answer">The ${match.team1} vs ${match.team2} ${match.category} match was played on ${match.date}. Check the official ${match.category} schedule for exact dates.</div>
           </div>
           <div class="faq-item">
             <div class="faq-question">Is the ${match.team1} vs ${match.team2} match available in HD on CricFoot?</div>
@@ -451,10 +484,10 @@
         const videoSchema = {
           "@context": "https://schema.org",
           "@type": "VideoObject",
-          "name": `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights`,
-          "description": `Watch highlights of the ${match.category} match between ${capitalizeFirstLetter(match.team1)} and ${capitalizeFirstLetter(match.team2)} on CricFoot.`,
+          "name": `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights - ${match.date}`,
+          "description": `Watch highlights of the ${match.category} match between ${capitalizeFirstLetter(match.team1)} and ${capitalizeFirstLetter(match.team2)} from ${match.date} on CricFoot.`,
           "thumbnailUrl": "https://www.cricfoot.net/placeholder.jpg",
-          "uploadDate": "2025-08-30",
+          "uploadDate": match.date,
           "contentUrl": match.link,
           "publisher": {
             "@type": "Organization",
@@ -468,8 +501,8 @@
           "@context": "https://schema.org",
           "@type": "SportsEvent",
           "name": `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)}`,
-          "description": `A ${match.category} football match between ${capitalizeFirstLetter(match.team1)} and ${capitalizeFirstLetter(match.team2)}.`,
-          "startDate": "2025-08-30",
+          "description": `A ${match.category} football match between ${capitalizeFirstLetter(match.team1)} and ${capitalizeFirstLetter(match.team2)} on ${match.date}.`,
+          "startDate": match.date,
           "sport": "Football",
           "homeTeam": {
             "@type": "SportsTeam",
@@ -486,7 +519,7 @@
           "url": window.location.href
         };
 
-        // Add Schema.org FAQPage with 10 questions
+        // Add Schema.org FAQPage with dynamic date
         const faqSchema = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -536,7 +569,7 @@
               "name": `When was the ${match.team1} vs ${match.team2} match played?`,
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": `The ${match.team1} vs ${match.team2} ${match.category} match was played on August 30, 2025. Check the official ${match.category} schedule for exact dates.`
+                "text": `The ${match.team1} vs ${match.team2} ${match.category} match was played on ${match.date}. Check the official ${match.category} schedule for exact dates.`
               }
             },
             {
