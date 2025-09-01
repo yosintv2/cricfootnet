@@ -1,12 +1,21 @@
 [
 
 {
+  "id": "otb2912702",
+  "team1": "Seattle",
+  "team2": "Inter Miami",
+  "category": "MLS",
+  "date": "2025-09-01",
+  "link": "iframe?src=https://www.youtube.com/embed/sBliCOjqidk"
+},
+  
+  {
   "id": "lt305271",
   "team1": "Brighton",
   "team2": "Man City",
   "category": "EPL",
   "date": "2025-09-01",
-  "link": "iframe?src=https://highlight.api-football.xyz/2025/08/31/1756680234238/index.m3u8"
+  "link": "video?src=https://highlight.api-football.xyz/2025/08/31/1756680234238/index.m3u8"
 },
 
 {
