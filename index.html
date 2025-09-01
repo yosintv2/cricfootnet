@@ -223,19 +223,24 @@
     .date-buttons {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.5rem;
       margin: 1.5rem 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
     }
     .date-btn {
-      padding: 0.5rem 1.5rem;
+      padding: 0.5rem 1rem;
       background-color: #357abd;
       color: #fff;
       border: none;
       border-radius: 20px;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      white-space: nowrap;
+      min-width: 80px;
     }
     .date-btn:hover {
       background-color: #4a90e2;
@@ -256,8 +261,13 @@
         padding: 0.3rem;
       }
       .date-buttons {
-        flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.3rem;
+        padding: 0.5rem;
+      }
+      .date-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 60px;
       }
     }
   </style>
@@ -302,9 +312,8 @@
   <script>
     let allData = [];
     let filteredData = [];
-    const defaultDate = '2025-09-01'; // Default date if no URL parameter
+    const defaultDate = '2025-09-01';
 
-    // Function to get URL parameter
     function getUrlParameter(name) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(name);
@@ -320,27 +329,19 @@
         const response = await fetch('https://www.cricfoot.net/highlights.json');
         allData = await response.json();
         
-        // Check if JSON has 'date' field
         const hasDate = allData.length > 0 && 'date' in allData[0];
-        
-        // Get date from URL parameter, default to defaultDate
         const currentDate = hasDate ? (getUrlParameter('date') || defaultDate) : null;
         
-        // Filter matches for the current date if 'date' exists, else show all
         filteredData = hasDate ? allData.filter(match => match.date === currentDate) : allData;
-        
-        // Update no-matches message based on context
         document.getElementById('no-matches').textContent = hasDate ? 
           `No Matches Available for ${currentDate}!` : 
           'No Matches Available!';
         
-        // Populate navigation menu with all unique categories from entire JSON
         populateNavMenu();
-        
         document.getElementById('loader').style.display = 'none';
         document.getElementById('highlight-grid').style.display = 'flex';
         renderHighlights();
-        setupNextPageButton(hasDate, currentDate);
+        setupDateButtons(hasDate, currentDate);
       } catch (error) {
         console.error('Error loading highlights:', error);
         document.getElementById('loader').style.display = 'none';
@@ -350,19 +351,16 @@
 
     function populateNavMenu() {
       const navMenu = document.getElementById('nav-menu');
-      navMenu.innerHTML = ''; // Clear existing menu
+      navMenu.innerHTML = '';
       
-      // Get all unique categories from entire JSON
       const categories = [...new Set(allData.map(match => match.category))].sort();
       
-      // Add "All" option
       const allLink = document.createElement('a');
       allLink.className = 'active';
       allLink.textContent = 'All';
       allLink.onclick = () => filterMatches('all');
       navMenu.appendChild(allLink);
       
-      // Add dynamic category links
       categories.forEach(category => {
         const link = document.createElement('a');
         link.textContent = category;
@@ -392,7 +390,7 @@
     function renderHighlights() {
       const grid = document.getElementById('highlight-grid');
       grid.innerHTML = '';
-      const matchesToShow = filteredData.slice(0, filteredData.categoryFilter ? 8 : 10); // 8 for category, 10 for default
+      const matchesToShow = filteredData.slice(0, filteredData.categoryFilter ? 8 : 10);
       if (matchesToShow.length === 0) {
         document.getElementById('no-matches').style.display = 'block';
         grid.style.display = 'none';
@@ -423,11 +421,9 @@
       navLinks.forEach(link => link.classList.remove('active'));
       Array.from(navLinks).find(link => link.textContent.trim() === category || (category === 'all' && link.textContent.trim() === 'All')).classList.add('active');
       
-      // Check if JSON has 'date' field
       const hasDate = allData.length > 0 && 'date' in allData[0];
       const currentDate = hasDate ? (getUrlParameter('date') || defaultDate) : null;
       
-      // Apply filter: 8 matches for specific category (all dates), 10 for 'all' or default view
       if (category === 'all') {
         filteredData = hasDate ? allData.filter(match => match.date === currentDate) : allData;
         filteredData.categoryFilter = false;
@@ -439,39 +435,47 @@
       renderHighlights();
     }
 
-    function setupNextPageButton(hasDate, currentDate) {
+    function setupDateButtons(hasDate, currentDate) {
       const dateButtonsContainer = document.getElementById('date-buttons');
-      dateButtonsContainer.innerHTML = ''; // Clear existing buttons
+      dateButtonsContainer.innerHTML = '';
       dateButtonsContainer.style.display = 'none';
       
       if (!hasDate) {
-        console.log('No date field in JSON, no next page button');
+        console.log('No date field in JSON, no date buttons');
         return;
       }
       
-      // Get all unique dates, sorted in ascending order, excluding current date
       const dates = [...new Set(allData.map(match => match.date))]
-        .filter(date => date !== currentDate)
-        .sort((a, b) => new Date(a) - new Date(b)); // Sort ascending
+        .sort((a, b) => new Date(b) - new Date(a)); // Sort descending
       
-      // Get the next date
-      const nextDate = dates[0];
+      // Next date (earliest date after currentDate)
+      const futureDates = dates.filter(date => new Date(date) > new Date(currentDate))
+        .sort((a, b) => new Date(a) - new Date(b));
+      if (futureDates.length > 0) {
+        const nextButton = document.createElement('button');
+        nextButton.className = 'date-btn';
+        nextButton.textContent = 'Next';
+        nextButton.onclick = () => {
+          console.log('Navigating to date:', futureDates[0]);
+          window.location.href = `?date=${futureDates[0]}`;
+        };
+        dateButtonsContainer.appendChild(nextButton);
+      }
       
-      console.log('Current date:', currentDate, 'Next date:', nextDate); // Debug log
-      
-      if (nextDate) {
-        dateButtonsContainer.style.display = 'flex';
+      // Last 5 dates (1 = last date, 2 = second last, etc.)
+      const lastFiveDates = dates.slice(0, 5);
+      lastFiveDates.forEach((date, index) => {
         const button = document.createElement('button');
         button.className = 'date-btn';
-        button.textContent = 'Next Page';
+        button.textContent = `${index + 1}`;
         button.onclick = () => {
-          console.log('Navigating to date:', nextDate); // Debug log
-          window.location.href = `?date=${nextDate}`;
+          console.log('Navigating to date:', date);
+          window.location.href = `?date=${date}`;
         };
         dateButtonsContainer.appendChild(button);
-      } else {
-        console.log('No next date available for button'); // Debug log
-      }
+      });
+      
+      dateButtonsContainer.style.display = 'flex';
     }
 
     window.onload = loadHighlights;
