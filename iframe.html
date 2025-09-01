@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+</head>
+<body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const customId = urlParams.get('src');
+    const newurl = `https://hlsplayers.pages.dev/iframe?url=${customId}`;
+    window.location.replace(newurl);
+</script>
+</body>
+</html>
