@@ -83,7 +83,7 @@
       color: #357abd;
       background-color: #f1f5f9;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem); /* Responsive font size */
       font-weight: 500;
       padding: 0.4rem 0.9rem;
       border-radius: 20px;
@@ -287,7 +287,7 @@
     </center>
     <div id="loader"><span></span><span></span><span></span></div>
     <div id="highlight-grid" class="row row-cols-2 g-2"></div>
-    <div id="no-matches">No Matches Available for Today!</div>
+    <div id="no-matches">No Matches Available!</div>
     <div id="date-buttons" class="date-buttons"></div>
   </div>
   <div class="container seo-text">
@@ -307,7 +307,13 @@
   <script>
     let allData = [];
     let filteredData = [];
-    const currentDate = '2025-09-01'; // Hardcoded based on provided date
+    const defaultDate = '2025-09-01'; // Default date if no URL parameter
+
+    // Function to get URL parameter
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
 
     async function loadHighlights() {
       document.getElementById('loader').style.display = 'block';
@@ -322,8 +328,16 @@
         // Check if JSON has 'date' field
         const hasDate = allData.length > 0 && 'date' in allData[0];
         
+        // Get date from URL parameter, default to defaultDate
+        const currentDate = hasDate ? (getUrlParameter('date') || defaultDate) : null;
+        
         // Filter matches for the current date if 'date' exists, else show all
         filteredData = hasDate ? allData.filter(match => match.date === currentDate) : allData;
+        
+        // Update no-matches message based on context
+        document.getElementById('no-matches').textContent = hasDate ? 
+          `No Matches Available for ${currentDate}!` : 
+          'No Matches Available!';
         
         // Populate navigation menu with all unique categories from entire JSON
         populateNavMenu();
@@ -331,7 +345,7 @@
         document.getElementById('loader').style.display = 'none';
         document.getElementById('highlight-grid').style.display = 'flex';
         renderHighlights();
-        setupNextPageButton();
+        setupNextPageButton(hasDate, currentDate);
       } catch (error) {
         console.error('Error loading highlights:', error);
         document.getElementById('loader').style.display = 'none';
@@ -421,6 +435,7 @@
       
       // Check if JSON has 'date' field
       const hasDate = allData.length > 0 && 'date' in allData[0];
+      const currentDate = hasDate ? (getUrlParameter('date') || defaultDate) : null;
       
       // Apply category filter
       filteredData = (category === 'all') ? 
@@ -430,13 +445,10 @@
       renderHighlights();
     }
 
-    function setupNextPageButton() {
+    function setupNextPageButton(hasDate, currentDate) {
       const dateButtonsContainer = document.getElementById('date-buttons');
       dateButtonsContainer.innerHTML = ''; // Clear existing buttons
       dateButtonsContainer.style.display = 'none';
-      
-      // Check if JSON has 'date' field
-      const hasDate = allData.length > 0 && 'date' in allData[0];
       
       if (!hasDate) {
         console.log('No date field in JSON, no next page button');
@@ -451,7 +463,7 @@
       // Get the next date
       const nextDate = dates[0];
       
-      console.log('Next date:', nextDate); // Debug log
+      console.log('Current date:', currentDate, 'Next date:', nextDate); // Debug log
       
       if (nextDate) {
         dateButtonsContainer.style.display = 'flex';
@@ -459,8 +471,8 @@
         button.className = 'date-btn';
         button.textContent = 'Next Page';
         button.onclick = () => {
-          console.log('Opening matches for date:', nextDate); // Debug log
-          window.open(`matches.html?date=${nextDate}`, '_blank');
+          console.log('Navigating to date:', nextDate); // Debug log
+          window.location.href = `?date=${nextDate}`;
         };
         dateButtonsContainer.appendChild(button);
       } else {
