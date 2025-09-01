@@ -83,7 +83,7 @@
       color: #357abd;
       background-color: #f1f5f9;
       text-decoration: none;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem); /* Responsive font size */
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
       font-weight: 500;
       padding: 0.4rem 0.9rem;
       border-radius: 20px;
@@ -264,7 +264,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="header">CricFoot - Match Highlights</div>
+  <div class="header">CricFoot - All Match Highlights</div>
   <center>
     <div class="container nav-container">
       <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Match categories navigation">
@@ -275,9 +275,10 @@
   <div class="container">
     <div><br/></div>
     <center>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </center>
     <div id="loader"><span></span><span></span><span></span></div>
     <div id="highlight-grid" class="row row-cols-2 g-2"></div>
@@ -391,7 +392,7 @@
     function renderHighlights() {
       const grid = document.getElementById('highlight-grid');
       grid.innerHTML = '';
-      const matchesToShow = filteredData.slice(0, 10); // Limit to 10 matches
+      const matchesToShow = filteredData.slice(0, filteredData.categoryFilter ? 8 : 10); // 8 for category, 10 for default
       if (matchesToShow.length === 0) {
         document.getElementById('no-matches').style.display = 'block';
         grid.style.display = 'none';
@@ -407,9 +408,7 @@
             adDiv.className = 'col-12';
             adDiv.innerHTML = `
               <center>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
               </center>
             `;
             grid.appendChild(adDiv);
@@ -428,10 +427,14 @@
       const hasDate = allData.length > 0 && 'date' in allData[0];
       const currentDate = hasDate ? (getUrlParameter('date') || defaultDate) : null;
       
-      // Apply category filter
-      filteredData = (category === 'all') ? 
-        (hasDate ? allData.filter(match => match.date === currentDate) : allData) : 
-        (hasDate ? allData.filter(match => match.date === currentDate && match.category === category) : allData.filter(match => match.category === category));
+      // Apply filter: 8 matches for specific category (all dates), 10 for 'all' or default view
+      if (category === 'all') {
+        filteredData = hasDate ? allData.filter(match => match.date === currentDate) : allData;
+        filteredData.categoryFilter = false;
+      } else {
+        filteredData = allData.filter(match => match.category === category);
+        filteredData.categoryFilter = true;
+      }
       
       renderHighlights();
     }
