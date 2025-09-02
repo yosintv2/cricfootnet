@@ -233,7 +233,7 @@
         filteredData = allData.slice(0, 10);
         filteredData.leagueFilter = false;
       } else {
-        filteredData = allData.filter(match => match.category.toLowerCase() === category.toLowerCase()).slice(0, 8);
+        filteredData = allData.filter(match => match.category.toLowerCase() === category.toLowerCase()).slice(0, 14);
         filteredData.leagueFilter = true;
       }
       renderHighlights();
