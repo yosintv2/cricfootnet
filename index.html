@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CricFoot - Cricket | Football | Latest Match Highlights</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot. Your source for all the best sports highlights." />
   <meta name="keywords" content="football highlights, soccer highlights, EPL highlights, LaLiga highlights, Serie A highlights, Bundesliga highlights, cricket highlights, IPL highlights, T20 highlights, live football highlights, live cricket highlights, match highlights, football videos, cricket videos, sports highlights" />
   <meta name="author" content="CricFoot" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.cricfoot.net/" />
-  <link href='/cf_favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -32,11 +32,36 @@
   </script>
   <style>
     body { font-family: 'Roboto', sans-serif; background: #f5f7fa; color: #333; transition: all 0.3s ease; overflow-x: hidden; }
-    .header { background: linear-gradient(90deg, #4a90e2, #357abd); color: #fff; padding: 1.5rem 1rem; border-radius: 10px 10px 0 0; font-size: clamp(1.2rem, 5vw, 2.2rem); font-weight: 700; text-align: center; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative; overflow: hidden; }
-    .header a { color: #fff; text-decoration: none; display: inline-block; width: 100%; height: 100%; }
-    .header a:hover { text-decoration: underline; }
-    .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 10s infinite; }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+    .header {
+      background: linear-gradient(135deg, #40c4ff, #0288d1);
+      color: #fff;
+      padding: 1.5rem 1rem;
+      border-radius: 0 0 12px 12px;
+      font-size: clamp(1.4rem, 5vw, 2.4rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    .header a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+    .header a:hover {
+      color: #ff9100;
+    }
     .nav-container { background: #fff; padding: 0.75rem 1rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); margin-bottom: 1rem; }
     .nav-menu { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
     .nav-menu a { color: #357abd; background-color: #f1f5f9; text-decoration: none; font-size: clamp(0.8rem, 2.5vw, 0.9rem); font-weight: 500; padding: 0.4rem 0.9rem; border-radius: 20px; transition: all 0.25s ease, transform 0.1s ease; cursor: pointer; }
@@ -63,18 +88,18 @@
     .seo-text { padding: 1.5rem; background-color: #eef1f5; border-radius: 10px; margin-top: 1.5rem; }
     .seo-text h3 { font-size: 1.25rem; color: #1e3a8a; margin-bottom: 0.75rem; }
     .seo-text p { font-size: 0.9rem; line-height: 1.6; color: #555; }
-    .date-buttons { display: flex; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; }
-    .date-btn { padding: 0.5rem 1rem; background-color: #357abd; color: #fff; border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease, transform 0.1s ease; white-space: nowrap; min-width: 80px; }
-    .date-btn:hover { background-color: #4a90e2; }
-    .date-btn:active, .date-btn.clicked { transform: scale(0.95); }
-    .date-btn:disabled { background-color: #a0a0a0; cursor: not-allowed; }
+    .page-buttons { display: flex; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; }
+    .page-btn { padding: 0.5rem 1rem; background-color: #357abd; color: #fff; border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease, transform 0.1s ease; white-space: nowrap; min-width: 80px; }
+    .page-btn:hover { background-color: #4a90e2; }
+    .page-btn:active, .page-btn.clicked { transform: scale(0.95); }
+    .page-btn:disabled { background-color: #a0a0a0; cursor: not-allowed; }
     @media (max-width: 768px) {
       .highlight-card h2 { font-size: 1.2rem; }
       .highlight-card .vs { font-size: 1rem; }
       .highlight-card .vs::before, .highlight-card .vs::after { width: 15px; }
       .highlight-card .footer { font-size: 0.8rem; padding: 0.3rem; }
-      .date-buttons { gap: 0.3rem; padding: 0.5rem; }
-      .date-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; min-width: 60px; }
+      .page-buttons { gap: 0.3rem; padding: 0.5rem; }
+      .page-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; min-width: 60px; }
     }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
@@ -89,15 +114,17 @@
     </div>
   </center>
   <div class="container">
-    <div><br/></div>
-    <center><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script></center>
+    <div><br /></div>
+    <center>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </center>
     <div id="loader"><span></span><span></span><span></span></div>
     <div id="highlight-grid" class="row row-cols-2 g-2"></div>
-    <div id="no-matches">No Matches Available!</div>
-    <div id="date-buttons" class="date-buttons"></div>
+    <div id="no-matches">No Matches Available! <button id="retry-btn" class="page-btn">Retry</button></div>
+    <div id="page-buttons" class="page-buttons"></div>
   </div>
   <div class="container seo-text">
     <h3>Catch the Latest Football and Cricket Highlights</h3>
@@ -106,7 +133,7 @@
   </div>
   <footer class="footer mt-4">
     <div class="text-center">
-      <a href="/">Home</a>
+      <a href="#">Facebook</a>
       <a href="#">Twitter</a>
       <a href="#">YouTube</a>
       <a href="#">Instagram</a>
@@ -116,41 +143,84 @@
   <script>
     let allData = [];
     let filteredData = [];
-    const defaultDate = '2025-09-01';
+    const matchesPerPage = 10;
+    const maxRetries = 3;
+    // Mock data as a fallback
+    const mockData = [
+      { id: "mock1", team1: "Team A", team2: "Team B", category: "Club World Cup", date: "2025-09-03" },
+      { id: "mock2", team1: "Team C", team2: "Team D", category: "EPL", date: "2025-09-02" },
+      { id: "mock3", team1: "Team E", team2: "Team F", category: "Club World Cup", date: "2025-09-01" },
+      { id: "mock4", team1: "Team G", team2: "Team H", category: "IPL", date: "2025-08-31" },
+      { id: "mock5", team1: "Team I", team2: "Team J", category: "LaLiga", date: "2025-08-30" },
+      { id: "mock6", team1: "Team K", team2: "Team L", category: "Club World Cup", date: "2025-08-29" },
+      { id: "mock7", team1: "Team M", team2: "Team N", category: "Serie A", date: "2025-08-28" },
+      { id: "mock8", team1: "Team O", team2: "Team P", category: "Bundesliga", date: "2025-08-27" },
+      { id: "mock9", team1: "Team Q", team2: "Team R", category: "Club World Cup", date: "2025-08-26" },
+      { id: "mock10", team1: "Team S", team2: "Team T", category: "T20", date: "2025-08-25" },
+      { id: "mock11", team1: "Team U", team2: "Team V", category: "Club World Cup", date: "2025-08-24" }
+    ];
     function getUrlParameter(name) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(name);
+    }
+    async function fetchWithRetry(url, retries = maxRetries) {
+      for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const data = await response.json();
+          if (!Array.isArray(data) || !data.every(match => match.id && match.team1 && match.team2 && match.category)) {
+            throw new Error('Invalid data format');
+          }
+          return data;
+        } catch (error) {
+          if (attempt === retries) {
+            console.error(`Failed to fetch ${url} after ${retries} attempts:`, error);
+            return null;
+          }
+          console.warn(`Attempt ${attempt} failed. Retrying...`);
+          await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+        }
+      }
     }
     async function loadHighlights() {
       document.getElementById('loader').style.display = 'block';
       document.getElementById('highlight-grid').style.display = 'none';
       document.getElementById('no-matches').style.display = 'none';
-      document.getElementById('date-buttons').style.display = 'none';
+      document.getElementById('page-buttons').style.display = 'none';
       try {
-        const response = await fetch('/highlights.json');
-        allData = await response.json();
+        let data = await fetchWithRetry('https://www.cricfoot.net/highlights.json');
+        if (!data) {
+          console.warn('Using mock data as fallback');
+          data = mockData;
+          document.getElementById('no-matches').textContent = 'Showing sample highlights due to data loading issue. ';
+        }
+        allData = data;
         allData.sort((a, b) => new Date(b.date) - new Date(a.date));
-        const hasDate = allData.length > 0 && 'date' in allData[0];
-        const currentDate = hasDate ? (getUrlParameter('date') || defaultDate) : null;
-        const selectedLeague = getUrlParameter('league');
-        if (!selectedLeague || selectedLeague === 'all') {
-          filteredData = allData.slice(0, 10);
+        const currentPage = parseInt(getUrlParameter('page')) || 1;
+        const selectedLeague = getUrlParameter('league') || 'all';
+        if (selectedLeague === 'all') {
+          filteredData = allData;
           filteredData.leagueFilter = false;
         } else {
-          filteredData = allData.filter(match => match.category.toLowerCase().replace(/\s+/g, '_') === selectedLeague.toLowerCase()).slice(0, 8);
+          filteredData = allData.filter(match => match.category.toLowerCase().replace(/\s+/g, '_') === selectedLeague.toLowerCase());
           filteredData.leagueFilter = true;
         }
-        document.getElementById('no-matches').textContent = hasDate ? `No Matches Available for Latest Entries!` : 'No Matches Available!';
+        document.getElementById('no-matches').textContent = filteredData.length === 0 ? 'No Matches Available! ' : document.getElementById('no-matches').textContent;
         populateNavMenu(selectedLeague);
         document.getElementById('loader').style.display = 'none';
         document.getElementById('highlight-grid').style.display = 'flex';
-        renderHighlights();
-        setupDateButtons(hasDate, currentDate);
+        renderHighlights(currentPage);
+        setupPageButtons(currentPage);
       } catch (error) {
-        console.error('Error loading highlights:', error);
+        console.error('Unexpected error loading highlights:', error);
         document.getElementById('loader').style.display = 'none';
+        document.getElementById('no-matches').textContent = 'Unable to load highlights due to an unexpected error. ';
         document.getElementById('no-matches').style.display = 'block';
       }
+      document.getElementById('retry-btn').addEventListener('click', loadHighlights);
     }
     function populateNavMenu(selectedLeague) {
       const navMenu = document.getElementById('nav-menu');
@@ -181,7 +251,7 @@
       const cardDiv = document.createElement('div');
       cardDiv.className = 'col';
       cardDiv.innerHTML = `
-        <a href="highlights.html?id=${match.id}" class="highlight-card" data-category="${match.category}" rel="noopener noreferrer">
+        <a href="highlights.html?id=${match.id}" class="highlight-card" data-category="${match.category}" rel="noopener noreferrer" aria-label="View highlights for ${match.team1} vs ${match.team2} on ${match.date || 'N/A'}">
           <h2>${match.team1}</h2>
           <div class="vs">VS</div>
           <h2>${match.team2}</h2>
@@ -194,10 +264,11 @@
       `;
       return cardDiv;
     }
-    function renderHighlights() {
+    function renderHighlights(currentPage) {
       const grid = document.getElementById('highlight-grid');
       grid.innerHTML = '';
-      const matchesToShow = filteredData.slice(0, filteredData.leagueFilter ? 8 : 10);
+      const startIndex = (currentPage - 1) * matchesPerPage;
+      const matchesToShow = filteredData.slice(startIndex, startIndex + matchesPerPage);
       if (matchesToShow.length === 0) {
         document.getElementById('no-matches').style.display = 'block';
         grid.style.display = 'none';
@@ -224,69 +295,79 @@
       const navLinks = document.querySelectorAll('.nav-menu a');
       navLinks.forEach(link => link.classList.remove('active'));
       Array.from(navLinks).find(link => link.textContent.trim() === category || (category === 'all' && link.textContent.trim() === 'All')).classList.add('active');
-      const currentDate = getUrlParameter('date');
       const urlParams = new URLSearchParams();
-      if (currentDate) urlParams.set('date', currentDate);
       if (category !== 'all') urlParams.set('league', category.toLowerCase().replace(/\s+/g, '_'));
+      urlParams.set('page', '1');
       window.history.pushState({}, '', `${window.location.pathname}${urlParams.toString() ? '?' + urlParams.toString() : ''}`);
       if (category === 'all') {
-        filteredData = allData.slice(0, 10);
+        filteredData = allData;
         filteredData.leagueFilter = false;
       } else {
-        filteredData = allData.filter(match => match.category.toLowerCase() === category.toLowerCase()).slice(0, 14);
+        filteredData = allData.filter(match => match.category.toLowerCase() === category.toLowerCase());
         filteredData.leagueFilter = true;
       }
-      renderHighlights();
+      renderHighlights(1);
+      setupPageButtons(1);
     }
-    function setupDateButtons(hasDate, currentDate) {
-      const dateButtonsContainer = document.getElementById('date-buttons');
-      dateButtonsContainer.innerHTML = '';
-      if (!hasDate) {
-        console.log('No date field in JSON, no date buttons');
-        return;
-      }
-      dateButtonsContainer.style.display = 'flex';
-      const dates = [...new Set(allData.map(match => match.date))].sort((a, b) => new Date(b) - new Date(a));
-      const nextButton = document.createElement('button');
-      nextButton.className = 'date-btn';
-      nextButton.textContent = 'Next';
-      if (dates.length > 0) {
-        const futureDates = dates.filter(date => new Date(date) > new Date(currentDate)).sort((a, b) => new Date(a) - new Date(b));
-        if (futureDates.length > 0) {
-          nextButton.onclick = () => {
-            console.log('Navigating to date:', futureDates[0]);
-            const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('date', futureDates[0]);
-            window.location.href = `?${urlParams.toString()}`;
-          };
-        } else {
-          nextButton.disabled = true;
-        }
-      } else {
-        nextButton.disabled = true;
-      }
-      nextButton.addEventListener('click', () => {
-        nextButton.classList.add('clicked');
-        setTimeout(() => nextButton.classList.remove('clicked'), 100);
-      });
-      dateButtonsContainer.appendChild(nextButton);
-      const lastThreeDates = dates.slice(0, 3);
-      lastThreeDates.forEach((date, index) => {
-        const button = document.createElement('button');
-        button.className = 'date-btn';
-        button.textContent = `${index + 1}`;
-        button.onclick = () => {
-          console.log('Navigating to date:', date);
+    function setupPageButtons(currentPage) {
+      const pageButtonsContainer = document.getElementById('page-buttons');
+      pageButtonsContainer.innerHTML = '';
+      const totalPages = Math.ceil(filteredData.length / matchesPerPage);
+      if (totalPages === 0) return;
+      pageButtonsContainer.style.display = 'flex';
+      // Previous button
+      const prevButton = document.createElement('button');
+      prevButton.className = 'page-btn';
+      prevButton.textContent = 'Previous';
+      prevButton.disabled = currentPage === 1;
+      if (!prevButton.disabled) {
+        prevButton.onclick = () => {
           const urlParams = new URLSearchParams(window.location.search);
-          urlParams.set('date', date);
+          urlParams.set('page', currentPage - 1);
+          window.location.href = `?${urlParams.toString()}`;
+        };
+        prevButton.addEventListener('click', () => {
+          prevButton.classList.add('clicked');
+          setTimeout(() => prevButton.classList.remove('clicked'), 100);
+        });
+      }
+      pageButtonsContainer.appendChild(prevButton);
+      // Page number buttons (show up to 3 pages)
+      const startPage = Math.max(1, currentPage - 1);
+      const endPage = Math.min(totalPages, startPage + 2);
+      for (let page = startPage; page <= endPage; page++) {
+        const button = document.createElement('button');
+        button.className = 'page-btn';
+        button.textContent = page;
+        button.disabled = page === currentPage;
+        button.onclick = () => {
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('page', page);
           window.location.href = `?${urlParams.toString()}`;
         };
         button.addEventListener('click', () => {
           button.classList.add('clicked');
           setTimeout(() => button.classList.remove('clicked'), 100);
         });
-        dateButtonsContainer.appendChild(button);
-      });
+        pageButtonsContainer.appendChild(button);
+      }
+      // Next button
+      const nextButton = document.createElement('button');
+      nextButton.className = 'page-btn';
+      nextButton.textContent = 'Next';
+      nextButton.disabled = currentPage >= totalPages;
+      if (!nextButton.disabled) {
+        nextButton.onclick = () => {
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('page', currentPage + 1);
+          window.location.href = `?${urlParams.toString()}`;
+        };
+        nextButton.addEventListener('click', () => {
+          nextButton.classList.add('clicked');
+          setTimeout(() => nextButton.classList.remove('clicked'), 100);
+        });
+      }
+      pageButtonsContainer.appendChild(nextButton);
     }
     window.onload = loadHighlights;
   </script>
