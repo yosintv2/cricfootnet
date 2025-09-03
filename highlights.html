@@ -346,7 +346,7 @@
         return;
       }
       try {
-        const response = await fetch('https://www.cricfoot.net/highlights.json');
+        const response = await fetch('/highlights.json');
         if (!response.ok) throw new Error('Failed to fetch highlights data');
         const allData = await response.json();
         const match = allData.find(m => m.id === matchId);
@@ -359,7 +359,7 @@
           return;
         }
         // Set dynamic title and header with date
-        const matchTitle = `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights - ${match.date}`;
+        const matchTitle = `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} ${match.category} Highlights`;
         document.title = `CricFoot - ${matchTitle}`;
         document.getElementById('dynamic-header').textContent = matchTitle;
 
