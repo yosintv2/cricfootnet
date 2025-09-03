@@ -99,6 +99,7 @@
       .highlight-card .footer { font-size: 0.8rem; padding: 0.3rem; }
       .page-buttons { gap: 0.3rem; padding: 0.5rem; }
       .page-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; min-width: 60px; }
+      .nav-menu a { font-size: clamp(0.7rem, 2vw, 0.8rem); padding: 0.3rem 0.7rem; }
     }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
@@ -158,7 +159,7 @@
       { id: "mock8", team1: "Team O", team2: "Team P", category: "Bundesliga", date: "2025-08-27" },
       { id: "mock9", team1: "Team Q", team2: "Team R", category: "Club World Cup", date: "2025-08-26" },
       { id: "mock10", team1: "Team S", team2: "Team T", category: "T20", date: "2025-08-25" },
-      { id: "mock11", team1: "Team U", team2: "Team V", category: "Club World Cup", date: "2025-08-24" }
+      { id: "mock11", team1: "Team U", team2: "Team V", category: "Club World Cup", date: "2025-09-04" }
     ];
     function getUrlParameter(name) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -248,6 +249,17 @@
         navMenu.appendChild(link);
       });
     }
+    function getRelativeDate(matchDate) {
+      if (!matchDate) return 'N/A';
+      const today = new Date('2025-09-04'); // Hardcoded current date as per provided context
+      const match = new Date(matchDate);
+      const diffTime = today - match;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      if (diffDays === 0) return 'Today';
+      if (diffDays === 1) return '1 day ago';
+      if (diffDays > 1) return `${diffDays} days ago`;
+      return matchDate; // Fallback to original date if invalid
+    }
     function createHighlightCard(match) {
       const cardDiv = document.createElement('div');
       cardDiv.className = 'col';
@@ -259,7 +271,7 @@
           <div class="footer">
             <span class="category">${match.category}</span>
             <span class="separator">|</span>
-            <span class="date">${match.date || 'N/A'}</span>
+            <span class="date">${getRelativeDate(match.date)}</span>
           </div>
         </a>
       `;
