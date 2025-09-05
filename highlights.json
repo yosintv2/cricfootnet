@@ -1,6 +1,61 @@
 [
 
 {
+  "id": "pek3413136",
+  "team1": "Afghanistan",
+  "team2": "UAE",
+  "category": "cricket",
+  "date": "2025-09-06",
+  "link": "video?src=https://hlsplayers.pages.dev/yt?url=aOCmDv2uH5w"
+},
+
+{
+  "id": "xaf5021588",
+  "team1": "Ukraine",
+  "team2": "France",
+  "category": "Football",
+  "date": "2025-09-06",
+  "link": "video?src=https://highlight.api-football.xyz/2025/09/05/1757109953020/index.m3u8"
+},
+
+{
+  "id": "qmd3974397",
+  "team1": "Slovenia",
+  "team2": "Sweden",
+  "category": "Football",
+  "date": "2025-09-06",
+  "link": "video?src=https://highlight.api-football.xyz/2025/09/05/1757109417840/index.m3u8"
+},
+
+{
+  "id": "gtx3386925",
+  "team1": "Switzerland",
+  "team2": "Kosovo",
+  "category": "Football",
+  "date": "2025-09-06",
+  "link": "video?src=https://highlight.api-football.xyz/2025/09/05/1757108608796/index.m3u8"
+},
+
+{
+  "id": "yli3555128",
+  "team1": "Greece",
+  "team2": "Belarus",
+  "category": "Football",
+  "date": "2025-09-06",
+  "link": "video?src=https://highlight.api-football.xyz/2025/09/05/1757108367317/index.m3u8"
+},
+
+{
+  "id": "cgq3292949",
+  "team1": "Italy",
+  "team2": "Estonia",
+  "category": "Football",
+  "date": "2025-09-06",
+  "link": "video?src=https://highlight.api-football.xyz/2025/09/05/1757109854770/index.m3u8"
+},
+  
+  
+{
   "id": "twx5742816",
   "team1": "Argentina",
   "team2": "Venezuela",
