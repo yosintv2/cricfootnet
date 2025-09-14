@@ -1,7 +1,7 @@
 [
 
 {
-  "id": "qja8650138",
+  "id": "yye2941273",
   "team1": "Bangladesh",
   "team2": "Sri Lanka",
   "category": "Cricket",
@@ -10,7 +10,7 @@
 },
 
 {
-  "id": "lnc8791203",
+  "id": "bkf3440625",
   "team1": "Arsenal",
   "team2": "Nottingham",
   "category": "EPL",
@@ -19,7 +19,7 @@
 },
 
 {
-  "id": "beq3067622",
+  "id": "dhu9987666",
   "team1": "Newcastle",
   "team2": "Wolverhampton",
   "category": "EPL",
@@ -28,7 +28,7 @@
 },
 
 {
-  "id": "iea5421809",
+  "id": "ssy7509400",
   "team1": "Everton",
   "team2": "Aston Villa",
   "category": "EPL",
@@ -37,7 +37,7 @@
 },
 
 {
-  "id": "iqc1391869",
+  "id": "brz1504436",
   "team1": "Bournemouth",
   "team2": "Brighton",
   "category": "EPL",
@@ -46,7 +46,7 @@
 },
 
 {
-  "id": "hoo5138076",
+  "id": "pgl4299110",
   "team1": "Sociedad",
   "team2": "Real Madrid",
   "category": "Laliga",
@@ -55,7 +55,16 @@
 },
 
 {
-  "id": "xae9098033",
+  "id": "mjc2929066",
+  "team1": "Juventus",
+  "team2": "Inter Milan",
+  "category": "Serie",
+  "date": "2025-09-14",
+  "link": "video?src=A https://highlight.api-football.xyz/2025/09/13/1757803428931/index.m3u8"
+},
+
+{
+  "id": "tgb1863889",
   "team1": "Bayern Munich",
   "team2": "Hamburger",
   "category": "Bundesliga",
@@ -64,7 +73,7 @@
 },
 
 {
-  "id": "bpw5762877",
+  "id": "vae9515354",
   "team1": "Brentford",
   "team2": "Chelsea",
   "category": "EPL",
@@ -73,49 +82,12 @@
 },
 
 {
-  "id": "hcn7285041",
+  "id": "kze5727525",
   "team1": "Atletico",
   "team2": "Villarreal",
   "category": "Laliga",
   "date": "2025-09-14",
   "link": "video?src=https://highlight.api-football.xyz/2025/09/13/1757803250690/index.m3u8"
-},
-  
-  {
-  "id": "rpc7536702",
-  "team1": "Leverkusen",
-  "team2": "Frankfurt",
-  "category": "Bundesliga",
-  "date": "2025-09-13",
-  "link": "video?src=https://highlight.api-football.xyz/2025/09/13/1757724812342/index.m3u8"
-},
-
-{
-  "id": "qaw1479337",
-  "team1": "Sevilla",
-  "team2": "Elche",
-  "category": "Laliga",
-  "date": "2025-09-13",
-  "link": "video?src=https://highlight.api-football.xyz/2025/09/13/1757724761101/index.m3u8"
-},
-  
-  
-  {
-  "id": "nds3892461",
-  "team1": "England",
-  "team2": "South Africa",
-  "category": "Cricket",
-  "date": "2025-09-13",
-  "link": "videoyt?src=https://hlsplayers.pages.dev/yt?url=mq4_JpV9qPc"
-},
-
-{
-  "id": "yvp4656716",
-  "team1": "Pakistan",
-  "team2": "Oman",
-  "category": "Cricket",
-  "date": "2025-09-13",
-  "link": "videoyt?src=https://hlsplayers.pages.dev/yt?url=agGmaNcPP-E"
 },
   
   
