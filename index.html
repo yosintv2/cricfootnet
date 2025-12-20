@@ -38,6 +38,10 @@
             --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b;
             --nav-bg: rgba(11, 15, 26, 0.95);
         }
+
+        /* BLOCK AUTO ADS AT TOP */
+        .google-auto-placed, .ad-top, .adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
+        
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
 
@@ -84,7 +88,7 @@
         }
     </style>
 </head>
-<body>
+<body data-google-ads-preview="true">
 
 <nav class="navbar">
     <div class="nav-container content-width">
@@ -172,15 +176,12 @@
         const now = new Date();
         const threshold = new Date(now.getTime() - (2 * 24 * 60 * 60 * 1000));
 
-        // Fallback Images
         const footballDefault = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80";
         const cricketDefault = "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=80";
 
         let htmlContent = "";
         pageItems.forEach((m, index) => {
             const isRecent = new Date(m.date) >= threshold;
-            
-            // Background Logic: Detect if Cricket or Football
             let bg = m.thumbnail;
             if (!bg || bg === "") {
                 const cat = m.category.toLowerCase();
