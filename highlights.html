@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
+
     <style>
         :root[data-theme="light"] {
             --bg-main: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a;
@@ -41,14 +43,23 @@
 
         .highlight-display-card {
             background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-            padding: 2.5rem 1.5rem; text-align: center; margin-top: 2rem;
+            padding: 2.5rem 1.5rem; text-align: center; margin-top: 1rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
+        
+        /* BIGGER CATEGORY STYLE */
+        .cat-badge-lg {
+            display: inline-block; color: var(--accent); font-weight: 800;
+            font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 10px; border-bottom: 3px solid var(--accent);
+            padding-bottom: 5px;
+        }
+
         .vs-badge { 
             display: inline-block; background: var(--accent); color: white; 
             padding: 4px 15px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; margin: 15px 0;
         }
-        .team-title { font-weight: 800; font-size: clamp(1.5rem, 4vw, 2.5rem); margin: 0; }
+        .team-title { font-weight: 800; font-size: clamp(1.8rem, 5vw, 3rem); margin: 0; }
         
         .watch-btn-lg {
             background: var(--accent); color: white; border: none; padding: 12px 40px;
@@ -63,20 +74,12 @@
         }
         .section-title { font-weight: 800; font-size: 1.25rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
         
-        .related-list { list-style: none; padding: 0; margin: 0; }
-        .related-item { 
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 0; border-bottom: 1px solid var(--border);
-        }
-        .related-item:last-child { border-bottom: none; }
-        .related-item a { text-decoration: none; color: var(--text-main); font-weight: 600; }
-
-        /* FAQ STYLING */
         .faq-item { margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
         .faq-item:last-child { border-bottom: none; }
         .faq-q { font-weight: 700; color: var(--accent); margin-bottom: 5px; display: block; font-size: 1.05rem; }
         .faq-a { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
+        .ad-wrap { margin: 2rem 0; text-align: center; }
         .back-link { display: block; text-align: center; margin: 2rem 0; color: var(--text-muted); text-decoration: none; font-weight: 600; }
     </style>
 </head>
@@ -93,11 +96,21 @@
 </nav>
 
 <div class="content-width px-3">
+    <div class="ad-wrap">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
     <div id="highlight-details">
         <div class="text-center py-5"><div class="spinner-border text-primary"></div></div>
     </div>
 
     <div id="related-matches" class="info-section" style="display:none;"></div>
+
+    <div class="ad-wrap">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <div id="faq-section" class="info-section" style="display:none;"></div>
 
@@ -135,10 +148,10 @@
             const matchTitle = `${capitalize(match.team1)} vs ${capitalize(match.team2)} Highlights`;
             document.title = `${matchTitle} — CricFoot`;
 
-            // Hero Card
+            // Hero Card with BIGGER CATEGORY
             document.getElementById('highlight-details').innerHTML = `
                 <div class="highlight-display-card">
-                    <div class="text-muted mb-2 fw-bold" style="letter-spacing:1px; font-size:0.8rem;">${match.category.toUpperCase()}</div>
+                    <div class="cat-badge-lg">${match.category}</div>
                     <h1 class="team-title">${match.team1}</h1>
                     <div class="vs-badge">VS</div>
                     <h1 class="team-title">${match.team2}</h1>
@@ -155,57 +168,25 @@
                 const relSection = document.getElementById('related-matches');
                 relSection.style.display = 'block';
                 relSection.innerHTML = `<div class="section-title"><i class="bi bi-collection-play"></i> More ${match.category} Highlights</div>
-                    <div class="related-list">
-                        ${related.map(rm => `<div class="related-item"><a href="highlights.html?id=${rm.id}">${rm.team1} vs ${rm.team2}</a><span class="text-muted small">${rm.date}</span></div>`).join('')}
+                    <div class="list-group list-group-flush bg-transparent">
+                        ${related.map(rm => `
+                            <a href="highlights.html?id=${rm.id}" class="list-group-item bg-transparent text-main d-flex justify-content-between align-items-center border-0 border-bottom px-0" style="color:var(--text-main);">
+                                <span>${rm.team1} vs ${rm.team2}</span>
+                                <span class="text-muted small">${rm.date}</span>
+                            </a>`).join('')}
                     </div>`;
             }
 
-            // --- FULL FAQ SECTION ---
+            // Full FAQ Section
             const faqSection = document.getElementById('faq-section');
             faqSection.style.display = 'block';
             faqSection.innerHTML = `
                 <div class="section-title"><i class="bi bi-question-circle"></i> Frequently Asked Questions</div>
-                
-                <div class="faq-item">
-                    <span class="faq-q">Which teams played in the ${match.category} match?</span>
-                    <span class="faq-a">The ${match.category} match featured ${match.team1} against ${match.team2}.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">Where can I watch the ${match.team1} vs ${match.team2} highlights?</span>
-                    <span class="faq-a">You can watch the highlights of the ${match.team1} vs ${match.team2} ${match.category} match on CricFoot by clicking the "Watch Highlights" button above.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">What is the category of the ${match.team1} vs ${match.team2} match?</span>
-                    <span class="faq-a">The match between ${match.team1} and ${match.team2} is part of the ${match.category} competition.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">Are highlights available for the ${match.team1} vs ${match.team2} game?</span>
-                    <span class="faq-a">Yes, highlights for the ${match.team1} vs ${match.team2} ${match.category} match are available on CricFoot.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">How can I access football highlights on CricFoot?</span>
-                    <span class="faq-a">You can access football highlights on CricFoot by navigating to the match page and clicking the "Watch Highlights" button for matches like ${match.team1} vs ${match.team2}.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">When was the ${match.team1} vs ${match.team2} match played?</span>
-                    <span class="faq-a">The ${match.team1} vs ${match.team2} ${match.category} match was played on ${match.date}. Check the official ${match.category} schedule for exact dates.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">Is the ${match.team1} vs ${match.team2} match available in HD on CricFoot?</span>
-                    <span class="faq-a">Yes, CricFoot provides high-definition highlights for the ${match.team1} vs ${match.team2} ${match.category} match when available from our sources.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">Can I share the ${match.team1} vs ${match.team2} highlights on social media?</span>
-                    <span class="faq-a">Yes, you can share the ${match.team1} vs ${match.team2} highlights page on social media by copying the page URL.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">How often are new highlights added for ${match.category} matches?</span>
-                    <span class="faq-a">CricFoot regularly updates highlights for ${match.category} matches, typically within hours after the match concludes.</span>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">Does CricFoot offer highlights for other sports besides football?</span>
-                    <span class="faq-a">Currently, CricFoot focuses on football and cricket highlights, including matches like ${match.team1} vs ${match.team2}, but may expand to other sports in the future.</span>
-                </div>
+                <div class="faq-item"><span class="faq-q">Which teams played in the ${match.category} match?</span><span class="faq-a">The ${match.category} match featured ${match.team1} against ${match.team2}.</span></div>
+                <div class="faq-item"><span class="faq-q">Where can I watch the ${match.team1} vs ${match.team2} highlights?</span><span class="faq-a">You can watch it on CricFoot by clicking the "Watch Highlights" button above.</span></div>
+                <div class="faq-item"><span class="faq-q">When was the ${match.team1} vs ${match.team2} match played?</span><span class="faq-a">The match was played on ${match.date}.</span></div>
+                <div class="faq-item"><span class="faq-q">Is the ${match.team1} vs ${match.team2} match available in HD?</span><span class="faq-a">Yes, CricFoot provides HD highlights for the ${match.category} match.</span></div>
+                <div class="faq-item"><span class="faq-q">How often are new highlights added?</span><span class="faq-a">CricFoot updates highlights within hours after the match concludes.</span></div>
             `;
 
         } catch (e) { console.error(e); }
