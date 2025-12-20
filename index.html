@@ -2,13 +2,9 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />    
     <title>CricFoot | Watch Cricket & Football Match Highlights HD</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Watch the latest Cricket and Football highlights in HD. From IPL, PSL, and BBL to Premier League, La Liga, and Champions League. Fast, free, and mobile-friendly.">
-    <meta name="keywords" content="cricket highlights, football highlights, IPL highlights, EPL highlights, watch match replays, soccer goals, T20 highlights">
-    <link rel="canonical" href="https://www.cricfoot.net" />
-
+    <meta name="description" content="Watch the latest Cricket and Football highlights in HD. Fast, free, and mobile-friendly coverage of IPL, EPL, and more.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -16,58 +12,89 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
 
     <style>
-        :root[data-theme="light"] { --bg-main: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a; --text-muted: #64748b; --accent: #2563eb; --border: #cbd5e1; --nav-bg: rgba(255, 255, 255, 0.95); }
-        :root[data-theme="dark"] { --bg-main: #0b0f1a; --bg-card: #161e2d; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b; --nav-bg: rgba(11, 15, 26, 0.95); }
+        :root[data-theme="light"] {
+            --bg-main: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a;
+            --text-muted: #64748b; --accent: #2563eb; --border: #cbd5e1;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+        }
+        :root[data-theme="dark"] {
+            --bg-main: #0b0f1a; --bg-card: #161e2d; --text-main: #f1f5f9;
+            --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b;
+            --nav-bg: rgba(11, 15, 26, 0.95);
+        }
+
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
-        
-        /* Navbar & General */
+
+        /* NAVBAR */
         .navbar { backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0.8rem 0; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
         
-        /* Grid & Cards */
+        /* CATEGORIES */
+        .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
+        .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        /* MATCH CARDS */
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; }
+        .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
         .thumb-box img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
-        .team-name-overlay { color: white; font-weight: 800; font-size: clamp(0.75rem, 1.8vw, 1.2rem); text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); text-align: center; }
-        .vs-circle { width: 35px; height: 35px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; border: 2px solid var(--accent); margin: 6px 0; }
         
-        /* Footer & SEO Text */
+        .recent-badge { position: absolute; top: 8px; left: 8px; background: #ff0000; color: white; border-radius: 3px; font-weight: 700; display: flex; align-items: center; z-index: 10; padding: 2px 6px; font-size: 10px; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); letter-spacing: 0.5px; }
+        .blink-dot { background: white; border-radius: 50%; animation: blinker 1.2s infinite; width: 5px; height: 5px; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .overlay-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; }
+        .team-name-overlay { color: white; font-weight: 800; font-size: clamp(0.75rem, 1.8vw, 1.2rem); text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); text-align: center; max-width: 90%; }
+        .vs-circle { width: clamp(28px, 3.5vw, 42px); height: clamp(28px, 3.5vw, 42px); background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: clamp(0.65rem, 0.8vw, 0.9rem); border: 2px solid var(--accent); margin: 6px 0; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+
+        .card-content { padding: 0.8rem; }
+        .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
+
+        /* FOOTER & SEO */
         footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
-        .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1.2rem; color: var(--accent); }
+        .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
         .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-        .dmca-box { background: rgba(0,0,0,0.03); border-radius: 8px; padding: 15px; margin-top: 20px; border-left: 4px solid #ef4444; }
-        
-        .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
-        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-size: 0.75rem; }
-        .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        .ad-container { grid-column: 1 / -1; width: 100%; margin: 15px 0; text-align: center; }
+        .dmca-box { background: rgba(0,0,0,0.03); border-radius: 8px; padding: 15px; border-left: 4px solid #ef4444; }
+
+        .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; flex-wrap: wrap; }
+        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .ad-container { grid-column: 1 / -1; width: 100%; margin: 10px 0; text-align: center; }
+
+        @media (max-width: 576px) {
+            .g-4 { --bs-gutter-x: 0.6rem; --bs-gutter-y: 0.6rem; }
+            .recent-badge { top: 6px; left: 6px; padding: 1px 5px; font-size: 9px; }
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-container content-width d-flex justify-content-between align-items-center px-3">
+    <div class="nav-container content-width">
         <a href="/" class="logo-box">
             <div class="logo-icon"><i class="bi bi-play-fill"></i></div>
             <span class="fs-5 fw-bold">CRICFOOT</span>
         </a>
-        <button class="theme-toggle btn border" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
+        <button class="theme-toggle" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
     </div>
 </nav>
 
-<div class="container mt-4 content-width px-3">
-    <h1 class="visually-hidden">Latest Cricket and Football Match Highlights HD</h1>
+<div class="container mt-3 content-width">
     <div class="mb-4">
-        <h2 class="fw-bold h4">Today's Elite Highlights</h2>
-        <p class="footer-text">Catch the most recent goals, wickets, and game-changing moments from the world of sports. Updated daily with HD replays.</p>
+        <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
+        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights for IPL, Premier League, Champions League, and more.</p>
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
     <div id="loader" class="text-center py-5"><div class="spinner-border text-primary"></div></div>
-    <div class="row row-cols-2 row-cols-lg-3 g-3 g-md-4" id="matchGrid"></div>
-    <div class="pagination-container d-flex justify-content-center mt-5" id="pagination"></div>
+    <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid"></div>
+    <div class="pagination-container" id="pagination"></div>
 </div>
 
 <footer>
@@ -76,38 +103,36 @@
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">ABOUT CRICFOOT</div>
                 <p class="footer-text">
-                    CricFoot is your ultimate destination for high-quality <strong>Cricket highlights</strong> and <strong>Football match replays</strong>. We cover major leagues including the Premier League, UEFA Champions League, La Liga, IPL, PSL, and ICC tournaments. Never miss a goal or a century again.
+                    The premier hub for sports fans. We provide the fastest <strong>cricket highlights</strong> and <strong>football goals</strong> from major leagues around the globe including IPL, PSL, EPL, and La Liga.
                 </p>
             </div>
-            <div class="col-lg-4 mb-4">
-                <div class="footer-heading">QUICK LINKS</div>
-                <ul class="list-unstyled footer-text">
-                    <li><a href="#" class="text-decoration-none text-reset">Cricket Replays</a></li>
-                    <li><a href="#" class="text-decoration-none text-reset">Football Goals</a></li>
-                    <li><a href="#" class="text-decoration-none text-reset">T20 World Cup</a></li>
-                    <li><a href="#" class="text-decoration-none text-reset">Live Score Updates</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="footer-heading">LEGAL & DMCA</div>
+            <div class="col-lg-4 mb-4 px-lg-5">
+                <div class="footer-heading">DMCA NOTICE</div>
                 <div class="dmca-box">
-                    <p class="footer-text mb-0" style="color: #000 !important;">
-                        <strong>Disclaimer:</strong> CricFoot does not host any videos on its servers. All video content is hosted by third-party websites such as YouTube, Dailymotion, or Facebook. We only embed publicly available links. If you have any legal issues, please contact the video host directly.
+                    <p class="footer-text mb-0">
+                        <strong>DMCA Compliance:</strong> CricFoot does not host any videos on its server. All content is hosted by third-party providers. We simply provide a platform to find publicly available sports media.
                     </p>
                 </div>
             </div>
+            <div class="col-lg-4 mb-4">
+                <div class="footer-heading">TOP CATEGORIES</div>
+                <ul class="list-unstyled footer-text">
+                    <li><i class="bi bi-chevron-right me-1"></i> International Cricket</li>
+                    <li><i class="bi bi-chevron-right me-1"></i> European Football</li>
+                    <li><i class="bi bi-chevron-right me-1"></i> T20 Highlights</li>
+                </ul>
+            </div>
         </div>
-        <hr class="my-4 opacity-25">
-        <div class="text-center footer-text">
-            &copy; 2024 CricFoot Elite. All Rights Reserved.
-        </div>
+        <hr class="opacity-25">
+        <div class="text-center footer-text opacity-75">© 2025 CricFoot Elite Match Highlights.</div>
     </div>
 </footer>
 
 <script>
     const themeBtn = document.getElementById('themeSwitch');
+    const doc = document.documentElement;
+
     themeBtn.addEventListener('click', () => {
-        const doc = document.documentElement;
         const target = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         doc.setAttribute('data-theme', target);
         document.getElementById('themeIcon').className = target === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
@@ -140,28 +165,31 @@
         const grid = document.getElementById('matchGrid');
         const adInterval = window.innerWidth < 992 ? 4 : 6;
         
+        const now = new Date();
+        const threshold = new Date(now.getTime() - (2 * 24 * 60 * 60 * 1000));
+
         let htmlContent = "";
         pageItems.forEach((m, index) => {
-            const isRecent = (new Date() - new Date(m.date)) / (1000 * 60 * 60 * 24) <= 2;
+            const isRecent = new Date(m.date) >= threshold;
             const bg = m.thumbnail || "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600";
 
             htmlContent += `
             <div class="col">
                 <div class="match-card">
                     <div class="thumb-box">
-                        ${isRecent ? '<div class="recent-badge" style="position:absolute;top:8px;left:8px;background:red;color:white;padding:2px 6px;font-size:10px;font-weight:bold;border-radius:3px;z-index:10;"><div class="blink-dot" style="display:inline-block;width:5px;height:5px;background:white;border-radius:50%;margin-right:4px;"></div>RECENT</div>' : ''}
-                        <img src="${bg}" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.4);">
-                        <div class="overlay-content" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;">
+                        ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
+                        <img src="${bg}" alt="Match">
+                        <div class="overlay-content">
                             <div class="team-name-overlay">${m.team1}</div>
                             <div class="vs-circle">VS</div>
                             <div class="team-name-overlay">${m.team2}</div>
                         </div>
                     </div>
-                    <div class="card-content p-2">
-                        <span class="match-title text-truncate d-block">${m.team1} vs ${m.team2}</span>
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                            <small class="text-muted" style="font-size:0.65rem;">${m.date}</small>
-                            <a href="highlights.html?id=${m.id}" class="btn btn-primary btn-sm px-3 py-0 fw-bold" style="font-size:0.75rem;">Watch</a>
+                    <div class="card-content">
+                        <span class="match-title">${m.team1} vs ${m.team2}</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>${m.date}</small>
+                            <a href="highlights.html?id=${m.id}" class="btn btn-primary btn-sm fw-bold">Watch</a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +215,7 @@
         if(totalPages <= 1) return;
         for (let i = 1; i <= totalPages; i++) {
             const btn = document.createElement('button');
-            btn.className = `btn btn-sm mx-1 ${i === currentPage ? 'btn-primary' : 'btn-outline-secondary'}`;
+            btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
             btn.innerText = i;
             btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo({top: 0, behavior: 'smooth'}); };
             container.appendChild(btn);
