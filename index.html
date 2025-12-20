@@ -210,7 +210,7 @@ async function loadHighlights() {
   document.getElementById('no-matches').style.display = 'none';
   document.getElementById('page-buttons').style.display = 'none';
   try {
-    let data = await fetchWithRetry('https://www.cricfoot.net/highlights.json');
+    let data = await fetchWithRetry('https://yosintv-api.pages.dev/api/highlights.json');
     if (!data) {
       console.warn('Using mock data as fallback');
       data = mockData;
