@@ -2,36 +2,31 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>CricFoot | Watch Cricket & Football Match Highlights HD</title>
-    <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot. Your source for all the best sports highlights." />
-    <meta name="keywords" content="football highlights, soccer highlights, EPL highlights, LaLiga highlights, Serie A highlights, Bundesliga highlights, cricket highlights, IPL highlights, T20 highlights, live football highlights, live cricket highlights, match highlights, football videos, cricket videos, sports highlights" />
+    <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot." />
+    <meta name="keywords" content="football highlights, cricket highlights, IPL highlights, EPL highlights, match highlights, CricFoot" />
     <meta name="author" content="CricFoot" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.cricfoot.net/" />
     <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
-  <script type="application/ld+json">
+
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "CricFoot",
       "url": "https://www.cricfoot.net/",
-      "description": "Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, and the IPL.",
-      "keywords": "football highlights, soccer highlights, EPL highlights, LaLiga highlights, Serie A highlights, Bundesliga highlights, cricket highlights, IPL highlights, T20 highlights, live football highlights, live cricket highlights, match highlights, football videos, cricket videos, sports highlights",
-      "publisher": {
-        "@type": "Organization",
-        "name": "CricFoot Live",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.cricfoot.net/logo.png"
-        }
-      }
+      "description": "Watch the latest football and cricket match highlights from top leagues."
     }
-  </script>
+    </script>
+
     <style>
         :root[data-theme="light"] {
             --bg-main: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a;
@@ -43,7 +38,6 @@
             --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b;
             --nav-bg: rgba(11, 15, 26, 0.95);
         }
-
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
 
@@ -52,7 +46,8 @@
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
-        
+        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
         /* CATEGORIES */
         .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
         .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
@@ -63,34 +58,29 @@
         .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
         .thumb-box img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
-        
-        .recent-badge { position: absolute; top: 8px; left: 8px; background: #ff0000; color: white; border-radius: 3px; font-weight: 700; display: flex; align-items: center; z-index: 10; padding: 2px 6px; font-size: 10px; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); letter-spacing: 0.5px; }
+
+        .recent-badge { position: absolute; top: 8px; left: 8px; background: #ff0000; color: white; border-radius: 3px; font-weight: 700; display: flex; align-items: center; z-index: 10; padding: 2px 6px; font-size: 10px; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .blink-dot { background: white; border-radius: 50%; animation: blinker 1.2s infinite; width: 5px; height: 5px; }
         @keyframes blinker { 50% { opacity: 0; } }
 
         .overlay-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; }
         .team-name-overlay { color: white; font-weight: 800; font-size: clamp(0.75rem, 1.8vw, 1.2rem); text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); text-align: center; max-width: 90%; }
-        .vs-circle { width: clamp(28px, 3.5vw, 42px); height: clamp(28px, 3.5vw, 42px); background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: clamp(0.65rem, 0.8vw, 0.9rem); border: 2px solid var(--accent); margin: 6px 0; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .vs-circle { width: clamp(28px, 3.5vw, 42px); height: clamp(28px, 3.5vw, 42px); background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: clamp(0.65rem, 0.8vw, 0.9rem); border: 2px solid var(--accent); margin: 6px 0; }
 
         .card-content { padding: 0.8rem; }
         .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
 
-        /* FOOTER & SEO */
-        footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
-        .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
-        .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-        .dmca-box { background: rgba(0,0,0,0.03); border-radius: 8px; padding: 15px; border-left: 4px solid #ef4444; }
-
+        .ad-container { grid-column: 1 / -1; width: 100%; margin: 10px 0; text-align: center; }
         .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; flex-wrap: wrap; }
         .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
         .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
 
-        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .ad-container { grid-column: 1 / -1; width: 100%; margin: 10px 0; text-align: center; }
+        footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
+        .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
+        .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
         @media (max-width: 576px) {
             .g-4 { --bs-gutter-x: 0.6rem; --bs-gutter-y: 0.6rem; }
-            .recent-badge { top: 6px; left: 6px; padding: 1px 5px; font-size: 9px; }
         }
     </style>
 </head>
@@ -109,7 +99,7 @@
 <div class="container mt-3 content-width">
     <div class="mb-4">
         <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
-        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights for IPL, Premier League, Champions League, and more.</p>
+        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights for IPL, Premier League, and more.</p>
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
@@ -123,29 +113,22 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">ABOUT CRICFOOT</div>
-                <p class="footer-text">
-                    The premier hub for sports fans. We provide the fastest <strong>cricket highlights</strong> and <strong>football goals</strong> from major leagues around the globe including IPL, PSL, EPL, and La Liga.
-                </p>
+                <p class="footer-text">The premier hub for sports fans. We provide the fastest cricket and football highlights.</p>
             </div>
             <div class="col-lg-4 mb-4 px-lg-5">
-                <div class="footer-heading">DMCA NOTICE</div>
-                <div class="dmca-box">
-                    <p class="footer-text mb-0">
-                        <strong>DMCA Compliance:</strong> CricFoot does not host any videos on its server. All content is hosted by third-party providers. We simply provide a platform to find publicly available sports media.
-                    </p>
-                </div>
+                <div class="footer-heading">DMCA</div>
+                <p class="footer-text">CricFoot does not host any videos. All content is hosted by third-party providers.</p>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">TOP CATEGORIES</div>
                 <ul class="list-unstyled footer-text">
                     <li><i class="bi bi-chevron-right me-1"></i> International Cricket</li>
                     <li><i class="bi bi-chevron-right me-1"></i> European Football</li>
-                    <li><i class="bi bi-chevron-right me-1"></i> T20 Highlights</li>
                 </ul>
             </div>
         </div>
         <hr class="opacity-25">
-        <div class="text-center footer-text opacity-75">© 2025 CricFoot Elite Match Highlights.</div>
+        <div class="text-center footer-text opacity-75">© 2025 CricFoot Match Highlights.</div>
     </div>
 </footer>
 
@@ -189,17 +172,29 @@
         const now = new Date();
         const threshold = new Date(now.getTime() - (2 * 24 * 60 * 60 * 1000));
 
+        // Fallback Images
+        const footballDefault = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80";
+        const cricketDefault = "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=80";
+
         let htmlContent = "";
         pageItems.forEach((m, index) => {
             const isRecent = new Date(m.date) >= threshold;
-            const bg = m.thumbnail || "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600";
+            
+            // Background Logic: Detect if Cricket or Football
+            let bg = m.thumbnail;
+            if (!bg || bg === "") {
+                const cat = m.category.toLowerCase();
+                bg = (cat.includes('cricket') || cat.includes('ipl') || cat.includes('t20') || cat.includes('bbl') || cat.includes('odi')) 
+                     ? cricketDefault 
+                     : footballDefault;
+            }
 
             htmlContent += `
             <div class="col">
                 <div class="match-card">
                     <div class="thumb-box">
                         ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
-                        <img src="${bg}" alt="Match">
+                        <img src="${bg}" alt="${m.team1} vs ${m.team2}">
                         <div class="overlay-content">
                             <div class="team-name-overlay">${m.team1}</div>
                             <div class="vs-circle">VS</div>
@@ -219,7 +214,8 @@
             if ((index + 1) % adInterval === 0) {
                 htmlContent += `
                 <div class="ad-container">
-          <center><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins></center>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
                 </div>`;
             }
         });
