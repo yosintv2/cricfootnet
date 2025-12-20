@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CricFoot | Elite Match Highlights</title>
+    <title>CricFoot | Watch Cricket & Football Match Highlights HD</title>
     
+    <meta name="description" content="Watch the latest Cricket and Football highlights in HD. From IPL, PSL, and BBL to Premier League, La Liga, and Champions League. Fast, free, and mobile-friendly.">
+    <meta name="keywords" content="cricket highlights, football highlights, IPL highlights, EPL highlights, watch match replays, soccer goals, T20 highlights">
+    <link rel="canonical" href="https://yourdomain.com/" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -16,48 +20,89 @@
         :root[data-theme="dark"] { --bg-main: #0b0f1a; --bg-card: #161e2d; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b; --nav-bg: rgba(11, 15, 26, 0.95); }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
+        
+        /* Navbar & General */
         .navbar { backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0.8rem 0; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
-        .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
-        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
-        .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        
+        /* Grid & Cards */
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
         .thumb-box img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
-        .recent-badge { position: absolute; top: 8px; left: 8px; background: #ff0000; color: white; border-radius: 3px; font-weight: 700; display: flex; align-items: center; z-index: 10; padding: 2px 6px; font-size: 10px; gap: 4px; }
-        .blink-dot { background: white; border-radius: 50%; animation: blinker 1.2s infinite; width: 5px; height: 5px; }
-        @keyframes blinker { 50% { opacity: 0; } }
-        .overlay-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; }
         .team-name-overlay { color: white; font-weight: 800; font-size: clamp(0.75rem, 1.8vw, 1.2rem); text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); text-align: center; }
         .vs-circle { width: 35px; height: 35px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; border: 2px solid var(--accent); margin: 6px 0; }
-        .card-content { padding: 0.8rem; }
-        .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 8px; }
-        .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; }
-        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; }
-        .page-link.active { background: var(--accent); color: white; }
-        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; }
         
-        /* AD AREA */
-        .ad-container { grid-column: 1 / -1; width: 100%; min-height: 100px; margin: 10px 0; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.02); border-radius: 8px; }
+        /* Footer & SEO Text */
+        footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
+        .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1.2rem; color: var(--accent); }
+        .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+        .dmca-box { background: rgba(0,0,0,0.03); border-radius: 8px; padding: 15px; margin-top: 20px; border-left: 4px solid #ef4444; }
+        
+        .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-size: 0.75rem; }
+        .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .ad-container { grid-column: 1 / -1; width: 100%; margin: 15px 0; text-align: center; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-container content-width">
-        <a href="/" class="logo-box"><div class="logo-icon"><i class="bi bi-play-fill"></i></div><span class="fs-5 fw-bold">CRICFOOT</span></a>
-        <button class="theme-toggle" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
+    <div class="nav-container content-width d-flex justify-content-between align-items-center px-3">
+        <a href="/" class="logo-box">
+            <div class="logo-icon"><i class="bi bi-play-fill"></i></div>
+            <span class="fs-5 fw-bold">CRICFOOT</span>
+        </a>
+        <button class="theme-toggle btn border" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
     </div>
 </nav>
 
-<div class="container mt-3 content-width">
+<div class="container mt-4 content-width px-3">
+    <h1 class="visually-hidden">Latest Cricket and Football Match Highlights HD</h1>
+    <div class="mb-4">
+        <h2 class="fw-bold h4">Today's Elite Highlights</h2>
+        <p class="footer-text">Catch the most recent goals, wickets, and game-changing moments from the world of sports. Updated daily with HD replays.</p>
+    </div>
+
     <div class="category-grid" id="categoryContainer"></div>
     <div id="loader" class="text-center py-5"><div class="spinner-border text-primary"></div></div>
-    <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid"></div>
-    <div class="pagination-container" id="pagination"></div>
+    <div class="row row-cols-2 row-cols-lg-3 g-3 g-md-4" id="matchGrid"></div>
+    <div class="pagination-container d-flex justify-content-center mt-5" id="pagination"></div>
 </div>
+
+<footer>
+    <div class="content-width px-3">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="footer-heading">ABOUT CRICFOOT</div>
+                <p class="footer-text">
+                    CricFoot is your ultimate destination for high-quality <strong>Cricket highlights</strong> and <strong>Football match replays</strong>. We cover major leagues including the Premier League, UEFA Champions League, La Liga, IPL, PSL, and ICC tournaments. Never miss a goal or a century again.
+                </p>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="footer-heading">QUICK LINKS</div>
+                <ul class="list-unstyled footer-text">
+                    <li><a href="#" class="text-decoration-none text-reset">Cricket Replays</a></li>
+                    <li><a href="#" class="text-decoration-none text-reset">Football Goals</a></li>
+                    <li><a href="#" class="text-decoration-none text-reset">T20 World Cup</a></li>
+                    <li><a href="#" class="text-decoration-none text-reset">Live Score Updates</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="footer-heading">LEGAL & DMCA</div>
+                <div class="dmca-box">
+                    <p class="footer-text mb-0" style="color: #000 !important;">
+                        <strong>Disclaimer:</strong> CricFoot does not host any videos on its servers. All video content is hosted by third-party websites such as YouTube, Dailymotion, or Facebook. We only embed publicly available links. If you have any legal issues, please contact the video host directly.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 opacity-25">
+        <div class="text-center footer-text">
+            &copy; 2024 CricFoot Elite. All Rights Reserved.
+        </div>
+    </div>
+</footer>
 
 <script>
     const themeBtn = document.getElementById('themeSwitch');
@@ -104,19 +149,19 @@
             <div class="col">
                 <div class="match-card">
                     <div class="thumb-box">
-                        ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
-                        <img src="${bg}">
-                        <div class="overlay-content">
+                        ${isRecent ? '<div class="recent-badge" style="position:absolute;top:8px;left:8px;background:red;color:white;padding:2px 6px;font-size:10px;font-weight:bold;border-radius:3px;z-index:10;"><div class="blink-dot" style="display:inline-block;width:5px;height:5px;background:white;border-radius:50%;margin-right:4px;"></div>RECENT</div>' : ''}
+                        <img src="${bg}" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.4);">
+                        <div class="overlay-content" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;">
                             <div class="team-name-overlay">${m.team1}</div>
                             <div class="vs-circle">VS</div>
                             <div class="team-name-overlay">${m.team2}</div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <span class="match-title">${m.team1} vs ${m.team2}</span>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted" style="font-size: 0.7rem;">${m.date}</small>
-                            <a href="highlights.html?id=${m.id}" class="btn btn-primary btn-sm fw-bold">Watch</a>
+                    <div class="card-content p-2">
+                        <span class="match-title text-truncate d-block">${m.team1} vs ${m.team2}</span>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted" style="font-size:0.65rem;">${m.date}</small>
+                            <a href="highlights.html?id=${m.id}" class="btn btn-primary btn-sm px-3 py-0 fw-bold" style="font-size:0.75rem;">Watch</a>
                         </div>
                     </div>
                 </div>
@@ -125,23 +170,13 @@
             if ((index + 1) % adInterval === 0) {
                 htmlContent += `
                 <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-5525538810839147"
-                         data-ad-slot="4345862479"
-                         data-ad-format="horizontal"
-                         data-full-width-responsive="true"></ins>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
                 </div>`;
             }
         });
 
         grid.innerHTML = htmlContent;
-        
-        // Push ads only AFTER they are added to DOM
-        try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {}
-        
         renderPagination();
     }
 
@@ -152,7 +187,7 @@
         if(totalPages <= 1) return;
         for (let i = 1; i <= totalPages; i++) {
             const btn = document.createElement('button');
-            btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
+            btn.className = `btn btn-sm mx-1 ${i === currentPage ? 'btn-primary' : 'btn-outline-secondary'}`;
             btn.innerText = i;
             btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo({top: 0, behavior: 'smooth'}); };
             container.appendChild(btn);
