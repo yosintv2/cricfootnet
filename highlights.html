@@ -191,10 +191,17 @@
             // 3. FAQ Rendering
             document.getElementById('faq-section').style.display = 'block';
             document.getElementById('faq-section').innerHTML = `
-                <h5 class="fw-bold mb-3"><i class="bi bi-patch-question me-2"></i>Frequently Asked Questions</h5>
-                <div class="faq-item"><div class="faq-question">Teams played?</div><div class="faq-answer">${match.team1} vs ${match.team2}.</div></div>
-                <div class="faq-item"><div class="faq-question">Where to watch?</div><div class="faq-answer">On CricFoot HD.</div></div>
-                <div class="faq-item"><div class="faq-question">Match Date?</div><div class="faq-answer">${match.date}.</div></div>
+               <h5 class="fw-bold mb-3"><i class="bi bi-patch-question me-2"></i>Frequently Asked Questions</h5>
+                <div class="faq-item"><div class="faq-question">Which teams played in the ${match.category} match?</div><div class="faq-answer">The ${match.category} match featured ${match.team1} against ${match.team2}.</div></div>
+                <div class="faq-item"><div class="faq-question">Where can I watch the ${match.team1} vs ${match.team2} highlights?</div><div class="faq-answer">You can watch it on CricFoot by clicking the "Watch Now" button above.</div></div>
+                <div class="faq-item"><div class="faq-question">What is the category of the ${match.team1} vs ${match.team2} match?</div><div class="faq-answer">The match is part of the ${match.category} competition.</div></div>
+                <div class="faq-item"><div class="faq-question">Are highlights available for the ${match.team1} vs ${match.team2} game?</div><div class="faq-answer">Yes, highlights are available right here on CricFoot.</div></div>
+                <div class="faq-item"><div class="faq-question">When was the ${match.team1} vs ${match.team2} match played?</div><div class="faq-answer">The match was played on ${match.date}.</div></div>
+                <div class="faq-item"><div class="faq-question">Is it available in HD?</div><div class="faq-answer">Yes, CricFoot provides high-definition highlights for the ${match.category} match.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I share these highlights?</div><div class="faq-answer">Yes, you can share this page URL on social media platforms.</div></div>
+                <div class="faq-item"><div class="faq-question">How often are new highlights added?</div><div class="faq-answer">We update typically within hours after the match concludes.</div></div>
+                <div class="faq-item"><div class="faq-question">Does CricFoot offer other sports?</div><div class="faq-answer">Currently, we focus on football and cricket highlights.</div></div>
+                <div class="faq-item"><div class="faq-question">How to access highlights on mobile?</div><div class="faq-answer">Simply visit CricFoot on your mobile browser and click on the ${match.team1} match card.</div></div>
             `;
             
             document.title = `${match.team1} vs ${match.team2} Highlights — CricFoot`;
