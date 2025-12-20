@@ -1,407 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CricFoot - Cricket | Football | Latest Match Highlights</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-  <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot. Your source for all the best sports highlights." />
-  <meta name="keywords" content="football highlights, soccer highlights, EPL highlights, LaLiga highlights, Serie A highlights, Bundesliga highlights, cricket highlights, IPL highlights, T20 highlights, live football highlights, live cricket highlights, match highlights, football videos, cricket videos, sports highlights" />
-  <meta name="author" content="CricFoot" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.cricfoot.net/" />
-  <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "CricFoot",
-      "url": "https://www.cricfoot.net/",
-      "description": "Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, and the IPL.",
-      "keywords": "football highlights, soccer highlights, EPL highlights, LaLiga highlights, Serie A highlights, Bundesliga highlights, cricket highlights, IPL highlights, T20 highlights, live football highlights, live cricket highlights, match highlights, football videos, cricket videos, sports highlights",
-      "publisher": {
-        "@type": "Organization",
-        "name": "CricFoot Live",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.cricfoot.net/logo.png"
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>CricFoot | Elite Match Highlights</title>
+    <meta name="description" content="Watch HD Cricket and Football highlights. IPL, EPL, and more.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root[data-theme="light"] {
+            --bg-main: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a;
+            --text-muted: #64748b; --accent: #2563eb; --border: #cbd5e1;
+            --nav-bg: rgba(255, 255, 255, 0.95);
         }
-      }
-    }
-  </script>
-  <style>
-    body { font-family: 'Roboto', sans-serif; background: #f5f7fa; color: #333; transition: all 0.3s ease; overflow-x: hidden; }
-    .header {
-      background: linear-gradient(135deg, #40c4ff, #0288d1);
-      color: #fff;
-      padding: 1rem 1rem;
-      font-size: clamp(1.2rem, 4vw, 2.2rem);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      animation: slideIn 0.5s ease-out;
-    }
-    @keyframes slideIn {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
-    }
-    .header a {
-      color: #fff;
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-    }
-    .header a:hover {
-      color: #050f4a;
-    }
-    .nav-container { background: #fff; padding: 0.75rem 1rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); margin-bottom: 1rem; }
-    .nav-menu { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-    .nav-menu a { color: #357abd; background-color: #f1f5f9; text-decoration: none; font-size: clamp(0.8rem, 2.5vw, 0.9rem); font-weight: 500; padding: 0.4rem 0.9rem; border-radius: 20px; transition: all 0.25s ease, transform 0.1s ease; cursor: pointer; }
-    .nav-menu a:hover { background-color: #357abd; color: #fff; }
-    .nav-menu a.active { background-color: #357abd; color: #fff; font-weight: 600; }
-    .nav-menu a:active, .nav-menu a.clicked { transform: scale(0.95); }
-    .highlight-card { background: linear-gradient(145deg, #1e3a8a, #2a4587); color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 0.75rem; text-align: center; text-decoration: none; display: block; margin: 0 auto; }
-    .highlight-card h2 { font-size: 1.6rem; font-weight: 700; margin: 0.25rem 0; text-transform: uppercase; color: #bbdefb; }
-    .highlight-card .vs { font-size: 1.3rem; font-weight: 900; color: #ffd700; margin: 0.5rem 0; position: relative; }
-    .highlight-card .vs::before, .highlight-card .vs::after { content: ''; height: 2px; width: 30px; background: #ffd700; display: inline-block; vertical-align: middle; margin: 0 10px; }
-    .highlight-card .footer { background: rgba(26, 26, 26, 0.9); padding: 0.4rem; font-size: 0.9rem; color: #e0e0e0; border-radius: 0 0 8px 8px; display: flex; justify-content: space-between; align-items: center; }
-    .highlight-card .footer .category { font-weight: 500; }
-    .highlight-card .footer .separator { color: #ffd700; margin: 0 0.5rem; }
-    .highlight-card .footer .date { font-weight: 500; }
-    #no-matches { display: none; text-align: center; font-size: 1.1rem; padding: 2rem; color: #999; }
-    #loader { text-align: center; padding: 2rem; }
-    #loader span { display: inline-block; width: 18px; height: 18px; margin: 3px; background: #357abd; border-radius: 50%; animation: bounce 0.6s infinite alternate; }
-    #loader span:nth-child(2) { animation-delay: 0.2s; }
-    #loader span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce { to { transform: translateY(-10px); opacity: 0.3; } }
-    .footer { background: #fff; padding: 1rem; text-align: center; border-radius: 10px; margin-top: 1.5rem; box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1); }
-    .footer a { color: #357abd; text-decoration: none; margin: 0 0.5rem; font-size: 0.9rem; }
-    .container { max-width: 960px; }
-    .seo-text { padding: 1.5rem; background-color: #eef1f5; border-radius: 10px; margin-top: 1.5rem; }
-    .seo-text h3 { font-size: 1.25rem; color: #1e3a8a; margin-bottom: 0.75rem; }
-    .seo-text p { font-size: 0.9rem; line-height: 1.6; color: #555; }
-    .page-buttons { display: flex; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; }
-    .page-btn { padding: 0.5rem 1rem; background-color: #357abd; color: #fff; border: none; border-radius: 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease, transform 0.1s ease; white-space: nowrap; min-width: 80px; }
-    .page-btn:hover { background-color: #4a90e2; }
-    .page-btn:active, .page-btn.clicked { transform: scale(0.95); }
-    .page-btn:disabled { background-color: #a0a0a0; cursor: not-allowed; }
-    @media (max-width: 768px) {
-      .highlight-card h2 { font-size: 1.2rem; }
-      .highlight-card .vs { font-size: 1rem; }
-      .highlight-card .vs::before, .highlight-card .vs::after { width: 15px; }
-      .highlight-card .footer { font-size: 0.8rem; padding: 0.3rem; }
-      .page-buttons { gap: 0.3rem; padding: 0.5rem; }
-      .page-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; min-width: 60px; }
-      .nav-menu a { font-size: clamp(0.7rem, 2vw, 0.8rem); padding: 0.3rem 0.7rem; }
-    }
-  </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
+        :root[data-theme="dark"] {
+            --bg-main: #0b0f1a; --bg-card: #161e2d; --text-main: #f1f5f9;
+            --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b;
+            --nav-bg: rgba(11, 15, 26, 0.95);
+        }
+
+        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
+        
+        /* CENTERED GRID ALIGNMENT */
+        .content-width { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            width: 100%;
+        }
+
+        .navbar { 
+            backdrop-filter: blur(12px); 
+            background: var(--nav-bg); 
+            border-bottom: 1px solid var(--border); 
+            padding: 0.8rem 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
+        .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
+        
+        .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
+        .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; }
+        .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+        
+        .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
+        .thumb-box img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+        
+        /* --- COMPACT RECENT BADGE --- */
+        .recent-badge {
+            position: absolute; 
+            top: 8px; left: 8px; 
+            background: #ff0000; color: white;
+            border-radius: 3px; 
+            font-weight: 700; 
+            display: flex; align-items: center; 
+            z-index: 10;
+            padding: 2px 6px;
+            font-size: 10px;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .blink-dot {
+            background: white; border-radius: 50%; 
+            animation: blinker 1.2s infinite;
+            width: 5px; height: 5px;
+        }
+
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .overlay-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; }
+        .team-name-overlay { color: white; font-weight: 800; font-size: clamp(0.75rem, 1.8vw, 1.2rem); text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); text-align: center; max-width: 90%; }
+        
+        .vs-circle { 
+            width: clamp(28px, 3.5vw, 42px); height: clamp(28px, 3.5vw, 42px); 
+            background: white; color: #000; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-weight: 900; 
+            font-size: clamp(0.65rem, 0.8vw, 0.9rem); border: 2px solid var(--accent); 
+            margin: 6px 0; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card-content { padding: 0.8rem; }
+        .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
+
+        .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; flex-wrap: wrap; }
+        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 576px) {
+            .g-4 { --bs-gutter-x: 0.6rem; --bs-gutter-y: 0.6rem; }
+            .recent-badge { top: 6px; left: 6px; padding: 1px 5px; font-size: 9px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="header"><a href="https://www.cricfoot.net/">CricFoot - Cricket/Football Highlights</a></div>
-  <center>
-    <div class="container nav-container">
-      <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Match categories navigation">
-        <!-- Categories will be populated dynamically -->
-      </nav>
+
+<nav class="navbar">
+    <div class="nav-container content-width">
+        <a href="/" class="logo-box">
+            <div class="logo-icon"><i class="bi bi-play-fill"></i></div>
+            <span class="fs-5 fw-bold">CRICFOOT</span>
+        </a>
+        <button class="theme-toggle" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
     </div>
-  </center>
-  <div class="container">
-    <div><br /></div>
-    
-    <center>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </center>
-   
-    <div id="loader"><span></span><span></span><span></span></div>
-    <div id="highlight-grid" class="row row-cols-2 g-2"></div>
-    <div id="no-matches">No Matches Available! <button id="retry-btn" class="page-btn">Retry</button></div>
-    <div id="page-buttons" class="page-buttons"></div>
-  </div>
-  <div class="container seo-text">
-    <h3>Catch the Latest Football and Cricket Highlights</h3>
-    <p>Stay up-to-date with all the action! <b>CricFoot</b> is your go-to source for the latest <b>football highlights</b> and <b>cricket highlights</b> from around the world. Whether you're a fan of the English Premier League (EPL), LaLiga, Serie A, or the Indian Premier League (IPL) and T20 matches, you'll find comprehensive match summaries and key moments here.</p>
-    <p>Our platform provides quick access to high-quality <b>match highlights</b> so you never miss a goal, a wicket, or a stunning performance. From friendly matches to the biggest tournaments like the Club World Cup, we've got you covered with a user-friendly interface that lets you easily find the highlights you're looking for.</p>
-  </div>
-  <footer class="footer mt-4">
-    <div class="text-center">
-      <a href="#">Facebook</a>
-      <a href="#">Twitter</a>
-      <a href="#">YouTube</a>
-      <a href="#">Instagram</a>
-      <p class="mt-1">© 2025 CricFoot. All rights reserved.</p>
-    </div>
-  </footer>
-  <script>
-let allData = [];
-let filteredData = [];
-const matchesPerPage = 16;
-const maxRetries = 4;
+</nav>
 
-const mockData = [
-  { id: "mock1", team1: "Team A", team2: "Team B", category: "Club World Cup", date: "2025-09-03" },
-  { id: "mock2", team1: "Team C", team2: "Team D", category: "EPL", date: "2025-09-02" },
-  { id: "mock3", team1: "Team E", team2: "Team F", category: "Club World Cup", date: "2025-09-01" },
-  { id: "mock4", team1: "Team G", team2: "Team H", category: "IPL", date: "2025-08-31" },
-  { id: "mock5", team1: "Team I", team2: "Team J", category: "LaLiga", date: "2025-08-30" },
-  { id: "mock6", team1: "Team K", team2: "Team L", category: "Club World Cup", date: "2025-08-29" },
-  { id: "mock7", team1: "Team M", team2: "Team N", category: "Serie A", date: "2025-08-28" },
-  { id: "mock8", team1: "Team O", team2: "Team P", category: "Bundesliga", date: "2025-08-27" },
-  { id: "mock9", team1: "Team Q", team2: "Team R", category: "Club World Cup", date: "2025-08-26" },
-  { id: "mock10", team1: "Team S", team2: "Team T", category: "T20", date: "2025-08-25" },
-  { id: "mock11", team1: "Team U", team2: "Team V", category: "Club World Cup", date: "2025-09-04" }
-];
+<div class="container mt-3 content-width">
+    <div class="category-grid" id="categoryContainer"></div>
+    <div id="loader" class="text-center py-5"><div class="spinner-border text-primary"></div></div>
+    <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid"></div>
+    <div class="pagination-container" id="pagination"></div>
+</div>
 
-function getUrlParameter(name) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(name);
-}
+<script>
+    const themeBtn = document.getElementById('themeSwitch');
+    const doc = document.documentElement;
 
-async function fetchWithRetry(url, retries = maxRetries) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      if (!Array.isArray(data) || !data.every(match => match.id && match.team1 && match.team2 && match.category)) {
-        throw new Error('Invalid data format');
-      }
-      return data;
-    } catch (error) {
-      if (attempt === retries) {
-        console.error(`Failed to fetch ${url} after ${retries} attempts:`, error);
-        return null;
-      }
-      console.warn(`Attempt ${attempt} failed. Retrying...`);
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+    themeBtn.addEventListener('click', () => {
+        const target = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        doc.setAttribute('data-theme', target);
+        document.getElementById('themeIcon').className = target === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+    });
+
+    let allMatches = [], filteredMatches = [], currentPage = 1;
+    const matchesPerPage = 15;
+
+    async function init() {
+        try {
+            const res = await fetch('https://yosintv-api.pages.dev/api/highlights.json');
+            allMatches = await res.json();
+            allMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+            filteredMatches = allMatches;
+            renderCategories();
+            updateDisplay();
+            document.getElementById('loader').style.display = 'none';
+        } catch (e) { console.error(e); }
     }
-  }
-}
 
-function getRelativeDate(matchDate) {
-  if (!matchDate) return 'N/A';
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Normalize to midnight for accurate day comparison
-  const match = new Date(matchDate);
-  match.setHours(0, 0, 0, 0); // Normalize match date to midnight
-  const diffTime = today - match;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  if (diffDays === 0) return 'Today';
-  if (diffDays === 1) return '1 day ago';
-  if (diffDays > 1) return `${diffDays} days ago`;
-  return matchDate; // Fallback to original date if invalid
-}
-
-async function loadHighlights() {
-  document.getElementById('loader').style.display = 'block';
-  document.getElementById('highlight-grid').style.display = 'none';
-  document.getElementById('no-matches').style.display = 'none';
-  document.getElementById('page-buttons').style.display = 'none';
-  try {
-    let data = await fetchWithRetry('https://yosintv-api.pages.dev/api/highlights.json');
-    if (!data) {
-      console.warn('Using mock data as fallback');
-      data = mockData;
-      document.getElementById('no-matches').textContent = 'Showing sample highlights due to data loading issue. ';
+    function renderCategories() {
+        const container = document.getElementById('categoryContainer');
+        const cats = ['All', ...new Set(allMatches.map(m => m.category))];
+        container.innerHTML = cats.map(c => `<button class="cat-btn ${c==='All'?'active':''}" onclick="filter('${c}', this)">${c}</button>`).join('');
     }
-    allData = data;
-    allData.sort((a, b) => new Date(b.date || '1970-01-01') - new Date(a.date || '1970-01-01'));
-    const currentPage = parseInt(getUrlParameter('page')) || 1;
-    const selectedLeague = getUrlParameter('league') || 'all';
-    if (selectedLeague === 'all') {
-      filteredData = allData;
-      filteredData.leagueFilter = false;
-    } else {
-      filteredData = allData.filter(match => match.category.toLowerCase().replace(/\s+/g, '_') === selectedLeague.toLowerCase());
-      filteredData.leagueFilter = true;
+
+    function updateDisplay() {
+        const start = (currentPage - 1) * matchesPerPage;
+        const pageItems = filteredMatches.slice(start, start + matchesPerPage);
+        const grid = document.getElementById('matchGrid');
+        
+        const now = new Date();
+        const threshold = new Date(now.getTime() - (2 * 24 * 60 * 60 * 1000));
+
+        let htmlContent = "";
+        pageItems.forEach((m, index) => {
+            const matchDate = new Date(m.date);
+            const isRecent = matchDate >= threshold;
+            const bg = m.thumbnail && m.thumbnail.length > 10 ? m.thumbnail : 
+                (m.category.toLowerCase().includes('cricket') ? "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600" : "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600");
+
+            htmlContent += `
+            <div class="col">
+                <div class="match-card">
+                    <div class="thumb-box">
+                        ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
+                        <img src="${bg}" alt="Match">
+                        <div class="overlay-content">
+                            <div class="team-name-overlay">${m.team1}</div>
+                            <div class="vs-circle">VS</div>
+                            <div class="team-name-overlay">${m.team2}</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="match-title">${m.team1} vs ${m.team2} | ${m.category}</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted" style="font-size: 0.7rem;">${m.date}</small>
+                            <a href="highlights.html?id=${m.id}" class="btn btn-primary btn-sm fw-bold">Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        });
+        grid.innerHTML = htmlContent;
+        renderPagination();
     }
-    document.getElementById('no-matches').textContent = filteredData.length === 0 ? 'No Matches Available! ' : document.getElementById('no-matches').textContent;
-    populateNavMenu(selectedLeague);
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('highlight-grid').style.display = 'flex';
-    renderHighlights(currentPage);
-    setupPageButtons(currentPage);
-  } catch (error) {
-    console.error('Unexpected error loading highlights:', error);
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('no-matches').textContent = 'Unable to load highlights due to an unexpected error. ';
-    document.getElementById('no-matches').style.display = 'block';
-  }
-  document.getElementById('retry-btn').addEventListener('click', loadHighlights);
-}
 
-function populateNavMenu(selectedLeague) {
-  const navMenu = document.getElementById('nav-menu');
-  navMenu.innerHTML = '';
-  const categories = [...new Set(allData.map(match => match.category))].sort();
-  const allLink = document.createElement('a');
-  allLink.className = !selectedLeague || selectedLeague === 'all' ? 'active' : '';
-  allLink.textContent = 'All';
-  allLink.onclick = () => filterMatches('all');
-  allLink.addEventListener('click', () => {
-    allLink.classList.add('clicked');
-    setTimeout(() => allLink.classList.remove('clicked'), 100);
-  });
-  navMenu.appendChild(allLink);
-  categories.forEach(category => {
-    const link = document.createElement('a');
-    link.textContent = category;
-    link.className = selectedLeague && selectedLeague.toLowerCase() === category.toLowerCase().replace(/\s+/g, '_') ? 'active' : '';
-    link.onclick = () => filterMatches(category);
-    link.addEventListener('click', () => {
-      link.classList.add('clicked');
-      setTimeout(() => link.classList.remove('clicked'), 100);
-    });
-    navMenu.appendChild(link);
-  });
-}
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredMatches.length / matchesPerPage);
+        const container = document.getElementById('pagination');
+        container.innerHTML = '';
+        if(totalPages <= 1) return;
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
+            btn.innerText = i;
+            btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+            container.appendChild(btn);
+        }
+    }
 
-function createHighlightCard(match) {
-  const cardDiv = document.createElement('div');
-  cardDiv.className = 'col';
-  cardDiv.innerHTML = `
-    <a href="highlights.html?id=${match.id}" class="highlight-card" data-category="${match.category}" rel="noopener noreferrer" aria-label="View highlights for ${match.team1} vs ${match.team2} on ${match.date || 'N/A'}">
-      <h2>${match.team1}</h2>
-      <div class="vs">VS</div>
-      <h2>${match.team2}</h2>
-      <div class="footer">
-        <span class="category">${match.category}</span>
-        <span class="separator">|</span>
-        <span class="date">${getRelativeDate(match.date)}</span>
-      </div>
-    </a>
-  `;
-  return cardDiv;
-}
-
-function renderHighlights(currentPage) {
-  const grid = document.getElementById('highlight-grid');
-  grid.innerHTML = '';
-  const startIndex = (currentPage - 1) * matchesPerPage;
-  const matchesToShow = filteredData.slice(startIndex, startIndex + matchesPerPage);
-  if (matchesToShow.length === 0) {
-    document.getElementById('no-matches').style.display = 'block';
-    grid.style.display = 'none';
-  } else {
-    document.getElementById('no-matches').style.display = 'none';
-    grid.style.display = 'flex';
-    let count = 0;
-    matchesToShow.forEach(match => {
-      grid.appendChild(createHighlightCard(match));
-      count++;
-      if (count % 4 === 0 && count < matchesToShow.length) {
-        const adDiv = document.createElement('div');
-        adDiv.className = 'col-12';
-        adDiv.innerHTML = `
-          <center><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins></center>
-        `;
-        grid.appendChild(adDiv);
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    });
-  }
-}
-
-function filterMatches(category) {
-  const navLinks = document.querySelectorAll('.nav-menu a');
-  navLinks.forEach(link => link.classList.remove('active'));
-  Array.from(navLinks).find(link => link.textContent.trim() === category || (category === 'all' && link.textContent.trim() === 'All')).classList.add('active');
-  const urlParams = new URLSearchParams();
-  if (category !== 'all') urlParams.set('league', category.toLowerCase().replace(/\s+/g, '_'));
-  urlParams.set('page', '1');
-  window.history.pushState({}, '', `${window.location.pathname}${urlParams.toString() ? '?' + urlParams.toString() : ''}`);
-  if (category === 'all') {
-    filteredData = allData;
-    filteredData.leagueFilter = false;
-  } else {
-    filteredData = allData.filter(match => match.category.toLowerCase() === category.toLowerCase());
-    filteredData.leagueFilter = true;
-  }
-  renderHighlights(1);
-  setupPageButtons(1);
-}
-
-function setupPageButtons(currentPage) {
-  const pageButtonsContainer = document.getElementById('page-buttons');
-  pageButtonsContainer.innerHTML = '';
-  const totalPages = Math.ceil(filteredData.length / matchesPerPage);
-  if (totalPages === 0) return;
-  pageButtonsContainer.style.display = 'flex';
-  const prevButton = document.createElement('button');
-  prevButton.className = 'page-btn';
-  prevButton.textContent = 'Previous';
-  prevButton.disabled = currentPage === 1;
-  if (!prevButton.disabled) {
-    prevButton.onclick = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('page', currentPage - 1);
-      window.location.href = `?${urlParams.toString()}`;
-    };
-    prevButton.addEventListener('click', () => {
-      prevButton.classList.add('clicked');
-      setTimeout(() => prevButton.classList.remove('clicked'), 100);
-    });
-  }
-  pageButtonsContainer.appendChild(prevButton);
-  const startPage = Math.max(1, currentPage - 1);
-  const endPage = Math.min(totalPages, startPage + 2);
-  for (let page = startPage; page <= endPage; page++) {
-    const button = document.createElement('button');
-    button.className = 'page-btn';
-    button.textContent = page;
-    button.disabled = page === currentPage;
-    button.onclick = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('page', page);
-      window.location.href = `?${urlParams.toString()}`;
-    };
-    button.addEventListener('click', () => {
-      button.classList.add('clicked');
-      setTimeout(() => button.classList.remove('clicked'), 100);
-    });
-    pageButtonsContainer.appendChild(button);
-  }
-  const nextButton = document.createElement('button');
-  nextButton.className = 'page-btn';
-  nextButton.textContent = 'Next';
-  nextButton.disabled = currentPage >= totalPages;
-  if (!nextButton.disabled) {
-    nextButton.onclick = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('page', currentPage + 1);
-      window.location.href = `?${urlParams.toString()}`;
-    };
-    nextButton.addEventListener('click', () => {
-      nextButton.classList.add('clicked');
-      setTimeout(() => nextButton.classList.remove('clicked'), 100);
-    });
-  }
-  pageButtonsContainer.appendChild(nextButton);
-}
-
-window.onload = loadHighlights;
-  </script>
-  <div class="gtranslate_wrapper"></div>
-  <script>
-    window.gtranslateSettings = {"default_language":"en","native_language_names":true,"detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}
-  </script>
-  <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-  <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
-    <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
-    <script type="text/javascript">sc_online_i(1714446,"ffffff","ffffff");</script>
-    <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
-  </div>
+    function filter(cat, btn) {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filteredMatches = cat === 'All' ? allMatches : allMatches.filter(m => m.category === cat);
+        currentPage = 1;
+        updateDisplay();
+    }
+    window.onload = init;
+</script>
 </body>
 </html>
