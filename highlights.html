@@ -26,29 +26,31 @@
         .logo-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; }
         .theme-toggle { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; }
 
-        /* HERO CARD */
         .highlight-display-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 1rem; text-align: center; margin-top: 1rem; }
         .cat-badge-md { color: var(--accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; border-bottom: 2px solid var(--accent); padding-bottom: 2px; display: inline-block; margin-bottom: 10px; }
         .team-title { font-weight: 800; font-size: clamp(1.4rem, 4vw, 1.8rem); margin: 0; }
         .vs-badge { background: var(--accent); color: white; padding: 2px 10px; border-radius: 50px; font-weight: 800; font-size: 0.7rem; margin: 8px 0; display: inline-block; }
         .watch-btn-md { background: var(--accent); color: white; padding: 10px 25px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.95rem; }
 
-        /* RELATED GRID (Mirroring Homepage) */
         .related-card { background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.2s; text-decoration: none; display: block; }
         .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
         .rel-thumb { aspect-ratio: 16/9; background: #000; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .rel-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: grayscale(0.3); }
-        .rel-vs-overlay { position: absolute; color: white; font-weight: 800; font-size: 0.7rem; text-align: center; padding: 5px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
+        .rel-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+        .rel-vs-overlay { position: absolute; color: white; font-weight: 800; font-size: 0.7rem; text-align: center; padding: 5px; }
         .rel-info { padding: 8px; }
         .rel-title { color: var(--text-main); font-weight: 700; font-size: 0.75rem; display: block; line-height: 1.3; margin-bottom: 4px; }
         .rel-meta { font-size: 0.65rem; color: var(--text-muted); }
 
-        .info-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; margin-top: 1rem; }
-        .section-header { font-weight: 800; font-size: 1rem; margin-bottom: 1rem; display: block; border-left: 3px solid var(--accent); padding-left: 10px; }
+        .info-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; margin-top: 1.2rem; }
+        .section-header { font-weight: 800; font-size: 1rem; margin-bottom: 1rem; display: block; border-left: 3px solid var(--accent); padding-left: 10px; text-transform: uppercase; }
         
-        .faq-q { font-weight: 700; color: var(--accent); font-size: 0.9rem; display: block; }
-        .faq-a { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; display: block; }
-        .ad-wrap { margin: 1rem 0; text-align: center; min-height: 90px; }
+        /* FAQ STYLING */
+        .faq-item { margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-weight: 700; color: var(--accent); font-size: 0.9rem; display: block; margin-bottom: 4px; }
+        .faq-a { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; display: block; }
+
+        .ad-wrap { margin: 1.5rem 0; text-align: center; min-height: 90px; }
     </style>
 </head>
 <body>
@@ -66,12 +68,10 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div id="highlight-details">
-        <div class="text-center py-5"><div class="spinner-border spinner-border-sm text-primary"></div></div>
-    </div>
+    <div id="highlight-details"><div class="text-center py-5"><div class="spinner-border spinner-border-sm text-primary"></div></div></div>
 
     <div id="related-section" style="display:none; margin-top: 1.5rem;">
-        <span class="section-header">RECOMMENDED FOR YOU</span>
+        <span class="section-header">RECOMMENDED Highlights</span>
         <div class="row row-cols-2 row-cols-md-3 g-3" id="related-grid"></div>
     </div>
 
@@ -80,7 +80,8 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div id="faq-section" class="info-section" style="display:none;"></div>
+    <div id="faq-container" class="info-section" style="display:none;"></div>
+    
     <a href="/" class="d-block text-center my-4 text-muted text-decoration-none fw-600 small">← Back to Homepage</a>
 </div>
 
@@ -102,27 +103,25 @@
             const match = data.find(m => m.id === mId);
             if (!match) return;
 
-            // 1. Hero
+            // Update Meta & Hero
+            document.title = `${match.team1} vs ${match.team2} Highlights — CricFoot`;
             document.getElementById('highlight-details').innerHTML = `
                 <div class="highlight-display-card">
                     <div class="cat-badge-md">${match.category}</div>
                     <h1 class="team-title">${match.team1} <span class="text-muted fw-light" style="font-size:0.8em">vs</span> ${match.team2}</h1>
                     <p class="text-muted small mt-2"><i class="bi bi-calendar3"></i> ${match.date}</p>
-                    <a href="${match.link}" class="watch-btn-md" target="_blank"><i class="bi bi-play-circle-fill"></i> Watch Now</a>
+                    <a href="${match.link}" class="watch-btn-md" target="_blank"><i class="bi bi-play-circle-fill"></i> Watch Highlights</a>
                 </div>`;
 
-            // 2. Related Grid (6 Items)
+            // Related Grid (6 Items)
             const related = data.filter(m => m.id !== mId && m.category === match.category).slice(0, 6);
             if (related.length) {
                 document.getElementById('related-section').style.display = 'block';
-                const grid = document.getElementById('related-grid');
-                grid.innerHTML = related.map(r => {
-                    const thumb = r.thumbnail || (r.category.toLowerCase().includes('cricket') ? "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400" : "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400");
-                    return `
+                document.getElementById('related-grid').innerHTML = related.map(r => `
                     <div class="col">
                         <a href="highlights.html?id=${r.id}" class="related-card">
                             <div class="rel-thumb">
-                                <img src="${thumb}" alt="match">
+                                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400" alt="match">
                                 <div class="rel-vs-overlay">${r.team1} vs ${r.team2}</div>
                             </div>
                             <div class="rel-info">
@@ -130,18 +129,26 @@
                                 <div class="rel-meta">${r.date}</div>
                             </div>
                         </a>
-                    </div>`;
-                }).join('');
+                    </div>`).join('');
             }
 
-            // 3. FAQ
-            const faqBox = document.getElementById('faq-section');
-            faqBox.style.display = 'block';
-            faqBox.innerHTML = `<span class="section-header">FAQ</span>
-                <span class="faq-q">Where to watch ${match.team1} vs ${match.team2}?</span><span class="faq-a">Watch HD highlights of this ${match.category} match right here on CricFoot.</span>
-                <span class="faq-q">When was the match?</span><span class="faq-a">It was played on ${match.date}.</span>`;
+            // FULL FAQ SECTION (All 10 Questions)
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.style.display = 'block';
+            faqContainer.innerHTML = `
+                <span class="section-header">Frequently Asked Questions</span>
+                <div class="faq-item"><span class="faq-q">Which teams played in the ${match.category} match?</span><span class="faq-a">The ${match.category} match featured ${match.team1} against ${match.team2}.</span></div>
+                <div class="faq-item"><span class="faq-q">Where can I watch the ${match.team1} vs ${match.team2} highlights?</span><span class="faq-a">You can watch the highlights of the ${match.team1} vs ${match.team2} ${match.category} match on CricFoot by clicking the "Watch Highlights" button above.</span></div>
+                <div class="faq-item"><span class="faq-q">What is the category of the ${match.team1} vs ${match.team2} match?</span><span class="faq-a">The match between ${match.team1} and ${match.team2} is part of the ${match.category} competition.</span></div>
+                <div class="faq-item"><span class="faq-q">Are highlights available for the ${match.team1} vs ${match.team2} game?</span><span class="faq-a">Yes, highlights for the ${match.team1} vs ${match.team2} ${match.category} match are available on CricFoot.</span></div>
+                <div class="faq-item"><span class="faq-q">How can I access highlights on CricFoot?</span><span class="faq-a">Navigate to the match page and click the "Watch Highlights" button for matches like ${match.team1} vs ${match.team2}.</span></div>
+                <div class="faq-item"><span class="faq-q">When was the ${match.team1} vs ${match.team2} match played?</span><span class="faq-a">The ${match.team1} vs ${match.team2} ${match.category} match was played on ${match.date}.</span></div>
+                <div class="faq-item"><span class="faq-q">Is the ${match.team1} vs ${match.team2} match available in HD?</span><span class="faq-a">Yes, CricFoot provides high-definition highlights for the ${match.team1} vs ${match.team2} ${match.category} match.</span></div>
+                <div class="faq-item"><span class="faq-q">Can I share the ${match.team1} vs ${match.team2} highlights?</span><span class="faq-a">Yes, you can share the ${match.team1} vs ${match.team2} highlights page on social media by copying the page URL.</span></div>
+                <div class="faq-item"><span class="faq-q">How often are new highlights added for ${match.category}?</span><span class="faq-a">CricFoot updates highlights for ${match.category} typically within hours after the match concludes.</span></div>
+                <div class="faq-item"><span class="faq-q">Does CricFoot offer other sports?</span><span class="faq-a">Currently, CricFoot focuses on football highlights, including matches like ${match.team1} vs ${match.team2}, but may expand in the future.</span></div>
+            `;
 
-            document.title = `${match.team1} vs ${match.team2} Highlights — CricFoot`;
         } catch (e) { console.error("Load error"); }
     }
     loadPage();
