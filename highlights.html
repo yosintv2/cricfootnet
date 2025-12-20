@@ -31,17 +31,14 @@
         }
 
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
-        
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
 
-        /* NAVBAR (Same as Index) */
         .navbar { backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0.8rem 0; position: sticky; top: 0; z-index: 1000; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
         .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-        /* HIGHLIGHT CARD */
         .highlight-display-card {
             background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
             padding: 2.5rem 1.5rem; text-align: center; margin-top: 2rem;
@@ -60,36 +57,27 @@
         }
         .watch-btn-lg:hover { opacity: 0.9; color: white; transform: translateY(-2px); }
 
-        /* SECTIONS */
         .info-section { 
             background: var(--bg-card); border: 1px solid var(--border); 
             border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; 
         }
         .section-title { font-weight: 800; font-size: 1.25rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
         
-        /* RELATED MATCHES */
         .related-list { list-style: none; padding: 0; margin: 0; }
         .related-item { 
             display: flex; justify-content: space-between; align-items: center;
             padding: 12px 0; border-bottom: 1px solid var(--border);
         }
         .related-item:last-child { border-bottom: none; }
-        .related-item a { text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; }
-        .related-item a:hover { color: var(--accent); }
+        .related-item a { text-decoration: none; color: var(--text-main); font-weight: 600; }
 
-        /* FAQ */
-        .faq-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        /* FAQ STYLING */
+        .faq-item { margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
         .faq-item:last-child { border-bottom: none; }
-        .faq-q { font-weight: 700; color: var(--accent); margin-bottom: 4px; display: block; }
-        .faq-a { color: var(--text-muted); font-size: 0.95rem; }
+        .faq-q { font-weight: 700; color: var(--accent); margin-bottom: 5px; display: block; font-size: 1.05rem; }
+        .faq-a { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
         .back-link { display: block; text-align: center; margin: 2rem 0; color: var(--text-muted); text-decoration: none; font-weight: 600; }
-        .back-link:hover { color: var(--accent); }
-
-        @media (max-width: 576px) {
-            .highlight-display-card { padding: 1.5rem 1rem; }
-            .team-title { font-size: 1.5rem; }
-        }
     </style>
 </head>
 <body>
@@ -117,7 +105,6 @@
 </div>
 
 <script>
-    // Theme Logic
     const themeBtn = document.getElementById('themeSwitch');
     themeBtn.addEventListener('click', () => {
         const doc = document.documentElement;
@@ -126,18 +113,14 @@
         document.getElementById('themeIcon').className = target === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
     });
 
-    function capitalizeFirstLetter(str) {
+    function capitalize(str) {
         return str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
 
     async function loadHighlightDetails() {
         const urlParams = new URLSearchParams(window.location.search);
         const matchId = urlParams.get('id');
-        
-        if (!matchId) {
-            window.location.href = "/";
-            return;
-        }
+        if (!matchId) { window.location.href = "/"; return; }
 
         try {
             const response = await fetch('/highlights.json');
@@ -149,14 +132,10 @@
                 return;
             }
 
-            const matchTitle = `${capitalizeFirstLetter(match.team1)} vs ${capitalizeFirstLetter(match.team2)} Highlights`;
+            const matchTitle = `${capitalize(match.team1)} vs ${capitalize(match.team2)} Highlights`;
             document.title = `${matchTitle} — CricFoot`;
 
-            // Update SEO Meta
-            document.getElementById('meta-description').content = `Watch ${matchTitle} from ${match.date} on CricFoot. Full HD quality.`;
-            document.getElementById('og-title').content = matchTitle;
-
-            // Render Hero Card
+            // Hero Card
             document.getElementById('highlight-details').innerHTML = `
                 <div class="highlight-display-card">
                     <div class="text-muted mb-2 fw-bold" style="letter-spacing:1px; font-size:0.8rem;">${match.category.toUpperCase()}</div>
@@ -170,72 +149,68 @@
                 </div>
             `;
 
-            // Related Matches
+            // Related
             const related = allData.filter(m => m.id !== matchId && m.category === match.category).slice(0, 4);
             if (related.length > 0) {
                 const relSection = document.getElementById('related-matches');
                 relSection.style.display = 'block';
                 relSection.innerHTML = `<div class="section-title"><i class="bi bi-collection-play"></i> More ${match.category} Highlights</div>
                     <div class="related-list">
-                        ${related.map(rm => `
-                            <div class="related-item">
-                                <a href="highlights.html?id=${rm.id}">${rm.team1} vs ${rm.team2}</a>
-                                <span class="text-muted small">${rm.date}</span>
-                            </div>
-                        `).join('')}
+                        ${related.map(rm => `<div class="related-item"><a href="highlights.html?id=${rm.id}">${rm.team1} vs ${rm.team2}</a><span class="text-muted small">${rm.date}</span></div>`).join('')}
                     </div>`;
             }
 
-            // FAQ Render
+            // --- FULL FAQ SECTION ---
             const faqSection = document.getElementById('faq-section');
             faqSection.style.display = 'block';
             faqSection.innerHTML = `
                 <div class="section-title"><i class="bi bi-question-circle"></i> Frequently Asked Questions</div>
+                
                 <div class="faq-item">
-                    <span class="faq-q">Where can I watch ${match.team1} vs ${match.team2} highlights?</span>
-                    <span class="faq-a">You can watch HD highlights of this ${match.category} match right here on CricFoot by clicking the "Watch Highlights" button above.</span>
+                    <span class="faq-q">Which teams played in the ${match.category} match?</span>
+                    <span class="faq-a">The ${match.category} match featured ${match.team1} against ${match.team2}.</span>
                 </div>
                 <div class="faq-item">
-                    <span class="faq-q">When was this match played?</span>
-                    <span class="faq-a">The match between ${match.team1} and ${match.team2} took place on ${match.date}.</span>
+                    <span class="faq-q">Where can I watch the ${match.team1} vs ${match.team2} highlights?</span>
+                    <span class="faq-a">You can watch the highlights of the ${match.team1} vs ${match.team2} ${match.category} match on CricFoot by clicking the "Watch Highlights" button above.</span>
                 </div>
                 <div class="faq-item">
-                    <span class="faq-q">Are these highlights free?</span>
-                    <span class="faq-a">Yes, all highlights on CricFoot, including the ${match.category} series, are free to watch.</span>
+                    <span class="faq-q">What is the category of the ${match.team1} vs ${match.team2} match?</span>
+                    <span class="faq-a">The match between ${match.team1} and ${match.team2} is part of the ${match.category} competition.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Are highlights available for the ${match.team1} vs ${match.team2} game?</span>
+                    <span class="faq-a">Yes, highlights for the ${match.team1} vs ${match.team2} ${match.category} match are available on CricFoot.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">How can I access football highlights on CricFoot?</span>
+                    <span class="faq-a">You can access football highlights on CricFoot by navigating to the match page and clicking the "Watch Highlights" button for matches like ${match.team1} vs ${match.team2}.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">When was the ${match.team1} vs ${match.team2} match played?</span>
+                    <span class="faq-a">The ${match.team1} vs ${match.team2} ${match.category} match was played on ${match.date}. Check the official ${match.category} schedule for exact dates.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Is the ${match.team1} vs ${match.team2} match available in HD on CricFoot?</span>
+                    <span class="faq-a">Yes, CricFoot provides high-definition highlights for the ${match.team1} vs ${match.team2} ${match.category} match when available from our sources.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Can I share the ${match.team1} vs ${match.team2} highlights on social media?</span>
+                    <span class="faq-a">Yes, you can share the ${match.team1} vs ${match.team2} highlights page on social media by copying the page URL.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">How often are new highlights added for ${match.category} matches?</span>
+                    <span class="faq-a">CricFoot regularly updates highlights for ${match.category} matches, typically within hours after the match concludes.</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Does CricFoot offer highlights for other sports besides football?</span>
+                    <span class="faq-a">Currently, CricFoot focuses on football and cricket highlights, including matches like ${match.team1} vs ${match.team2}, but may expand to other sports in the future.</span>
                 </div>
             `;
 
-            // Schema Injection
-            injectSchema(match);
-
-        } catch (e) {
-            console.error(e);
-            document.getElementById('highlight-details').innerHTML = '<h3>Error loading data.</h3>';
-        }
+        } catch (e) { console.error(e); }
     }
-
-    function injectSchema(match) {
-        const schemas = [
-            {
-                "@context": "https://schema.org",
-                "@type": "VideoObject",
-                "name": `${match.team1} vs ${match.team2} Highlights`,
-                "description": `Watch highlights of ${match.team1} vs ${match.team2} from ${match.date}.`,
-                "thumbnailUrl": "https://www.cricfoot.net/placeholder.jpg",
-                "uploadDate": match.date,
-                "contentUrl": match.link
-            }
-        ];
-        schemas.forEach(s => {
-            const script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.textContent = JSON.stringify(s);
-            document.head.appendChild(script);
-        });
-    }
-
     window.onload = loadHighlightDetails;
 </script>
-
 </body>
 </html>
