@@ -105,11 +105,11 @@
             const match = allData.find(m => m.id === matchId);
             if (!match) return;
 
-            // Update Metadata for SEO
+            // SEO Metadata
             document.title = `${match.team1} vs ${match.team2} Highlights — CricFoot`;
             document.getElementById('meta-description').content = `Watch ${match.team1} vs ${match.team2} highlights from ${match.category}.`;
 
-            // Hero Render with Clickable Tags
+            // Hero Render
             document.getElementById('highlight-details').innerHTML = `
                 <article class="highlight-display-card">
                     <h1 class="team-title-hero">${match.team1}</h1>
@@ -134,15 +134,24 @@
                     </a>
                 </article>`;
 
-            // Related Grid
+            // Related Grid Logic
             const related = allData.filter(m => m.id !== matchId && m.category === match.category).slice(0, 6);
             if (related.length > 0) {
                 document.getElementById('related-section').style.display = 'block';
-                document.getElementById('related-grid').innerHTML = related.map(m => `
+                
+                // Set default backgrounds if m.thumbnail is missing
+                const fbDef = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800";
+                const crDef = "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800";
+
+                document.getElementById('related-grid').innerHTML = related.map(m => {
+                    const isCricket = m.category.toLowerCase().includes('cricket') || m.category.toLowerCase().includes('ipl');
+                    const bg = m.thumbnail || (isCricket ? crDef : fbDef);
+
+                    return `
                     <div class="col">
                         <a href="highlights.html?id=${m.id}" class="match-card">
                             <div class="thumb-box">
-                                <img src="${m.thumbnail || ''}" alt="${m.team1} vs ${m.team2}">
+                                <img src="${bg}" alt="${m.team1} vs ${m.team2}">
                                 <div class="overlay-content">
                                     <div class="team-name-overlay">${m.team1}</div>
                                     <div class="vs-circle">VS</div>
@@ -154,14 +163,15 @@
                                 <small class="text-muted" style="font-size:0.7rem;">${m.category}</small>
                             </div>
                         </a>
-                    </div>`).join('');
+                    </div>`;
+                }).join('');
             }
 
             // FAQ Rendering
             document.getElementById('faq-section').style.display = 'block';
             document.getElementById('faq-section').innerHTML = `
                 <h2 class="h5 fw-bold mb-3"><i class="bi bi-patch-question me-2"></i>Match Info</h2>
-                <p class="small text-muted">Watch the full video replay of <strong>${match.team1} vs ${match.team2}</strong>. This match is part of the <strong>${match.category}</strong> season highlights. Updates are provided in HD where available.</p>
+                <p class="small text-muted">Watch the full video replay of <strong>${match.team1} vs ${match.team2}</strong>. This match is part of the <strong>${match.category}</strong> season highlights.</p>
             `;
 
         } catch (e) { console.error(e); }
