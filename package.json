@@ -1,0 +1,10 @@
+{
+  "name": "cricfoot-indexer",
+  "version": "1.0.0",
+  "description": "Auto indexing for CricFoot highlights",
+  "main": "indexer.js",
+  "dependencies": {
+    "googleapis": "^126.0.0",
+    "node-fetch": "^2.6.7"
+  }
+}
