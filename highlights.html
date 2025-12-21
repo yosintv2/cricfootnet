@@ -23,11 +23,11 @@
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
         
+        /* Hero Card Styling */
         .highlight-display-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .team-title-hero { font-weight: 800; font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0; }
         .vs-badge { display: inline-block; background: var(--accent); color: white; padding: 2px 14px; border-radius: 50px; font-weight: 800; font-size: 0.8rem; margin: 10px 0; }
         
-        /* Tag Links Style */
         .meta-tags-box { margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border); }
         .meta-label { font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-right: 5px; }
         .tag-link { display: inline-block; padding: 3px 12px; background: var(--bg-main); color: var(--accent); border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; margin: 2px; transition: 0.2s; }
@@ -36,21 +36,24 @@
         .watch-btn-lg { background: var(--accent); color: white; border: none; padding: 12px 35px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; margin-top: 20px; }
         .watch-btn-lg:hover { transform: scale(1.05); color: white; opacity: 0.9; }
 
-        /* GRID CARDS LOGO 1 VS LOGO 2 ROW */
-        .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; }
+        /* Related Grid - Logo VS Logo Row */
+        .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; position: relative; }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
-        .thumb-box img.bg-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
+        .thumb-box img.bg-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
         
-        .overlay-content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-evenly; padding: 10px; }
-        .team-logo-col { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 40%; }
-        .team-logo-small { width: 45px; height: 45px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        .overlay-content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-evenly; padding: 5px; }
+        .team-logo-col { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 42%; }
+        .team-logo-small { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 0 4px rgba(0,0,0,0.6)); }
         .team-name-overlay { color: white; font-weight: 800; font-size: 0.65rem; text-transform: uppercase; text-align: center; line-height: 1.1; }
-        .vs-circle { width: 28px; height: 28px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.6rem; border: 2px solid var(--accent); }
+        .vs-circle { width: 26px; height: 26px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.6rem; border: 2px solid var(--accent); flex-shrink: 0; }
         
+        /* Inner Watch Button on Match Card */
+        .card-watch-btn { position: absolute; bottom: 8px; right: 8px; background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; border: 2px solid var(--bg-card); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+
         .card-content { padding: 0.8rem; }
         .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 5px; line-height: 1.3; }
+        .date-text { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
         
-        /* FAQ */
         .info-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; margin-top: 1.5rem; }
         .faq-item { margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
         .faq-item:last-child { border-bottom: none; }
@@ -104,13 +107,12 @@
         document.getElementById('themeIcon').className = target === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
     };
 
-    // Helper for team logo identification
     function getLogo(team) {
         const t = team.toLowerCase();
         if(t.includes('arsenal')) return 'https://images.fotmob.com/image_resources/logo/teamlogo/9825.png';
         if(t.includes('everton')) return 'https://images.fotmob.com/image_resources/logo/teamlogo/8668.png';
         if(t.includes('india')) return 'https://aimages.willow.tv/teamLogos/india.png';
-        return ''; // Return empty to use text fallback if needed
+        return ''; 
     }
 
     async function loadHighlightDetails() {
@@ -127,7 +129,6 @@
             document.title = `${match.team1} vs ${match.team2} Highlights — CricFoot`;
             document.getElementById('meta-description').content = `Watch ${match.team1} vs ${match.team2} highlights from ${match.category} on CricFoot.`;
 
-            // Hero Render
             document.getElementById('highlight-details').innerHTML = `
                 <article class="highlight-display-card">
                     <h1 class="team-title-hero">${match.team1}</h1>
@@ -144,15 +145,14 @@
                             <a href="/?q=${encodeURIComponent(match.team1)}" class="tag-link">${match.team1}</a>
                             <a href="/?q=${encodeURIComponent(match.team2)}" class="tag-link">${match.team2}</a>
                         </div>
-                        <div class="text-muted small mt-3"><i class="bi bi-calendar3"></i> ${match.date}</div>
+                        <div class="date-text mt-3 justify-content-center"><i class="bi bi-calendar3"></i> ${match.date}</div>
                     </div>
 
-                    <a href="${match.link}" class="watch-btn-lg" target="_blank" rel="noopener">
+                    <a href="${match.link}" class="watch-btn-lg" target="_blank">
                         <i class="bi bi-play-circle-fill"></i> Watch Now
                     </a>
                 </article>`;
 
-            // Related Grid (Logo 1 vs Logo 2 in same row)
             const related = allData.filter(m => m.id !== matchId && m.category === match.category).slice(0, 6);
             if (related.length > 0) {
                 document.getElementById('related-section').style.display = 'block';
@@ -179,17 +179,17 @@
                                         <div class="team-name-overlay">${m.team2}</div>
                                     </div>
                                 </div>
+                                <div class="card-watch-btn"><i class="bi bi-play-fill"></i></div>
                             </div>
                             <div class="card-content">
                                 <span class="match-title">${m.team1} vs ${m.team2}</span>
-                                <small class="text-muted" style="font-size:0.7rem;">${m.category}</small>
+                                <div class="date-text"><i class="bi bi-calendar3"></i> ${m.date}</div>
                             </div>
                         </a>
                     </div>`;
                 }).join('');
             }
 
-            // Full FAQ Section
             document.getElementById('faq-section').style.display = 'block';
             document.getElementById('faq-section').innerHTML = `
                 <h5 class="fw-bold mb-3"><i class="bi bi-patch-question me-2"></i>Frequently Asked Questions</h5>
@@ -198,9 +198,7 @@
                 <div class="faq-item"><div class="faq-question">Are highlights available for the ${match.team1} vs ${match.team2} game?</div><div class="faq-answer">Yes, highlights are available right here on CricFoot.</div></div>
                 <div class="faq-item"><div class="faq-question">When was the ${match.team1} vs ${match.team2} match played?</div><div class="faq-answer">The match was played on ${match.date}.</div></div>
                 <div class="faq-item"><div class="faq-question">Is it available in HD?</div><div class="faq-answer">Yes, CricFoot provides high-definition highlights for the ${match.category} match.</div></div>
-                <div class="faq-item"><div class="faq-question">Does CricFoot offer other sports?</div><div class="faq-answer">Currently, we focus on football and cricket highlights.</div></div>
             `;
-
         } catch (e) { console.error(e); }
     }
     window.onload = loadHighlightDetails;
