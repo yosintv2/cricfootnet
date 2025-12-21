@@ -1,12 +1,14 @@
-name: Auto Indexing
+name: Auto Indexing & Sitemap
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
+    - cron: '0 * * * *'
   workflow_dispatch: 
 
 jobs:
-  index-urls:
+  index-and-sitemap:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Important: Allows GitHub to save the sitemap file
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -14,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # The version setting belongs here!
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install googleapis node-fetch@2
@@ -23,3 +25,14 @@ jobs:
         env:
           INDEXING_SERVICE_ACCOUNT: ${{ secrets.INDEXING_SERVICE_ACCOUNT }}
         run: node indexer.js
+
+      - name: Generate Sitemap
+        run: node generate-sitemap.js
+
+      - name: Commit and Push Sitemap
+        run: |
+          git config --global user.name "Sitemap Bot"
+          git config --global user.email "bot@cricfoot.net"
+          git add sitemap.xml
+          git commit -m "Update sitemap with latest matches [skip ci]" || echo "No changes to commit"
+          git push
