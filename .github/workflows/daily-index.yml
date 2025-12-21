@@ -1,20 +1,20 @@
 name: Auto Indexing
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every night at midnight
-  workflow_dispatch: # Allows you to run it manually for testing
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch: 
 
 jobs:
   index-urls:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20' # The version setting belongs here!
 
       - name: Install Dependencies
         run: npm install googleapis node-fetch@2
