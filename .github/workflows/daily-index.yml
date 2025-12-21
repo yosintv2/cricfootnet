@@ -1,0 +1,25 @@
+name: Auto Indexing
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every night at midnight
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  index-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/checkout@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install googleapis node-fetch@2
+
+      - name: Run Indexer
+        env:
+          INDEXING_SERVICE_ACCOUNT: ${{ secrets.INDEXING_SERVICE_ACCOUNT }}
+        run: node indexer.js
