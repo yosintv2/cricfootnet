@@ -321,6 +321,7 @@ const themeBtn = document.getElementById('themeSwitch');
  "levante":"https://images.fotmob.com/image_resources/logo/teamlogo/8581.png",
   
   //Bundesliga Teams
+ "bayern munich":"https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
  "bayern münchen":"https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
  "rb leipzig":"https://images.fotmob.com/image_resources/logo/teamlogo/178475.png",
  "dortmund":"https://images.fotmob.com/image_resources/logo/teamlogo/9789.png",
@@ -366,7 +367,8 @@ const themeBtn = document.getElementById('themeSwitch');
   /* --- START NEW FRENCH ENTRIES --- */
 
  "lens":"https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
- "paris saint germain":"https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+ "Paris Saint-Germain ":"https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
+"paris saint germain":"https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
  "psg":"https://images.fotmob.com/image_resources/logo/teamlogo/9847.png",
  "marseille":"https://images.fotmob.com/image_resources/logo/teamlogo/8592.png",
  "lille":"https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
