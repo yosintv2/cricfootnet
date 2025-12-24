@@ -928,11 +928,41 @@ const themeBtn = document.getElementById('themeSwitch');
  "atletico baleares":"https://images.fotmob.com/image_resources/logo/teamlogo/141784.png",
  "atlético baleares":"https://images.fotmob.com/image_resources/logo/teamlogo/141784.png",
  "albacete":"https://images.fotmob.com/image_resources/logo/teamlogo/8393.png",
- "albacete bp":"https://images.fotmob.com/image_resources/logo/teamlogo/8393.png"
-
+ "albacete bp":"https://images.fotmob.com/image_resources/logo/teamlogo/8393.png",
 /* --- END NEW SPANISH ENTRIES --- */
-        }
-    };
+
+/* --- START NEW AFRICAN NATIONAL TEAM ENTRIES --- */
+
+ "morocco":"https://images.fotmob.com/image_resources/logo/teamlogo/6262.png",
+ "mali":"https://images.fotmob.com/image_resources/logo/teamlogo/5815.png",
+ "zambia":"https://images.fotmob.com/image_resources/logo/teamlogo/6277.png",
+ "comoros":"https://images.fotmob.com/image_resources/logo/teamlogo/230692.png",
+ "angola":"https://images.fotmob.com/image_resources/logo/teamlogo/6712.png",
+ "egypt":"https://images.fotmob.com/image_resources/logo/teamlogo/10255.png",
+ "south africa":"https://images.fotmob.com/image_resources/logo/teamlogo/6316.png",
+ "zimbabwe":"https://images.fotmob.com/image_resources/logo/teamlogo/6290.png",
+ "nigeria":"https://images.fotmob.com/image_resources/logo/teamlogo/6346.png",
+ "tanzania":"https://images.fotmob.com/image_resources/logo/teamlogo/7941.png",
+ "tunisia":"https://images.fotmob.com/image_resources/logo/teamlogo/6719.png",
+ "uganda":"https://images.fotmob.com/image_resources/logo/teamlogo/5890.png",
+ "benin":"https://images.fotmob.com/image_resources/logo/teamlogo/5883.png",
+ "botswana":"https://images.fotmob.com/image_resources/logo/teamlogo/5887.png",
+ "dr congo":"https://images.fotmob.com/image_resources/logo/teamlogo/6321.png",
+ "congo dr":"https://images.fotmob.com/image_resources/logo/teamlogo/6321.png",
+ "senegal":"https://images.fotmob.com/image_resources/logo/teamlogo/6395.png",
+ "algeria":"https://images.fotmob.com/image_resources/logo/teamlogo/6317.png",
+ "burkina faso":"https://images.fotmob.com/image_resources/logo/teamlogo/6323.png",
+ "equatorial guinea":"https://images.fotmob.com/image_resources/logo/teamlogo/8323.png",
+ "sudan":"https://images.fotmob.com/image_resources/logo/teamlogo/5805.png",
+ "cameroon":"https://images.fotmob.com/image_resources/logo/teamlogo/6629.png",
+ "gabon":"https://images.fotmob.com/image_resources/logo/teamlogo/5889.png",
+ "ivory coast":"https://images.fotmob.com/image_resources/logo/teamlogo/6709.png",
+ "mozambique":"https://images.fotmob.com/image_resources/logo/teamlogo/5965.png"
+
+/* --- END NEW AFRICAN NATIONAL TEAM ENTRIES --- */
+            
+
+}};
 
     function getTeamDisplay(teamName, category) {
         const cleanName = teamName.toLowerCase().trim();
