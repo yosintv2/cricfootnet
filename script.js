@@ -10,8 +10,8 @@ const themeBtn = document.getElementById('themeSwitch');
 
     // Known Logo Database
     const sportLogos = {
-        "cricket": {
-  
+
+"cricket": {
 //ICC Full Member Nations
  "afghanistan": "https://aimages.willow.tv/teamLogos/afghanistan.png",
  "australia": "https://aimages.willow.tv/teamLogos/australia.png",
@@ -262,10 +262,10 @@ const themeBtn = document.getElementById('themeSwitch');
  "galle marvels": "https://aimages.willow.tv/teamLogos/gallemarvels.png",
  "jaffna kings": "https://aimages.willow.tv/teamLogos/jaffnakings.png",
  "kandy falcons": "https://aimages.willow.tv/teamLogos/kandyfalcons.png",
-        },
-        "football": {
+},
+
+"football": {
   // https://gemini.google.com/app/391a058fa6ade2ea
-  // FotMob high quality logos (auto matched by team name)
  "arsenal":"https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
  "manchester city":"https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
  "man city":"https://images.fotmob.com/image_resources/logo/teamlogo/8456.png",
