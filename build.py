@@ -1,75 +1,60 @@
 import os
 import requests
 import json
-from datetime import datetime
 from jinja2 import Template
 import re
 
-# Configuration
 API_URL = "https://yosintv-api.pages.dev/api/highlights.json"
 OUTPUT_DIR = "dist"
 
 def slugify(text):
-    # Converts "India vs Pakistan" to "india-vs-pakistan"
+    # Removes special characters and replaces spaces with hyphens
     return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
 
-def build_site():
+def build():
     if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
     
-    # Fetch Data
-    print("Fetching data from API...")
+    print("Fetching Matches...")
     data = requests.get(API_URL).json()
+    # Sort by date (newest first)
     data.sort(key=lambda x: x.get('date', ''), reverse=True)
 
-    # Load Templates (Make sure you save your HTML as these filenames)
-    with open("index_template.html", "r") as f:
-        home_temp = Template(f.read())
-    with open("highlights_template.html", "r") as f:
-        detail_temp = Template(f.read())
+    with open("index_template.html", "r", encoding="utf-8") as f:
+        home_tpl = Template(f.read())
+    with open("highlights_template.html", "r", encoding="utf-8") as f:
+        detail_tpl = Template(f.read())
 
-    # 1. Build Individual Match Pages
-    print(f"Generating {len(data)} match pages...")
     for match in data:
-        match_id = match['id']
-        slug = f"{slugify(match['team1'])}-vs-{slugify(match['team2'])}"
-        match_dir = os.path.join(OUTPUT_DIR, "highlights", slug)
+        # Create unique slug using: Team1-vs-Team2-Date
+        clean_date = slugify(match['date'])
+        slug = f"{slugify(match['team1'])}-vs-{slugify(match['team2'])}-{clean_date}"
         
-        if not os.path.exists(match_dir): os.makedirs(match_dir)
+        path = os.path.join(OUTPUT_DIR, "highlights", slug)
+        if not os.path.exists(path): os.makedirs(path)
 
-        # SEO Data
-        seo_title = f"{match['team1']} vs {match['team2']} ({match['date']}) | {match['category']} Highlights"
-        seo_desc = f"Watch HD highlights of {match['team1']} vs {match['team2']} from {match['category']}. Match played on {match['date']}."
+        # Unique SEO Title
+        title = f"{match['team1']} vs {match['team2']} Highlights ({match['date']}) - {match['category']}"
+        desc = f"Watch {match['team1']} vs {match['team2']} match highlights from {match['date']}. Full HD video report for {match['category']}."
         
-        # Filter related matches (same category, excluding current)
-        related = [m for m in data if m['category'] == match['category'] and m['id'] != match_id][:6]
+        # Get YouTube ID safely
+        yt_id = match['link'].split('v=')[1].split('&')[0] if 'v=' in match['link'] else ""
 
-        rendered_html = detail_temp.render(
+        html = detail_tpl.render(
             match=match,
-            seo_title=seo_title,
-            seo_desc=seo_desc,
-            related=related,
-            json_ld=json.dumps({
-                "@context": "https://schema.org",
-                "@type": "VideoObject",
-                "name": seo_title,
-                "description": seo_desc,
-                "thumbnailUrl": [match.get('thumbnail', 'https://www.cricfoot.net/cf_favicon.ico')],
-                "uploadDate": match['date'],
-                "contentUrl": f"https://www.cricfoot.net/highlights/{slug}/",
-                "embedUrl": match['link']
-            })
+            yt_id=yt_id,
+            seo_title=title,
+            seo_desc=desc,
+            url_slug=slug
         )
+        
+        with open(os.path.join(path, "index.html"), "w", encoding="utf-8") as f:
+            f.write(html)
 
-        with open(os.path.join(match_dir, "index.html"), "w") as f:
-            f.write(rendered_html)
+    # Homepage Generation
+    with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
+        f.write(home_tpl.render(matches=data))
 
-    # 2. Build Homepage
-    print("Generating Homepage...")
-    home_html = home_temp.render(matches=data[:20]) # First 20 matches
-    with open(os.path.join(OUTPUT_DIR, "index.html"), "w") as f:
-        f.write(home_html)
-
-    print("Build Complete!")
+    print("SEO Build Complete with Unique Date Slugs!")
 
 if __name__ == "__main__":
-    build_site()
+    build()
