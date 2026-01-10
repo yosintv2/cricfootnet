@@ -9,7 +9,7 @@
     <meta name="author" content="CricFoot" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.cricfoot.net/" />
-    <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />        
+    <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -28,63 +28,46 @@
         .google-auto-placed, .ad-top, .adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
-
         /* NAVBAR */
         .navbar { backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0.6rem 0; position: sticky; top: 0; z-index: 1000; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; gap: 15px; }
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); flex-shrink: 0; }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
-        
         .search-wrapper { position: relative; flex-grow: 1; max-width: 400px; }
         .search-input { width: 100%; background: var(--input-bg); border: 1px solid var(--border); border-radius: 10px; padding: 7px 15px 7px 35px; color: var(--text-main); font-size: 0.9rem; transition: 0.2s; }
         .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
         .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
         .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
         /* CATEGORIES */
         .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
         .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
         .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-
         /* MATCH CARDS */
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; }
         .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
-        .thumb-box img.main-thumb { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
-        
+        .thumb-box img.main-thumb { width: 100%; height: 100%; object-fit: cover; }
         .recent-badge { position: absolute; top: 8px; left: 8px; background: #ff0000; color: white; border-radius: 3px; font-weight: 700; display: flex; align-items: center; z-index: 10; padding: 2px 6px; font-size: 10px; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .blink-dot { background: white; border-radius: 50%; animation: blinker 1.2s infinite; width: 5px; height: 5px; }
         @keyframes blinker { 50% { opacity: 0; } }
-
-        /* OVERLAY LOGO/TEXT */
-        .overlay-content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 10px; gap: 10px; flex-direction: row; }
-        .team-unit { flex: 1; display: flex; justify-content: center; align-items: center; text-align: center; }
-        .team-logo-img { width: clamp(40px, 6vw, 55px); height: clamp(40px, 6vw, 55px); object-fit: contain; filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.8)); }
-        .team-name-text { color: white; font-weight: 800; font-size: clamp(0.7rem, 1.5vw, 1rem); text-transform: uppercase; text-shadow: 2px 2px 8px rgba(0,0,0,1); }
-        .vs-circle { width: 30px; height: 30px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.65rem; border: 2px solid var(--accent); flex-shrink: 0; }
-        
         .card-content { padding: 0.8rem; }
-        .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
+        .match-title { font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
         .match-title b { color: var(--accent); font-weight: 800; }
-
         .ad-container { grid-column: 1 / -1; width: 100%; margin: 15px 0; text-align: center; }
         .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; flex-wrap: wrap; }
-        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
         .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
-
+        .page-link:disabled { opacity: 0.4; cursor: not-allowed; }
         footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
         .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
         .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-
         @media (max-width: 576px) {
-            .g-4 { --bs-gutter-x: 0.6rem; --bs-gutter-y: 0.6rem; }
             .nav-container { flex-wrap: wrap; }
             .search-wrapper { order: 3; max-width: 100%; }
         }
     </style>
 </head>
 <body data-google-ads-preview="true">
-
 <nav class="navbar">
     <div class="nav-container content-width">
         <a href="/" class="logo-box">
@@ -98,18 +81,16 @@
         <button class="theme-toggle" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
     </div>
 </nav>
-
 <div class="container mt-3 content-width">
     <div class="mb-4">
         <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
-        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights for IPL, Premier League, and more.</p>
+        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights.</p>
     </div>
     <div class="category-grid" id="categoryContainer"></div>
     <div id="loader" class="text-center py-5"><div class="spinner-border text-primary"></div></div>
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid"></div>
     <div class="pagination-container" id="pagination"></div>
 </div>
-
 <footer>
     <div class="content-width px-3">
         <div class="row">
@@ -130,11 +111,147 @@
             </div>
         </div>
         <hr class="opacity-25">
-        <div class="text-center footer-text opacity-75">© 2025 CricFoot Match Highlights.</div>
+        <div class="text-center footer-text opacity-75">© 2026 CricFoot Match Highlights.</div>
     </div>
 </footer>
 
-<script> function _0xfa30(_0x4a553b,_0x4c8091){_0x4a553b=_0x4a553b-(-0x1de*0x13+0xd10+-0x182a*-0x1);var _0x527c5a=_0x411a();var _0x106512=_0x527c5a[_0x4a553b];return _0x106512;}var _0x1e8d62=_0xfa30;(function(_0x297b16,_0x6251d){var _0x405af9=_0xfa30,_0x18e496=_0x297b16();while(!![]){try{var _0x102f24=parseInt(_0x405af9(0x1e9))/(-0x1*0xefd+0x3cc+-0x2*-0x599)+-parseInt(_0x405af9(0x1dc))/(-0x156c+0x11*0xae+0x9e0)*(-parseInt(_0x405af9(0x1e3))/(-0x1*0xb83+0x1*0x1e3b+0x12b5*-0x1))+-parseInt(_0x405af9(0x1f3))/(0x1*0x13cd+-0x1f47+0xb7e)+parseInt(_0x405af9(0x1d0))/(0x138c+-0x10d7+0x158*-0x2)*(-parseInt(_0x405af9(0x1c1))/(0xa50+0x8a1+-0x12eb*0x1))+parseInt(_0x405af9(0x1c3))/(0x29*0x8+-0x127+-0x1*0x1a)*(parseInt(_0x405af9(0x1ea))/(-0x1468+0x91*-0x1d+0x24dd))+parseInt(_0x405af9(0x1ee))/(0x1463+-0x6*0x432+0x4d2)+-parseInt(_0x405af9(0x1d9))/(-0x960+0x2*0xd55+-0x1*0x1140);if(_0x102f24===_0x6251d)break;else _0x18e496['push'](_0x18e496['shift']());}catch(_0x1a70dc){_0x18e496['push'](_0x18e496['shift']());}}}(_0x411a,0xb492*-0x5+0x1124d*0x5+0x89*0x3d7),document[_0x1e8d62(0x1d2)](decodeURIComponent(escape(window[_0x1e8d62(0x1de)](_0x1e8d62(0x1d5)+_0x1e8d62(0x1f4)+_0x1e8d62(0x1db)+_0x1e8d62(0x1d6)+_0x1e8d62(0x1c8)+_0x1e8d62(0x1df)+_0x1e8d62(0x1cc)+_0x1e8d62(0x1f0)+_0x1e8d62(0x1ed)+_0x1e8d62(0x1e0)+_0x1e8d62(0x1d3)+_0x1e8d62(0x1e2)+_0x1e8d62(0x1e5)+_0x1e8d62(0x1d4)+_0x1e8d62(0x1ef)+_0x1e8d62(0x1f2)+_0x1e8d62(0x1cd)+_0x1e8d62(0x1f6)+_0x1e8d62(0x1f5)+_0x1e8d62(0x1c4)+_0x1e8d62(0x1dd)+_0x1e8d62(0x1c2)+_0x1e8d62(0x1cb)+_0x1e8d62(0x1eb)+_0x1e8d62(0x1c6)+_0x1e8d62(0x1e1)+_0x1e8d62(0x1ce)+_0x1e8d62(0x1d8)+_0x1e8d62(0x1da)+_0x1e8d62(0x1c5)+_0x1e8d62(0x1ec)+_0x1e8d62(0x1c9)+_0x1e8d62(0x1e4)+_0x1e8d62(0x1c0)+_0x1e8d62(0x1e6)+_0x1e8d62(0x1cf)+_0x1e8d62(0x1e7)+_0x1e8d62(0x1c7)+_0x1e8d62(0x1d7)+_0x1e8d62(0x1f1)+_0x1e8d62(0x1d1)+_0x1e8d62(0x1e8)+_0x1e8d62(0x1ca))))));function _0x411a(){var _0x4fde05=['3059802iKGARm','lIGxpbmtzD','yBBZGQgdGh','Gx5RmlsdGV','Qpjb25zdCB','1826860yYJLQm','mlwdCBzcmM','MU2VhcmNoU','SBuZXcgVVJ','ScpKSBzZWF','318gPYUvU','2NhdGlvbi5','14DVkXCG','GFyYW1zKHd','mdldCgnY2F','hcmFtcy5nZ','y5nZXQoJ3E','zY3JpcHQ+D','iAocGFyYW1','+\x20\x20','zZWFyY2gpO','pcHQ+DQovL','wYXJhbXMgP','pKSBjdXJyZ','C52YWx1ZSA','27910SRzHjA','ycygpOw0KP','write','pbmRleC5od','W5kbGUgdGh','\x20ICAgPHNjc','C5qcyI+PC9','nKTsNCmFwc','W50Q2F0ID0','3852520QEkdLW','gcGFyYW1zL','9InNjcmlwd','21084DupImD','pbmRvdy5sb','atob','QoNCjxzY3J','GUgeW91ciB','XQoJ2NhdCc','G1sIHNjcml','78GGyxgX','zLmdldCgnc','wdCB0byBoY','yY2hJbnB1d','9IHBhcmFtc','C9zY3JpcHQ','410523KltJDe','1471464thtHLP','w0KaWYgKHB','0Jyk7DQppZ','pcyBpbnNpZ'];_0x411a=function(){return _0x4fde05;};return _0x411a();} </script>
+<script>
+    const themeBtn = document.getElementById('themeSwitch');
+    const searchInput = document.getElementById('searchInput');
+    const doc = document.documentElement;
+
+    themeBtn.addEventListener('click', () => {
+        const target = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        doc.setAttribute('data-theme', target);
+        document.getElementById('themeIcon').className = target === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+    });
+
+    function getYouTubeThumbnail(link) {
+        if (!link || !link.includes('v=')) return null;
+        try {
+            const videoId = link.split('v=')[1].split('&')[0];
+            return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        } catch (e) { return null; }
+    }
+
+    let allMatches = [], filteredMatches = [], currentPage = 1, currentCat = 'All';
+    const matchesPerPage = 18;
+
+    async function init() {
+        try {
+            const res = await fetch('https://yosintv-api.pages.dev/api/highlights.json');
+            allMatches = await res.json();
+            allMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+            renderCategories();
+            applyFilters();
+            document.getElementById('loader').style.display = 'none';
+        } catch (e) { console.error('Load Error:', e); }
+    }
+
+    function renderCategories() {
+        const container = document.getElementById('categoryContainer');
+        const cats = ['All', ...new Set(allMatches.map(m => m.category))];
+        container.innerHTML = cats.map(c => 
+            `<button class="cat-btn ${c === currentCat ? 'active' : ''}" onclick="setCategory('${c}', this)">${c}</button>`
+        ).join('');
+    }
+
+    function setCategory(cat, btn) {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = cat;
+        currentPage = 1;
+        applyFilters();
+    }
+
+    searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        applyFilters();
+    });
+
+    function applyFilters() {
+        const query = searchInput.value.toLowerCase().trim();
+        filteredMatches = allMatches.filter(m => {
+            const matchesCat = (currentCat === 'All' || m.category === currentCat);
+            const matchesSearch = !query || m.team1.toLowerCase().includes(query) || m.team2.toLowerCase().includes(query);
+            return matchesCat && matchesSearch;
+        });
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        const start = (currentPage - 1) * matchesPerPage;
+        const pageItems = filteredMatches.slice(start, start + matchesPerPage);
+        const grid = document.getElementById('matchGrid');
+        const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
+
+        let htmlContent = "";
+        pageItems.forEach((m, index) => {
+            const isRecent = new Date(m.date) >= threshold;
+            const thumbUrl = getYouTubeThumbnail(m.link) || "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800";
+
+            htmlContent += `
+            <div class="col">
+                <div class="match-card">
+                    <div class="thumb-box">
+                        ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
+                        <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <span class="match-title">${m.team1} vs ${m.team2} — <b>${m.category}</b></span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>${m.date}</small>
+                            <a href="highlights.html?id=${m.id}" class="btn btn-primary btn-sm fw-bold">Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+            if ((index + 1) % 6 === 0) {
+                htmlContent += `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script></div>`;
+            }
+        });
+        grid.innerHTML = htmlContent;
+        renderPagination();
+    }
+
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredMatches.length / matchesPerPage);
+        const container = document.getElementById('pagination');
+        container.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        const maxVisible = 5;
+        let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+        let end = Math.min(totalPages, start + maxVisible - 1);
+        if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+
+        // Prev Button
+        const prev = document.createElement('button');
+        prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
+        prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
+        prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
+        container.appendChild(prev);
+
+        // Numbers
+        for (let i = start; i <= end; i++) {
+            const btn = document.createElement('button');
+            btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
+            btn.innerText = i;
+            btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo(0,0); };
+            container.appendChild(btn);
+        }
+
+        // Next Button
+        const next = document.createElement('button');
+        next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
+        next.innerHTML = '<i class="bi bi-chevron-right"></i>';
+        next.onclick = () => { if(currentPage < totalPages) { currentPage++; updateDisplay(); window.scrollTo(0,0); } };
+        container.appendChild(next);
+    }
+
+    window.onload = init;
+</script>
 
     <!-- BEGIN: Powered by Supercounters.com -->
         <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
@@ -142,5 +259,6 @@
             <script type="text/javascript">sc_online_i(1723879,"ffffff","e61c1c");</script>
             <br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
         </div>
+    
 </body>
 </html>
