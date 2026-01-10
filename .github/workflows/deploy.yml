@@ -1,5 +1,5 @@
 name: SEO Auto-Build
-on:
+on: 
   schedule:
     - cron: '0 * * * *' # This runs every hour automatically
   push:
