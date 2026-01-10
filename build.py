@@ -5,7 +5,7 @@ from jinja2 import Template
 import re
 
 # 1. Your Confirmed API
-API_URL = "https://yosintv-api.pages.dev/api/highlights.json"
+API_URL = "https://yosintv-api.pages.dev/api/highlights.json" 
 OUTPUT_DIR = "dist"
 
 def slugify(text):
