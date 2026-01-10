@@ -3,29 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
     <title>Watch Football Highlights & Goals - CricFoot</title>
     <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot." />
-    <meta name="keywords" content="football highlights, cricket highlights, IPL highlights, EPL highlights, match highlights, goals, soccer replays, CricFoot" />
+    <meta name="keywords" content="football highlights, cricket highlights, IPL highlights, EPL highlights, match highlights, CricFoot" />
     <meta name="author" content="CricFoot" />
     <meta name="robots" content="index, follow" />
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Watch Football Highlights & Goals - CricFoot" />
-    <meta property="og:description" content="Fastest hub for HD football and cricket highlights." />
-    <meta property="og:url" content="https://www.cricfoot.net/" />
-    
     <link rel="canonical" href="https://www.cricfoot.net/" />
     <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
-
-    <script id="dynamic-schema" type="application/ld+json"></script>
-
     <style>
         :root[data-theme="light"] {
             --bg-main: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a;
@@ -96,15 +84,30 @@
 
 <div class="container mt-3 content-width">
     <div class="mb-4">
-        <h1 class="fw-bold h4">Latest Football Highlights & Cricket Match Goals</h1>
-        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading football highlights and cricket goals updated daily.</p>
+        <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
+        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights.</p>
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
     <div id="loader" class="text-center py-5" style="display:none;"><div class="spinner-border text-primary"></div></div>
     
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
-        <div class="text-center w-100 py-5"><div class="spinner-border text-primary"></div></div>
+        {% for m in matches[:18] %}
+        <div class="col">
+            <a href="/highlights/{{ m.url_slug }}/" class="match-card">
+                <div class="thumb-box">
+                    <img src="https://img.youtube.com/vi/{{ m.link.split('v=')[1].split('&')[0] if 'v=' in m.link else '' }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <span class="match-title">{{ m.team1 }} vs {{ m.team2 }} — <b>{{ m.category }}</b></span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>{{ m.date }}</small>
+                        <span class="btn btn-primary btn-sm fw-bold">Watch</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
 
     <div class="pagination-container" id="pagination"></div>
@@ -115,27 +118,27 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">ABOUT CRICFOOT</div>
-                <p class="footer-text">Premier hub for sports fans. We provide the fastest football highlights, soccer goals, and cricket replays for fans worldwide.</p>
+                <p class="footer-text">Premier hub for sports fans. Fastest cricket and football highlights.</p>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">DMCA</div>
-                <p class="footer-text">CricFoot does not host any videos. All content is provided by third-party sites like YouTube. We simply curate the best links for you.</p>
+                <p class="footer-text">CricFoot does not host any videos. Content belongs to third-party providers.</p>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">TOP CATEGORIES</div>
                 <ul class="list-unstyled footer-text">
-                    <li><i class="bi bi-chevron-right me-1"></i> Football Highlights 2026</li>
-                    <li><i class="bi bi-chevron-right me-1"></i> Cricket Match Replays</li>
-                    <li><i class="bi bi-chevron-right me-1"></i> Soccer Goals HD</li>
+                    <li><i class="bi bi-chevron-right me-1"></i> Cricket Highlights</li>
+                    <li><i class="bi bi-chevron-right me-1"></i> Football Highlights</li>
                 </ul>
             </div>
         </div>
         <hr class="opacity-25">
-        <div class="text-center footer-text opacity-75">© 2026 CricFoot Match Highlights. All rights reserved.</div>
+        <div class="text-center footer-text opacity-75">© 2026 CricFoot Match Highlights.</div>
     </div>
 </footer>
 
 <script>
+    // THEME LOGIC
     const themeBtn = document.getElementById('themeSwitch');
     const searchInput = document.getElementById('searchInput');
     const doc = document.documentElement;
@@ -156,28 +159,14 @@
         } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
     }
 
-    // Global variables
-    let allMatches = []; 
-    let filteredMatches = [], currentPage = 1, currentCat = 'All';
+    // DATA HANDLING (Python injects all data here)
+    let allMatches = {{ matches | tojson }}; 
+    let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 18;
 
-    async function init() {
-        await fetchFreshData();
+    function init() {
         renderCategories();
         applyFilters();
-    }
-
-    // CACHE BUSTING & FETCH
-    async function fetchFreshData() {
-        try {
-            const cacheBuster = new Date().getTime();
-            const response = await fetch(`https://yosintv-api.pages.dev/api/highlights.json?v=${cacheBuster}`);
-            allMatches = await response.json();
-        } catch (e) {
-            console.error("Failed to fetch fresh data", e);
-            // Fallback to python injected data if fetch fails
-            allMatches = {{ matches | tojson }};
-        }
     }
 
     function renderCategories() {
@@ -218,20 +207,16 @@
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
         let htmlContent = "";
-        let schemaListItems = [];
-
         pageItems.forEach((m, index) => {
             const isRecent = new Date(m.date) >= threshold;
             const thumbUrl = getYouTubeThumbnail(m.link);
-            const ytId = thumbUrl.split('/vi/')[1]?.split('/')[0] || "";
 
-            // HTML Grid
             htmlContent += `
             <div class="col">
-                <a href="/highlights/${m.id}/" class="match-card">
+                <a href="/highlights/${m.url_slug}/" class="match-card">
                     <div class="thumb-box">
                         ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
-                        <img src="${thumbUrl}" class="main-thumb" alt="${m.team1} vs ${m.team2} highlights" loading="lazy">
+                        <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
                     </div>
                     <div class="card-content">
                         <span class="match-title">${m.team1} vs ${m.team2} — <b>${m.category}</b></span>
@@ -243,46 +228,11 @@
                 </a>
             </div>`;
 
-            // ADS LOGIC: Every 6 cards
             if ((index + 1) % 6 === 0) {
-                htmlContent += `
-                <div class="ad-container">
-                    <ins class="adsbygoogle" 
-                         style="display:block" 
-                         data-ad-client="ca-pub-5525538810839147" 
-                         data-ad-slot="4345862479" 
-                         data-ad-format="horizontal" 
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
-                </div>`;
+                htmlContent += `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script></div>`;
             }
-
-            // SCHEMA Generation for each match
-            schemaListItems.push({
-                "@type": "ListItem",
-                "position": index + 1,
-                "item": {
-                    "@type": "VideoObject",
-                    "name": `${m.team1} vs ${m.team2} Highlights`,
-                    "description": `Watch ${m.team1} vs ${m.team2} match highlights from ${m.category}.`,
-                    "thumbnailUrl": thumbUrl,
-                    "uploadDate": `${m.date}T00:00:00Z`,
-                    "embedUrl": `https://www.youtube.com/embed/${ytId}`,
-                    "contentUrl": `https://www.cricfoot.net/highlights/${m.id}/`
-                }
-            });
         });
-
         grid.innerHTML = htmlContent;
-        
-        // Inject JSON-LD Schema
-        const fullSchema = {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": schemaListItems
-        };
-        document.getElementById('dynamic-schema').textContent = JSON.stringify(fullSchema);
-        
         renderPagination();
     }
 
@@ -297,12 +247,14 @@
         let end = Math.min(totalPages, start + maxVisible - 1);
         if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
 
+        // Prev
         const prev = document.createElement('button');
         prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
         prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
         prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
         container.appendChild(prev);
 
+        // Numbers
         for (let i = start; i <= end; i++) {
             const btn = document.createElement('button');
             btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
@@ -311,6 +263,7 @@
             container.appendChild(btn);
         }
 
+        // Next
         const next = document.createElement('button');
         next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
         next.innerHTML = '<i class="bi bi-chevron-right"></i>';
