@@ -15,10 +15,10 @@
     <meta property="og:description" content="Fastest hub for HD football and cricket highlights." />
     <meta property="og:url" content="https://www.cricfoot.net/" />
     <meta property="og:site_name" content="CricFoot" />
+    <meta property="og:image" content="https://www.cricfoot.net/og-image.jpg" />
 
     <link rel="canonical" href="https://www.cricfoot.net/" />
     <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -36,7 +36,7 @@
         :root[data-theme="dark"] {
             --bg-main: #0b0f1a; --bg-card: #161e2d; --text-main: #f1f5f9;
             --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b;
-            --nav-bg: rgba(11, 15, 26, 0.95); --input-bg: #1e293b;
+            --nav-bg: rgba(11, 16, 26, 0.95); --input-bg: #1e293b;
         }
         .google-auto-placed, .ad-top, .adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
@@ -122,16 +122,15 @@
                 <p class="footer-text">CricFoot is a search engine for football highlights. We do not host any video files; we link to third-party providers like YouTube.</p>
             </div>
             <div class="col-lg-4 mb-4">
-                <div class="footer-heading">TRENDING HIGHLIGHTS</div>
+                <div class="footer-heading">TOP CATEGORIES</div>
                 <ul class="list-unstyled footer-text">
-                    <li><i class="bi bi-chevron-right me-1"></i> Premier League Highlights</li>
-                    <li><i class="bi bi-chevron-right me-1"></i> Champions League Goals</li>
-                    <li><i class="bi bi-chevron-right me-1"></i> La Liga Match Replays</li>
+                    <li><i class="bi bi-chevron-right me-1"></i> Cricket Highlights</li>
+                    <li><i class="bi bi-chevron-right me-1"></i> Football Highlights</li>
                 </ul>
             </div>
         </div>
         <hr class="opacity-25">
-        <div class="text-center footer-text opacity-75">© 2026 CricFoot Football Highlights. Fast Goals & HD Replays.</div>
+        <div class="text-center footer-text opacity-75">© 2026 CricFoot Match Highlights. HD Sports Replays.</div>
     </div>
 </footer>
 
@@ -157,22 +156,12 @@
         } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
     }
 
-    // DATA HANDLING with Cache Busting
-    let allMatches = []; 
-    let filteredMatches = [], currentPage = 1, currentCat = 'All';
+    // DATA HANDLING
+    let allMatches = {{ matches | tojson }}; 
+    let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 18;
 
-    async function init() {
-        // Cache Busting: Adding timestamp to API call ensures fresh data on every page refresh
-        try {
-            const cacheBuster = new Date().getTime();
-            const response = await fetch(`https://h5.aoneroom.com/wefeed-h5-bff/web/home?cb=${cacheBuster}`);
-            // In a real template, if python provides data:
-            allMatches = {{ matches | tojson }}; 
-        } catch(e) {
-            allMatches = {{ matches | tojson }};
-        }
-        
+    function init() {
         renderCategories();
         applyFilters();
     }
@@ -215,17 +204,17 @@
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
         let htmlContent = "";
-        let schemaData = [];
+        let schemaList = []; // Array to store match schema objects
 
         pageItems.forEach((m, index) => {
             const isRecent = new Date(m.date) >= threshold;
             const thumbUrl = getYouTubeThumbnail(m.link);
-            
-            // Collect Schema for every match card loaded
-            schemaData.push({
+
+            // Generate Schema Object for every match card
+            schemaList.push({
                 "@type": "VideoObject",
                 "name": `${m.team1} vs ${m.team2} - ${m.category} Highlights`,
-                "description": `Watch ${m.team1} vs ${m.team2} football highlights and goals from ${m.category}.`,
+                "description": `Watch ${m.team1} vs ${m.team2} football goals and match highlights from ${m.category}.`,
                 "thumbnailUrl": thumbUrl,
                 "uploadDate": m.date,
                 "contentUrl": `https://www.cricfoot.net/highlights/${m.url_slug}/`
@@ -236,7 +225,7 @@
                 <a href="/highlights/${m.url_slug}/" class="match-card">
                     <div class="thumb-box">
                         ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
-                        <img src="${thumbUrl}" class="main-thumb" alt="${m.team1} vs ${m.team2} football highlights" loading="lazy">
+                        <img src="${thumbUrl}" class="main-thumb" alt="${m.team1} vs ${m.team2} highlights" loading="lazy">
                     </div>
                     <div class="card-content">
                         <span class="match-title">${m.team1} vs ${m.team2} — <b>${m.category}</b></span>
@@ -248,7 +237,7 @@
                 </a>
             </div>`;
 
-            // ADS LOGIC: Insert Ad code after every 6th card (6, 12, 18...)
+            // ADS LOGIC: Insert Ad code after every 6th card (6, 12, 18)
             if ((index + 1) % 6 === 0) {
                 htmlContent += `
                 <div class="ad-container">
@@ -264,15 +253,15 @@
         });
 
         grid.innerHTML = htmlContent;
-        
-        // Injecting Schema for SEO
+
+        // Inject Dynamic Schema into the Header
         document.getElementById('match-schema-container').textContent = JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "itemListElement": schemaData.map((s, i) => ({
+            "itemListElement": schemaList.map((item, i) => ({
                 "@type": "ListItem",
                 "position": i + 1,
-                "item": s
+                "item": item
             }))
         });
 
