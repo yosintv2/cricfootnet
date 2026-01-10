@@ -3,29 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
-    <title>Watch Football Highlights & Cricket Match Goals - CricFoot</title>
-    <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot. Get HD goals and match replays." />
-    <meta name="keywords" content="football highlights, cricket highlights, soccer goals, EPL highlights, IPL match replays, La Liga highlights, watch goals online, CricFoot" />
+    <title>Watch Football Highlights & Goals - CricFoot</title>
+    <meta name="description" content="Watch the latest football and cricket match highlights from top leagues like EPL, LaLiga, Serie A, Bundesliga, IPL, and more on CricFoot." />
+    <meta name="keywords" content="football highlights, cricket highlights, IPL highlights, EPL highlights, match highlights, CricFoot" />
     <meta name="author" content="CricFoot" />
     <meta name="robots" content="index, follow" />
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Watch Football Highlights & Goals - CricFoot" />
-    <meta property="og:description" content="Fastest hub for HD football and cricket highlights." />
-    <meta property="og:url" content="https://www.cricfoot.net/" />
-    <meta property="og:site_name" content="CricFoot" />
-    <meta property="og:image" content="https://www.cricfoot.net/og-image.jpg" />
-
     <link rel="canonical" href="https://www.cricfoot.net/" />
     <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
-
-    <script id="match-schema-container" type="application/ld+json"></script>
+    
+    <script id="match-schema" type="application/ld+json"></script>
 
     <style>
         :root[data-theme="light"] {
@@ -36,7 +26,7 @@
         :root[data-theme="dark"] {
             --bg-main: #0b0f1a; --bg-card: #161e2d; --text-main: #f1f5f9;
             --text-muted: #94a3b8; --accent: #38bdf8; --border: #1e293b;
-            --nav-bg: rgba(11, 16, 26, 0.95); --input-bg: #1e293b;
+            --nav-bg: rgba(11, 15, 26, 0.95); --input-bg: #1e293b;
         }
         .google-auto-placed, .ad-top, .adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
@@ -89,7 +79,7 @@
         </a>
         <div class="search-wrapper">
             <i class="bi bi-search search-icon"></i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search football highlights or teams...">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search matches or teams...">
         </div>
         <button class="theme-toggle" id="themeSwitch"><i class="bi bi-moon-stars-fill" id="themeIcon"></i></button>
     </div>
@@ -97,8 +87,8 @@
 
 <div class="container mt-3 content-width">
     <div class="mb-4">
-        <h1 class="fw-bold h4">Latest Football Highlights & Soccer Goals</h1>
-        <p class="footer-text">Watch HD football highlights and cricket match replays from EPL, Champions League, La Liga, and more.</p>
+        <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
+        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights.</p>
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
@@ -115,11 +105,11 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">ABOUT CRICFOOT</div>
-                <p class="footer-text">The premier destination for football fans. We provide the fastest football highlights and soccer goal replays from around the world.</p>
+                <p class="footer-text">Premier hub for sports fans. Fastest cricket and football highlights.</p>
             </div>
             <div class="col-lg-4 mb-4">
-                <div class="footer-heading">DMCA & LEGAL</div>
-                <p class="footer-text">CricFoot is a search engine for football highlights. We do not host any video files; we link to third-party providers like YouTube.</p>
+                <div class="footer-heading">DMCA</div>
+                <p class="footer-text">CricFoot does not host any videos. Content belongs to third-party providers.</p>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">TOP CATEGORIES</div>
@@ -130,7 +120,7 @@
             </div>
         </div>
         <hr class="opacity-25">
-        <div class="text-center footer-text opacity-75">© 2026 CricFoot Match Highlights. HD Sports Replays.</div>
+        <div class="text-center footer-text opacity-75">© 2026 CricFoot Match Highlights.</div>
     </div>
 </footer>
 
@@ -161,7 +151,24 @@
     let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 18;
 
+    // CACHING LOGIC
+    function saveState() {
+        const state = { cat: currentCat, page: currentPage, query: searchInput.value };
+        localStorage.setItem('cf_state', JSON.stringify(state));
+    }
+
+    function loadState() {
+        const saved = localStorage.getItem('cf_state');
+        if (saved) {
+            const state = JSON.parse(saved);
+            currentCat = state.cat;
+            currentPage = state.page;
+            searchInput.value = state.query;
+        }
+    }
+
     function init() {
+        loadState();
         renderCategories();
         applyFilters();
     }
@@ -179,11 +186,13 @@
         btn.classList.add('active');
         currentCat = cat;
         currentPage = 1;
+        saveState();
         applyFilters();
     }
 
     searchInput.addEventListener('input', () => {
         currentPage = 1;
+        saveState();
         applyFilters();
     });
 
@@ -204,17 +213,17 @@
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
         let htmlContent = "";
-        let schemaList = []; // Array to store match schema objects
+        let schemas = []; // SCHEMA DATA COLLECTION
 
         pageItems.forEach((m, index) => {
             const isRecent = new Date(m.date) >= threshold;
             const thumbUrl = getYouTubeThumbnail(m.link);
 
-            // Generate Schema Object for every match card
-            schemaList.push({
+            // SCHEMA OBJECT CREATION
+            schemas.push({
                 "@type": "VideoObject",
                 "name": `${m.team1} vs ${m.team2} - ${m.category} Highlights`,
-                "description": `Watch ${m.team1} vs ${m.team2} football goals and match highlights from ${m.category}.`,
+                "description": `Watch ${m.team1} vs ${m.team2} goals and highlights on CricFoot.`,
                 "thumbnailUrl": thumbUrl,
                 "uploadDate": m.date,
                 "contentUrl": `https://www.cricfoot.net/highlights/${m.url_slug}/`
@@ -225,7 +234,7 @@
                 <a href="/highlights/${m.url_slug}/" class="match-card">
                     <div class="thumb-box">
                         ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
-                        <img src="${thumbUrl}" class="main-thumb" alt="${m.team1} vs ${m.team2} highlights" loading="lazy">
+                        <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
                     </div>
                     <div class="card-content">
                         <span class="match-title">${m.team1} vs ${m.team2} — <b>${m.category}</b></span>
@@ -237,34 +246,19 @@
                 </a>
             </div>`;
 
-            // ADS LOGIC: Insert Ad code after every 6th card (6, 12, 18)
             if ((index + 1) % 6 === 0) {
-                htmlContent += `
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-5525538810839147"
-                         data-ad-slot="4345862479"
-                         data-ad-format="horizontal"
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
-                </div>`;
+                htmlContent += `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script></div>`;
             }
         });
 
-        grid.innerHTML = htmlContent;
-
-        // Inject Dynamic Schema into the Header
-        document.getElementById('match-schema-container').textContent = JSON.stringify({
+        // INJECT SCHEMAS INTO HEAD
+        document.getElementById('match-schema').textContent = JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "itemListElement": schemaList.map((item, i) => ({
-                "@type": "ListItem",
-                "position": i + 1,
-                "item": item
-            }))
+            "itemListElement": schemas.map((s, i) => ({ "@type": "ListItem", "position": i + 1, "item": s }))
         });
 
+        grid.innerHTML = htmlContent;
         renderPagination();
     }
 
@@ -279,27 +273,24 @@
         let end = Math.min(totalPages, start + maxVisible - 1);
         if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
 
-        // Prev
         const prev = document.createElement('button');
         prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
         prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
-        prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
+        prev.onclick = () => { if(currentPage > 1) { currentPage--; saveState(); updateDisplay(); window.scrollTo(0,0); } };
         container.appendChild(prev);
 
-        // Numbers
         for (let i = start; i <= end; i++) {
             const btn = document.createElement('button');
             btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
             btn.innerText = i;
-            btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo(0,0); };
+            btn.onclick = () => { currentPage = i; saveState(); updateDisplay(); window.scrollTo(0,0); };
             container.appendChild(btn);
         }
 
-        // Next
         const next = document.createElement('button');
         next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
         next.innerHTML = '<i class="bi bi-chevron-right"></i>';
-        next.onclick = () => { if(currentPage < totalPages) { currentPage++; updateDisplay(); window.scrollTo(0,0); } };
+        next.onclick = () => { if(currentPage < totalPages) { currentPage++; saveState(); updateDisplay(); window.scrollTo(0,0); } };
         container.appendChild(next);
     }
 
