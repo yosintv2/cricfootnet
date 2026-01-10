@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not Found - CricFoot</title>
+    <script>
+        // Redirect to homepage after 3 seconds
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 3000);
+    </script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; text-align: center; padding: 50px; background: #f1f5f9; }
+        .container { max-width: 600px; margin: auto; }
+        h1 { color: #2563eb; font-size: 80px; margin: 0; }
+        p { color: #64748b; }
+        .loader { border: 4px solid #cbd5e1; border-top: 4px solid #2563eb; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Oops! Page Not Found</h2>
+        <p>The match you are looking for might have been moved or deleted.</p>
+        <p><strong>Redirecting you back to CricFoot highlights...</strong></p>
+        <div class="loader"></div>
+    </div>
+</body>
+</html>
