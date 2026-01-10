@@ -1,10 +1,10 @@
 name: SEO Auto-Build
 on: 
   schedule:
-    - cron: '0 * * * *' # This runs every hour automatically
+    - cron: '0 * * * *' # Runs every hour
   push:
     branches:
-      - main # Runs whenever you push new code
+      - main
 
 jobs:
   build-and-deploy:
@@ -24,8 +24,21 @@ jobs:
       - name: Run Python Build Script
         run: python build.py
 
+      - name: Ensure 404.html is in Deploy Folder
+        run: |
+          # This copies your 404.html from root into the dist folder
+          # so that GitHub Pages can actually see it.
+          if [ -f 404.html ]; then
+            cp 404.html dist/
+            echo "Successfully moved 404.html to dist/"
+          else
+            # Fallback: if you don't have a 404.html, we use index.html as the 404
+            cp dist/index.html dist/404.html
+            echo "404.html not found, created fallback from index.html"
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Tells GitHub to serve the files inside 'dist'
+          publish_dir: ./dist # GitHub serves everything inside here
