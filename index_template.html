@@ -54,6 +54,10 @@
         .match-title { font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
         .match-title b { color: var(--accent); font-weight: 800; }
         .ad-container { grid-column: 1 / -1; width: 100%; margin: 15px 0; text-align: center; }
+        .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; flex-wrap: wrap; }
+        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; border: 1px solid var(--border); }
+        .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .page-link.disabled { opacity: 0.4; cursor: not-allowed; }
         footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
         .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
         .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
@@ -63,7 +67,7 @@
         }
     </style>
 </head>
-<body>
+<body data-google-ads-preview="true">
 <nav class="navbar">
     <div class="nav-container content-width">
         <a href="/" class="logo-box">
@@ -84,12 +88,15 @@
         <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights.</p>
     </div>
 
+    <div class="category-grid" id="categoryContainer"></div>
+    <div id="loader" class="text-center py-5" style="display:none;"><div class="spinner-border text-primary"></div></div>
+    
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
-        {% for m in matches %}
-        <div class="col match-item" data-category="{{ m.category }}" data-title="{{ m.team1 }} vs {{ m.team2 }}">
-            <a href="/highlights/{{ m.team1|lower|replace(' ', '-') }}-vs-{{ m.team2|lower|replace(' ', '-') }}-{{ m.date|lower|replace(' ', '-') }}/" class="match-card">
+        {% for m in matches[:18] %}
+        <div class="col">
+            <a href="/highlights/{{ m.url_slug }}/" class="match-card">
                 <div class="thumb-box">
-                    <img src="https://img.youtube.com/vi/{{ m.link.split('v=')[1].split('&')[0] }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
+                    <img src="https://img.youtube.com/vi/{{ m.link.split('v=')[1].split('&')[0] if 'v=' in m.link else '' }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
                 </div>
                 <div class="card-content">
                     <span class="match-title">{{ m.team1 }} vs {{ m.team2 }} — <b>{{ m.category }}</b></span>
@@ -100,14 +107,10 @@
                 </div>
             </a>
         </div>
-        {% if loop.index % 6 == 0 %}
-        <div class="ad-container">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-        {% endif %}
         {% endfor %}
     </div>
+
+    <div class="pagination-container" id="pagination"></div>
 </div>
 
 <footer>
@@ -135,7 +138,7 @@
 </footer>
 
 <script>
-    // Keeping your original Theme and Search logic
+    // THEME LOGIC
     const themeBtn = document.getElementById('themeSwitch');
     const searchInput = document.getElementById('searchInput');
     const doc = document.documentElement;
@@ -146,14 +149,129 @@
         document.getElementById('themeIcon').className = target === 'light' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
     });
 
-    // Simple Search logic for the static items
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        document.querySelectorAll('.match-item').forEach(item => {
-            const title = item.getAttribute('data-title').toLowerCase();
-            item.style.display = title.includes(term) ? 'block' : 'none';
-        });
+    function getYouTubeThumbnail(link) {
+        if (!link) return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800";
+        try {
+            let videoId = "";
+            if (link.includes('v=')) videoId = link.split('v=')[1].split('&')[0];
+            else if (link.includes('youtu.be/')) videoId = link.split('youtu.be/')[1].split('?')[0];
+            return videoId ? `https://img.youtube.com/vi/${videoId}/sddefault.jpg` : "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800";
+        } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
+    }
+
+    // DATA HANDLING (Python injects all data here)
+    let allMatches = {{ matches | tojson }}; 
+    let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
+    const matchesPerPage = 18;
+
+    function init() {
+        renderCategories();
+        applyFilters();
+    }
+
+    function renderCategories() {
+        const container = document.getElementById('categoryContainer');
+        const cats = ['All', ...new Set(allMatches.map(m => m.category))];
+        container.innerHTML = cats.map(c => 
+            `<button class="cat-btn ${c === currentCat ? 'active' : ''}" onclick="setCategory('${c}', this)">${c}</button>`
+        ).join('');
+    }
+
+    function setCategory(cat, btn) {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = cat;
+        currentPage = 1;
+        applyFilters();
+    }
+
+    searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        applyFilters();
     });
+
+    function applyFilters() {
+        const query = searchInput.value.toLowerCase().trim();
+        filteredMatches = allMatches.filter(m => {
+            const matchesCat = (currentCat === 'All' || m.category === currentCat);
+            const matchesSearch = !query || m.team1.toLowerCase().includes(query) || m.team2.toLowerCase().includes(query);
+            return matchesCat && matchesSearch;
+        });
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        const start = (currentPage - 1) * matchesPerPage;
+        const pageItems = filteredMatches.slice(start, start + matchesPerPage);
+        const grid = document.getElementById('matchGrid');
+        const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
+
+        let htmlContent = "";
+        pageItems.forEach((m, index) => {
+            const isRecent = new Date(m.date) >= threshold;
+            const thumbUrl = getYouTubeThumbnail(m.link);
+
+            htmlContent += `
+            <div class="col">
+                <a href="/highlights/${m.url_slug}/" class="match-card">
+                    <div class="thumb-box">
+                        ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
+                        <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <span class="match-title">${m.team1} vs ${m.team2} — <b>${m.category}</b></span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>${m.date}</small>
+                            <span class="btn btn-primary btn-sm fw-bold">Watch</span>
+                        </div>
+                    </div>
+                </a>
+            </div>`;
+
+            if ((index + 1) % 6 === 0) {
+                htmlContent += `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script></div>`;
+            }
+        });
+        grid.innerHTML = htmlContent;
+        renderPagination();
+    }
+
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredMatches.length / matchesPerPage);
+        const container = document.getElementById('pagination');
+        container.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        const maxVisible = 5;
+        let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+        let end = Math.min(totalPages, start + maxVisible - 1);
+        if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+
+        // Prev
+        const prev = document.createElement('button');
+        prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
+        prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
+        prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
+        container.appendChild(prev);
+
+        // Numbers
+        for (let i = start; i <= end; i++) {
+            const btn = document.createElement('button');
+            btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
+            btn.innerText = i;
+            btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo(0,0); };
+            container.appendChild(btn);
+        }
+
+        // Next
+        const next = document.createElement('button');
+        next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
+        next.innerHTML = '<i class="bi bi-chevron-right"></i>';
+        next.onclick = () => { if(currentPage < totalPages) { currentPage++; updateDisplay(); window.scrollTo(0,0); } };
+        container.appendChild(next);
+    }
+
+    window.onload = init;
 </script>
 
 <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
