@@ -3,66 +3,73 @@ import requests
 import json
 from datetime import datetime
 from jinja2 import Template
+import re
 
-# 1. Configuration
+# Configuration
 API_URL = "https://yosintv-api.pages.dev/api/highlights.json"
-OUTPUT_DIR = "dist" # The folder you will deploy to GitHub Pages
-TEMPLATE_FILE = "template.html"
-
-def get_yt_thumb(link):
-    if not link or 'v=' not in link:
-        return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"
-    video_id = link.split('v=')[1].split('&')[0]
-    return f"https://img.youtube.com/vi/{video_id}/sddefault.jpg"
+OUTPUT_DIR = "dist"
 
 def slugify(text):
-    return text.lower().replace(" ", "-").replace("vs", "-vs-").replace("--", "-")
+    # Converts "India vs Pakistan" to "india-vs-pakistan"
+    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
 
 def build_site():
-    # Create output directories
     if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
-    if not os.path.exists(f"{OUTPUT_DIR}/highlights"): os.makedirs(f"{OUTPUT_DIR}/highlights")
-
+    
     # Fetch Data
-    print("Fetching match data...")
-    response = requests.get(API_URL)
-    matches = response.json()
-    matches.sort(key=lambda x: x['date'], reverse=True)
+    print("Fetching data from API...")
+    data = requests.get(API_URL).json()
+    data.sort(key=lambda x: x.get('date', ''), reverse=True)
 
-    # Load Template
-    with open(TEMPLATE_FILE, 'r') as f:
-        template = Template(f.read())
+    # Load Templates (Make sure you save your HTML as these filenames)
+    with open("index_template.html", "r") as f:
+        home_temp = Template(f.read())
+    with open("highlights_template.html", "r") as f:
+        detail_temp = Template(f.read())
 
-    # 2. GENERATE INDIVIDUAL MATCH PAGES (The SEO Secret)
-    print("Generating match pages...")
-    for m in matches:
-        match_title = f"{m['team1']} vs {m['team2']} Highlights - {m['category']}"
-        slug = f"{slugify(m['team1'])}-vs-{slugify(m['team2'])}-{m['id']}"
+    # 1. Build Individual Match Pages
+    print(f"Generating {len(data)} match pages...")
+    for match in data:
+        match_id = match['id']
+        slug = f"{slugify(match['team1'])}-vs-{slugify(match['team2'])}"
+        match_dir = os.path.join(OUTPUT_DIR, "highlights", slug)
         
-        html = template.render(
-            page_title=match_title,
-            page_description=f"Watch HD highlights of {m['team1']} vs {m['team2']}. Played on {m['date']}. High quality sports replays on CricFoot.",
-            match=m,
-            thumb=get_yt_thumb(m['link']),
-            is_single_page=True
+        if not os.path.exists(match_dir): os.makedirs(match_dir)
+
+        # SEO Data
+        seo_title = f"{match['team1']} vs {match['team2']} ({match['date']}) | {match['category']} Highlights"
+        seo_desc = f"Watch HD highlights of {match['team1']} vs {match['team2']} from {match['category']}. Match played on {match['date']}."
+        
+        # Filter related matches (same category, excluding current)
+        related = [m for m in data if m['category'] == match['category'] and m['id'] != match_id][:6]
+
+        rendered_html = detail_temp.render(
+            match=match,
+            seo_title=seo_title,
+            seo_desc=seo_desc,
+            related=related,
+            json_ld=json.dumps({
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                "name": seo_title,
+                "description": seo_desc,
+                "thumbnailUrl": [match.get('thumbnail', 'https://www.cricfoot.net/cf_favicon.ico')],
+                "uploadDate": match['date'],
+                "contentUrl": f"https://www.cricfoot.net/highlights/{slug}/",
+                "embedUrl": match['link']
+            })
         )
-        
-        with open(f"{OUTPUT_DIR}/highlights/{slug}.html", "w") as f:
-            f.write(html)
 
-    # 3. GENERATE HOME PAGE
-    print("Generating homepage...")
-    home_html = template.render(
-        page_title="CricFoot - Watch Football & Cricket Highlights",
-        page_description="Latest sports highlights from EPL, IPL, and more.",
-        matches=matches[:20], # Show latest 20
-        get_thumb=get_yt_thumb,
-        is_single_page=False
-    )
-    with open(f"{OUTPUT_DIR}/index.html", "w") as f:
+        with open(os.path.join(match_dir, "index.html"), "w") as f:
+            f.write(rendered_html)
+
+    # 2. Build Homepage
+    print("Generating Homepage...")
+    home_html = home_temp.render(matches=data[:20]) # First 20 matches
+    with open(os.path.join(OUTPUT_DIR, "index.html"), "w") as f:
         f.write(home_html)
 
-    print("Success! SEO pages generated in /dist")
+    print("Build Complete!")
 
 if __name__ == "__main__":
     build_site()
