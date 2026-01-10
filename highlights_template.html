@@ -23,7 +23,7 @@
         .logo-box { display: flex; align-items: center; text-decoration: none; gap: 10px; color: var(--text-main); }
         .logo-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
         
-        /* YT PREVIEW BOX */
+        /* YT PREVIEW BOX - COPYRIGHT PROTECTION */
         .yt-preview-container { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: #000; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin: 20px 0; border: 2px solid var(--border); }
         .yt-preview-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .yt-preview-container:hover img { transform: scale(1.05); filter: brightness(0.8); }
@@ -33,28 +33,22 @@
         .highlight-display-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .team-title-hero { font-weight: 800; font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0; }
         .vs-badge { display: inline-block; background: var(--accent); color: white; padding: 2px 14px; border-radius: 50px; font-weight: 800; font-size: 0.8rem; margin: 10px 0; }
+        
         .meta-tags-box { margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border); }
-        .meta-label { font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-right: 5px; }
-        .tag-link { display: inline-block; padding: 3px 12px; background: var(--bg-main); color: var(--accent); border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; margin: 2px; transition: 0.2s; }
-        .tag-link:hover { background: var(--accent); color: white; }
+        .tag-link { display: inline-block; padding: 3px 12px; background: var(--bg-main); color: var(--accent); border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; margin: 2px; }
         
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; position: relative; }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
         .thumb-box img.bg-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
         .overlay-content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; }
-        .team-name-overlay { color: white; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); flex: 1; text-align: center; line-height: 1.2; }
-        .vs-circle { width: 26px; height: 26px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.6rem; border: 2px solid var(--accent); flex-shrink: 0; }
-        .card-content { padding: 0.8rem; }
-        .match-title { font-weight: 700; font-size: 0.85rem; color: var(--text-main); display: block; margin-bottom: 5px; line-height: 1.3; }
-        .date-text { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
-        .info-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; margin-top: 1.5rem; }
-        .faq-item { margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-question { font-weight: 700; color: var(--accent); margin-bottom: 3px; font-size: 0.9rem; }
-        .faq-answer { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
-        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .footer-back { text-align: center; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 2rem; }
-        .footer-back a { text-decoration: none; color: var(--accent); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .team-name-overlay { color: white; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; text-align: center; line-height: 1.2; flex: 1; }
+        .vs-circle { width: 26px; height: 26px; background: white; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.6rem; border: 2px solid var(--accent); }
+        
+        .info-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; }
+        .faq-item { margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .faq-question { font-weight: 700; color: var(--accent); margin-bottom: 5px; }
+        .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; }
+        .footer-back { text-align: center; padding: 3rem 0; }
     </style>
 </head>
 <body>
@@ -74,18 +68,19 @@
     </div>
 
     <div id="related-section" style="display:none; margin-top: 2rem;">
-        <h2 class="h5 fw-bold mb-3"><i class="bi bi-collection-play me-2"></i>More Highlights for these Teams</h2>
+        <h2 class="h5 fw-bold mb-3"><i class="bi bi-collection-play me-2"></i>More Team Matchups</h2>
         <div class="row row-cols-2 row-cols-lg-3 g-3" id="related-grid"></div>
     </div>
 
     <div id="faq-section" class="info-section" style="display:none;"></div>
 
     <footer class="footer-back">
-        <a href="/"><i class="bi bi-house-door-fill"></i> Back to Homepage</a>
+        <a href="/" class="text-decoration-none fw-bold text-primary"><i class="bi bi-house-door-fill"></i> Back to Homepage</a>
     </footer>
 </div>
 
 <script>
+    // Theme Switcher
     const doc = document.documentElement;
     document.getElementById('themeSwitch').onclick = () => {
         const target = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -102,35 +97,43 @@
 
     function openInYouTube(url) {
         const videoId = getYTId(url);
-        // Deep link for mobile apps, fallback to web
         const mobileUrl = `vnd.youtube://${videoId}`;
         const webUrl = `https://www.youtube.com/watch?v=${videoId}`;
-        
         window.location.href = mobileUrl;
-        setTimeout(() => {
-            window.location.href = webUrl;
-        }, 500);
+        setTimeout(() => { window.location.href = webUrl; }, 500);
     }
 
     async function loadHighlightDetails() {
         const urlParams = new URLSearchParams(window.location.search);
-        const matchId = urlParams.get('id');
-        if (!matchId) { window.location.href = "/"; return; }
+        let matchId = urlParams.get('id');
+
+        // URL SLUG HANDLER: Detects ID from path if ?id= is missing
+        if (!matchId) {
+            const pathSegments = window.location.pathname.split('/').filter(Boolean);
+            matchId = pathSegments[pathSegments.length - 1];
+        }
+
+        if (!matchId || matchId === 'highlights') {
+            document.getElementById('highlight-details').innerHTML = '<div class="alert alert-danger">Match Not Found</div>';
+            return;
+        }
 
         try {
             const response = await fetch('https://yosintv-api.pages.dev/api/highlights.json');
             const allData = await response.json();
-            const match = allData.find(m => m.id === matchId);
+            
+            // Flexible matching for IDs or Slugs
+            const match = allData.find(m => m.id === matchId || m.id.includes(matchId));
             if (!match) return;
 
             const ytId = getYTId(match.link);
             const thumbUrl = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
-            const dynamicTitle = `${match.team1} vs ${match.team2} (${match.date}) | ${match.category} Highlights`;
+            const dynamicTitle = `${match.team1} vs ${match.team2} (${match.date}) Highlights`;
 
             document.title = dynamicTitle;
-            document.getElementById('meta-description').content = `Watch ${match.team1} vs ${match.team2} highlights. Official YouTube video highlights from ${match.category} played on ${match.date}.`;
+            document.getElementById('meta-description').content = `Watch ${match.team1} vs ${match.team2} highlights. Direct official video highlights from ${match.category}.`;
 
-            // Hero Render
+            // Hero Render with YT App Redirection
             document.getElementById('highlight-details').innerHTML = `
                 <article class="highlight-display-card">
                     <span class="vs-badge">${match.category}</span>
@@ -142,17 +145,15 @@
                     </div>
 
                     <div class="meta-tags-box">
-                        <span class="meta-label">Tags:</span>
                         <a href="/?q=${encodeURIComponent(match.team1)}" class="tag-link">${match.team1}</a>
                         <a href="/?q=${encodeURIComponent(match.team2)}" class="tag-link">${match.team2}</a>
-                        <a href="/?cat=${encodeURIComponent(match.category)}" class="tag-link">${match.category}</a>
-                        <div class="date-text mt-3 justify-content-center"><i class="bi bi-calendar3"></i> ${match.date}</div>
+                        <div class="mt-3 text-muted small"><i class="bi bi-calendar3"></i> Match Date: ${match.date}</div>
                     </div>
                 </article>`;
 
-            // Related Grid (Filter for ANY match involving Team 1 or Team 2)
+            // Related Content: Fetch all matches involving either team
             const related = allData.filter(m => 
-                m.id !== matchId && 
+                m.id !== match.id && 
                 (m.team1 === match.team1 || m.team2 === match.team1 || m.team1 === match.team2 || m.team2 === match.team2)
             ).slice(0, 9);
 
@@ -160,12 +161,11 @@
                 document.getElementById('related-section').style.display = 'block';
                 document.getElementById('related-grid').innerHTML = related.map(m => {
                     const rYtId = getYTId(m.link);
-                    const rThumb = `https://img.youtube.com/vi/${rYtId}/mqdefault.jpg`;
                     return `
                     <div class="col">
-                        <a href="highlights.html?id=${m.id}" class="match-card">
+                        <a href="/highlights/${m.id}/" class="match-card">
                             <div class="thumb-box">
-                                <img src="${rThumb}" class="bg-img" alt="Thumbnail">
+                                <img src="https://img.youtube.com/vi/${rYtId}/mqdefault.jpg" class="bg-img">
                                 <div class="overlay-content">
                                     <div class="team-name-overlay">${m.team1}</div>
                                     <div class="vs-circle">VS</div>
@@ -173,8 +173,8 @@
                                 </div>
                             </div>
                             <div class="card-content">
-                                <span class="match-title">${m.team1} vs ${m.team2}</span>
-                                <div class="date-text"><i class="bi bi-calendar3"></i> ${m.date}</div>
+                                <span class="match-title text-truncate">${m.team1} vs ${m.team2}</span>
+                                <small class="text-muted">${m.date}</small>
                             </div>
                         </a>
                     </div>`;
@@ -184,20 +184,14 @@
             // FAQ Rendering
             document.getElementById('faq-section').style.display = 'block';
             document.getElementById('faq-section').innerHTML = `
-                <h5 class="fw-bold mb-3"><i class="bi bi-patch-question me-2"></i>Frequently Asked Questions</h5>
-                <div class="faq-item"><div class="faq-question">Who won the ${match.team1} vs ${match.team2} match?</div><div class="faq-answer">To see the result and full match analysis, click the "Play" button above to watch the official highlights.</div></div>
-                <div class="faq-item"><div class="faq-question">Where can I watch ${match.team1} vs ${match.team2} highlights safely?</div><div class="faq-answer">CricFoot provides a direct portal to official YouTube highlights for ${match.team1} and ${match.team2}.</div></div>
-                <div class="faq-item"><div class="faq-question">Is the highlights video HD?</div><div class="faq-answer">Yes, we link to the highest quality source available on official channels.</div></div>
-                <div class="faq-item"><div class="faq-question">When was this match played?</div><div class="faq-answer">The match between ${match.team1} and ${match.team2} was held on ${match.date}.</div></div>
+                <h5 class="fw-bold mb-4"><i class="bi bi-patch-question me-2"></i>Match Info & FAQs</h5>
+                <div class="faq-item"><div class="faq-question">How to watch ${match.team1} vs ${match.team2} highlights?</div><div class="faq-answer">Click the video thumbnail above. It will safely open the official highlights on the YouTube app or website.</div></div>
+                <div class="faq-item"><div class="faq-question">What league is this match from?</div><div class="faq-answer">This match is part of the ${match.category} competition.</div></div>
+                <div class="faq-item"><div class="faq-question">When was the game played?</div><div class="faq-answer">The fixture between ${match.team1} and ${match.team2} took place on ${match.date}.</div></div>
             `;
         } catch (e) { console.error(e); }
     }
     window.onload = loadHighlightDetails;
 </script>
-
-<div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
-    <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
-    <script type="text/javascript">sc_online_i(1723879,"ffffff","e61c1c");</script>
-</div>
 </body>
 </html>
