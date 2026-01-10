@@ -130,7 +130,7 @@
         if (!link || !link.includes('v=')) return null;
         try {
             const videoId = link.split('v=')[1].split('&')[0];
-            return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            return `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
         } catch (e) { return null; }
     }
 
