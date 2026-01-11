@@ -9,7 +9,7 @@
     <meta name="author" content="CricFoot" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.cricfoot.net/" />
-    <link href='/favicon.ico' rel='icon' type='image/x-icon' />
+    <link href='/cf_favicon.ico' rel='icon' type='image/x-icon' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -94,7 +94,7 @@
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
         {% for m in matches[:18] %}
         <div class="col">
-            <a href="/{{ m.url_slug }}/" class="match-card">
+            <a href="/highlights/{{ m.url_slug }}/" class="match-card">
                 <div class="thumb-box">
                     <img src="https://img.youtube.com/vi/{{ m.link.split('v=')[1].split('&')[0] if 'v=' in m.link else '' }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
                 </div>
@@ -138,6 +138,7 @@
 </footer>
 
 <script>
+    // THEME LOGIC
     const themeBtn = document.getElementById('themeSwitch');
     const searchInput = document.getElementById('searchInput');
     const doc = document.documentElement;
@@ -158,6 +159,7 @@
         } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
     }
 
+    // DATA HANDLING (Python injects all data here)
     let allMatches = {{ matches | tojson }}; 
     let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 18;
@@ -211,7 +213,7 @@
 
             htmlContent += `
             <div class="col">
-                <a href="/${m.url_slug}/" class="match-card">
+                <a href="/highlights/${m.url_slug}/" class="match-card">
                     <div class="thumb-box">
                         ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
                         <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
@@ -245,12 +247,14 @@
         let end = Math.min(totalPages, start + maxVisible - 1);
         if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
 
+        // Prev
         const prev = document.createElement('button');
         prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
         prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
         prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
         container.appendChild(prev);
 
+        // Numbers
         for (let i = start; i <= end; i++) {
             const btn = document.createElement('button'); 
             btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
@@ -259,6 +263,7 @@
             container.appendChild(btn);
         }
 
+        // Next
         const next = document.createElement('button');
         next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
         next.innerHTML = '<i class="bi bi-chevron-right"></i>';
@@ -268,5 +273,10 @@
 
     window.onload = init;
 </script>
+
+<div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
+    <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+    <script type="text/javascript">sc_online_i(1723879,"ffffff","e61c1c");</script>
+</div>
 </body>
 </html>
