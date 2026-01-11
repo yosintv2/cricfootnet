@@ -38,10 +38,38 @@
         .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
         .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
         .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        /* CATEGORIES */
-        .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
-        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
+        
+        /* UPDATED CATEGORIES FOR MOBILE SCROLLING */
+        .category-grid { 
+            display: flex; 
+            flex-wrap: nowrap; /* Prevent wrapping */
+            overflow-x: auto;  /* Allow horizontal scroll */
+            overflow-y: hidden;
+            gap: 8px; 
+            margin: 1rem 0; 
+            padding-bottom: 5px; /* Space for scrollbar if visible */
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+        }
+        .category-grid::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Chrome/Safari */
+        }
+        
+        .cat-btn { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            color: var(--text-main); 
+            padding: 6px 15px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            font-weight: 500; 
+            font-size: 0.8rem; 
+            white-space: nowrap; /* Keep text on one line */
+            flex: 0 0 auto; /* Prevent buttons from shrinking */
+        }
         .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        
         /* MATCH CARDS */
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; }
         .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
@@ -88,7 +116,8 @@
         <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights.</p>
     </div>
 
-   <div class="category-grid" id="categoryContainer"></div>
+    <div class="category-grid" id="categoryContainer"></div>
+    
     <div id="loader" class="text-center py-5" style="display:none;"><div class="spinner-border text-primary"></div></div>
     
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
@@ -438,6 +467,9 @@
         currentCat = cat;
         currentPage = 1;
         applyFilters();
+        
+        // Mobile UX: Scroll the clicked button into view
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
 
     searchInput.addEventListener('input', () => {
