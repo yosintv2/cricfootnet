@@ -11,31 +11,16 @@ OUTPUT_DIR = "dist"
 DOMAIN = "www.cricfoot.net"
 
 def slugify(text):
-    """
-    Creates a clean, URL-safe slug. 
-    Handles '&' as 'and', removes dots, and strips special characters.
-    """
+    """Creates a clean, URL-safe slug."""
     if not text:
-        return "match"
+        return "general"
     
-    # Convert to string and lowercase
     text = str(text).lower()
-    
-    # Replace '&' with 'and'
     text = text.replace('&', 'and')
-    
-    # Remove dots (e.g., 1. FC Koln -> 1 fc koln)
     text = text.replace('.', '')
-    
-    # Normalize unicode (converts characters like 'ö' to 'o')
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('ascii')
-    
-    # Remove everything except a-z, 0-9, spaces, and hyphens
     text = re.sub(r'[^a-z0-9\s-]', '', text)
-    
-    # Replace spaces and multiple hyphens with a single hyphen
     text = re.sub(r'[\s-]+', '-', text).strip('-')
-    
     return text
 
 def build():
@@ -64,32 +49,31 @@ def build():
 
     valid_matches = []
 
-    print("Generating match pages...")
+    print("Generating match pages with league-based URLs...")
     for m in data:
         t1 = m.get('team1')
         t2 = m.get('team2')
         m_date = m.get('date')
+        category = m.get('category', 'Sports') # Default to Sports if empty
         
         if not t1 or not t2 or not m_date:
             continue
 
-        # 2. Create the unique, clean slug
-        # Format: manchester-city-vs-brighton-and-hove-albion-2026-01-08
-        s_t1 = slugify(t1)
-        s_t2 = slugify(t2)
-        s_date = slugify(m_date)
-        url_slug = f"{s_t1}-vs-{s_t2}-{s_date}"
+        # 2. Create Slugs
+        league_slug = slugify(category)
+        match_slug = f"{slugify(t1)}-vs-{slugify(t2)}-{slugify(m_date)}"
         
-        # Save slug back into match object so index_template can use it
-        m['url_slug'] = url_slug
+        # Combined slug for internal linking: e.g. "fa-cup/man-utd-vs-liverpool..."
+        full_url_path = f"{league_slug}/{match_slug}"
+        m['url_slug'] = full_url_path # Store this for index_template.html
 
-        # Create folder: dist/highlights/slug/
-        match_dir = os.path.join(OUTPUT_DIR, "highlights", url_slug)
+        # Create nested folders: dist/fa-cup/match-slug/
+        match_dir = os.path.join(OUTPUT_DIR, league_slug, match_slug)
         if not os.path.exists(match_dir): 
             os.makedirs(match_dir)
 
         # SEO Metadata
-        seo_title = f"{t1} vs {t2} Highlights ({m_date}) - {m.get('category', 'Sports')}"
+        seo_title = f"{t1} vs {t2} Highlights ({m_date}) - {category}"
         seo_desc = f"Watch {t1} vs {t2} match highlights from {m_date}. HD video replays and match report on CricFoot."
         
         # YouTube ID extraction
@@ -106,7 +90,7 @@ def build():
             yt_id=yt_id,
             seo_title=seo_title,
             seo_desc=seo_desc,
-            url_slug=url_slug
+            url_slug=full_url_path
         )
         
         with open(os.path.join(match_dir, "index.html"), "w", encoding="utf-8") as f:
@@ -116,7 +100,6 @@ def build():
 
     # 3. Generate Homepage
     print(f"Generating Homepage with {len(valid_matches)} matches...")
-    # Sorting matches by date (newest first)
     valid_matches.sort(key=lambda x: x.get('date', ''), reverse=True)
     
     with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
@@ -128,7 +111,8 @@ def build():
     sitemap_content += f'  <url><loc>https://{DOMAIN}/</loc><priority>1.0</priority></url>\n'
     
     for m in valid_matches:
-        sitemap_content += f'  <url><loc>https://{DOMAIN}/highlights/{m["url_slug"]}/</loc><priority>0.8</priority></url>\n'
+        # Sitemap points to https://www.cricfoot.net/fa-cup/match-slug/
+        sitemap_content += f'  <url><loc>https://{DOMAIN}/{m["url_slug"]}/</loc><priority>0.8</priority></url>\n'
     
     sitemap_content += '</urlset>'
     with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
