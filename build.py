@@ -10,7 +10,7 @@ API_URL = "https://yosintv-api.pages.dev/api/highlights.json"
 OUTPUT_DIR = "dist"
 DOMAIN = "www.cricfoot.net"
 
-# 2. Top Leagues (Used for the Menu UI in your HTML templates)
+# 2. Top Leagues Filter (Used for the Menu in the HTML)
 TOP_LEAGUES = [
     "Premier League", 
     "La Liga", 
@@ -81,7 +81,7 @@ def build():
         m_date = m.get('date')
         category = m.get('category', 'Sports')
         
-        # We process ALL matches (Filter removed from here)
+        # WE DO NOT SKIP ANY MATCHES HERE
         if not t1 or not t2 or not m_date:
             continue
 
@@ -111,7 +111,7 @@ def build():
         elif 'youtu.be/' in link:
             yt_id = link.split('youtu.be/')[1].split('?')[0]
 
-        # Render the Detail HTML (Passing top_leagues for the menu)
+        # Render the Detail HTML (Pass TOP_LEAGUES for the navigation menu)
         detail_html = detail_tpl.render(
             match=m,
             yt_id=yt_id,
@@ -126,11 +126,12 @@ def build():
             
         valid_matches.append(m)
 
-    # Generate Homepage (Passing top_leagues for the menu)
+    # Generate Homepage (Pass TOP_LEAGUES for the navigation menu)
     print(f"Generating Homepage with {len(valid_matches)} matches...")
     valid_matches.sort(key=lambda x: x.get('date', ''), reverse=True)
     
     with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
+        # We pass BOTH 'matches' (all matches) and 'top_leagues' (filtered list)
         f.write(home_tpl.render(matches=valid_matches, top_leagues=TOP_LEAGUES))
 
     # Generate Sitemap.xml
