@@ -9,7 +9,7 @@ import unicodedata
 # If you have the icon file locally, copy it to dist
 import shutil
 if os.path.exists("cf_favicon.ico"):
-    shutil.copy("cf_favicon.ico", os.path.join(OUTPUT_DIR, "favicon.ico"))
+    shutil.copy("cf_favicon.ico", os.path.join(OUTPUT_DIR, "favicon.ico")) 
     
 # 1. Configuration
 API_URL = "https://yosintv-api.pages.dev/api/highlights.json"
