@@ -28,6 +28,7 @@
         .google-auto-placed, .ad-top, .adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
+        
         /* NAVBAR */
         .navbar { backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0.6rem 0; position: sticky; top: 0; z-index: 1000; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; gap: 15px; }
@@ -38,10 +39,34 @@
         .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
         .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
         .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+        /* TOP LEAGUES MENU (The new clean menu) */
+        .top-leagues-bar { 
+            background: var(--bg-card); 
+            border-bottom: 1px solid var(--border); 
+            padding: 10px 0; 
+            overflow-x: auto; 
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .top-leagues-bar::-webkit-scrollbar { display: none; } /* Hide scrollbar for clean look */
+        .league-link { 
+            display: inline-block; 
+            color: var(--text-main); 
+            text-decoration: none; 
+            padding: 5px 15px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        .league-link:hover { color: var(--accent); background: rgba(37, 99, 235, 0.05); }
+
         /* CATEGORIES */
         .category-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
         .cat-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 12px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-weight: 500; font-size: 0.75rem; }
         .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        
         /* MATCH CARDS */
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; }
         .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
@@ -68,6 +93,7 @@
     </style>
 </head>
 <body data-google-ads-preview="true">
+
 <nav class="navbar">
     <div class="nav-container content-width">
         <a href="/" class="logo-box">
@@ -82,6 +108,16 @@
     </div>
 </nav>
 
+<div class="top-leagues-bar">
+    <div class="content-width px-3">
+        {% for league in top_leagues %}
+        <a href="javascript:void(0)" onclick="setCategory('{{ league }}', this)" class="league-link">
+            <i class="bi bi-star-fill me-1 text-warning" style="font-size: 0.7rem;"></i>{{ league }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
 <div class="container mt-3 content-width">
     <div class="mb-4">
         <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
@@ -89,6 +125,7 @@
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
+    
     <div id="loader" class="text-center py-5" style="display:none;"><div class="spinner-border text-primary"></div></div>
     
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
@@ -127,8 +164,9 @@
             <div class="col-lg-4 mb-4">
                 <div class="footer-heading">TOP CATEGORIES</div>
                 <ul class="list-unstyled footer-text">
-                    <li><i class="bi bi-chevron-right me-1"></i> Cricket Highlights</li>
-                    <li><i class="bi bi-chevron-right me-1"></i> Football Highlights</li>
+                    {% for league in top_leagues %}
+                    <li><i class="bi bi-chevron-right me-1"></i> {{ league }}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -138,7 +176,6 @@
 </footer>
 
 <script>
-    // THEME LOGIC
     const themeBtn = document.getElementById('themeSwitch');
     const searchInput = document.getElementById('searchInput');
     const doc = document.documentElement;
@@ -159,7 +196,6 @@
         } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
     }
 
-    // DATA HANDLING (Python injects all data here)
     let allMatches = {{ matches | tojson }}; 
     let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 18;
@@ -179,10 +215,15 @@
 
     function setCategory(cat, btn) {
         document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        // Find and highlight the category button if it exists
+        const catButtons = document.querySelectorAll('.cat-btn');
+        catButtons.forEach(b => { if(b.innerText === cat) b.classList.add('active'); });
+
         currentCat = cat;
         currentPage = 1;
         applyFilters();
+        // Smooth scroll to top of results
+        window.scrollTo({ top: 150, behavior: 'smooth' });
     }
 
     searchInput.addEventListener('input', () => {
@@ -247,14 +288,12 @@
         let end = Math.min(totalPages, start + maxVisible - 1);
         if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
 
-        // Prev
         const prev = document.createElement('button');
         prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
         prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
         prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
         container.appendChild(prev);
 
-        // Numbers
         for (let i = start; i <= end; i++) {
             const btn = document.createElement('button'); 
             btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
@@ -263,7 +302,6 @@
             container.appendChild(btn);
         }
 
-        // Next
         const next = document.createElement('button');
         next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
         next.innerHTML = '<i class="bi bi-chevron-right"></i>';
