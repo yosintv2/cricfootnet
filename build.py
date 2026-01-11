@@ -10,16 +10,6 @@ API_URL = "https://yosintv-api.pages.dev/api/highlights.json"
 OUTPUT_DIR = "dist"
 DOMAIN = "www.cricfoot.net"
 
-# 2. Top Leagues Filter (Used for the Menu in the HTML)
-TOP_LEAGUES = [
-    "Premier League", 
-    "La Liga", 
-    "Serie A", 
-    "Bundesliga", 
-    "Ligue 1", 
-    "UEFA Champions League"
-]
-
 def slugify(text):
     """
     Creates a clean, URL-safe slug. 
@@ -34,10 +24,10 @@ def slugify(text):
     # Replace '&' with 'and'
     text = text.replace('&', 'and')
     
-    # Remove dots (e.g., 1. FC Koln -> 1 fc koln)
+    # Remove dots
     text = text.replace('.', '')
     
-    # Normalize unicode (converts characters like 'ö' to 'o')
+    # Normalize unicode
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('ascii')
     
     # Remove everything except a-z, 0-9, spaces, and hyphens
@@ -81,7 +71,7 @@ def build():
         m_date = m.get('date')
         category = m.get('category', 'Sports')
         
-        # WE DO NOT SKIP ANY MATCHES HERE
+        # Process all matches from the API
         if not t1 or not t2 or not m_date:
             continue
 
@@ -111,14 +101,13 @@ def build():
         elif 'youtu.be/' in link:
             yt_id = link.split('youtu.be/')[1].split('?')[0]
 
-        # Render the Detail HTML (Pass TOP_LEAGUES for the navigation menu)
+        # Render the Detail HTML
         detail_html = detail_tpl.render(
             match=m,
             yt_id=yt_id,
             seo_title=seo_title,
             seo_desc=seo_desc,
-            url_slug=url_slug,
-            top_leagues=TOP_LEAGUES
+            url_slug=url_slug
         )
         
         with open(os.path.join(match_dir, "index.html"), "w", encoding="utf-8") as f:
@@ -126,13 +115,12 @@ def build():
             
         valid_matches.append(m)
 
-    # Generate Homepage (Pass TOP_LEAGUES for the navigation menu)
+    # Generate Homepage
     print(f"Generating Homepage with {len(valid_matches)} matches...")
     valid_matches.sort(key=lambda x: x.get('date', ''), reverse=True)
     
     with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
-        # We pass BOTH 'matches' (all matches) and 'top_leagues' (filtered list)
-        f.write(home_tpl.render(matches=valid_matches, top_leagues=TOP_LEAGUES))
+        f.write(home_tpl.render(matches=valid_matches))
 
     # Generate Sitemap.xml
     print("Generating Sitemap.xml...")
