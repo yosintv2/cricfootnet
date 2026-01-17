@@ -191,7 +191,7 @@
     // DATA HANDLING (Python injects all data here)
     let allMatches = {{ matches | tojson }}; 
     let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
-    const matchesPerPage = 18;
+    const matchesPerPage = 30;
 
     function init() {
         renderCategories();
