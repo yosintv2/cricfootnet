@@ -449,6 +449,19 @@
     const matchesPerPage = 30;
 
     function init() {
+        // Fix: Detect search query from URL (?q=keyword)
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlQuery = urlParams.get('q') || urlParams.get('cat');
+        
+        if (urlQuery) {
+            // Check if it's a category or search
+            if (urlParams.has('cat')) {
+                currentCat = urlQuery;
+            } else {
+                searchInput.value = urlQuery;
+            }
+        }
+
         renderCategories();
         applyFilters();
     }
@@ -477,11 +490,26 @@
         applyFilters();
     });
 
+    // Helper to normalize text (handles accents like Mazatlán)
+    function normalizeText(text) {
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
     function applyFilters() {
-        const query = searchInput.value.toLowerCase().trim();
+        const query = normalizeText(searchInput.value.trim());
         filteredMatches = allMatches.filter(m => {
             const matchesCat = (currentCat === 'All' || m.category === currentCat);
-            const matchesSearch = !query || m.team1.toLowerCase().includes(query) || m.team2.toLowerCase().includes(query);
+            
+            // Fix: Use normalized text comparison
+            const t1 = normalizeText(m.team1);
+            const t2 = normalizeText(m.team2);
+            const cat = normalizeText(m.category);
+            
+            const matchesSearch = !query || 
+                                 t1.includes(query) || 
+                                 t2.includes(query) || 
+                                 cat.includes(query);
+                                 
             return matchesCat && matchesSearch;
         });
         updateDisplay();
@@ -494,6 +522,13 @@
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
         let htmlContent = "";
+        
+        if (pageItems.length === 0) {
+            grid.innerHTML = '<div class="col-12 text-center py-5 opacity-50">No matches found for this search.</div>';
+            renderPagination();
+            return;
+        }
+
         pageItems.forEach((m, index) => {
             const isRecent = new Date(m.date) >= threshold;
             const thumbUrl = getYouTubeThumbnail(m.link);
