@@ -193,18 +193,18 @@
     let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 30;
 
+    // Helper to normalize text (handles accents like Mazatlán)
+    function normalizeText(text) {
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
     function init() {
-        // Fix: Detect search query from URL (?q=keyword)
+        // Search Fix: Check URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const urlQuery = urlParams.get('q') || urlParams.get('cat');
+        const q = urlParams.get('q');
         
-        if (urlQuery) {
-            // Check if it's a category or search
-            if (urlParams.has('cat')) {
-                currentCat = urlQuery;
-            } else {
-                searchInput.value = urlQuery;
-            }
+        if (q) {
+            searchInput.value = q;
         }
 
         renderCategories();
@@ -235,17 +235,12 @@
         applyFilters();
     });
 
-    // Helper to normalize text (handles accents like Mazatlán)
-    function normalizeText(text) {
-        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    }
-
     function applyFilters() {
         const query = normalizeText(searchInput.value.trim());
         filteredMatches = allMatches.filter(m => {
             const matchesCat = (currentCat === 'All' || m.category === currentCat);
             
-            // Fix: Use normalized text comparison
+            // Search Fix: Use normalized text comparison
             const t1 = normalizeText(m.team1);
             const t2 = normalizeText(m.team2);
             const cat = normalizeText(m.category);
@@ -267,7 +262,8 @@
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
         let htmlContent = "";
-        
+        let adsToPush = 0; // Counter for ads
+
         if (pageItems.length === 0) {
             grid.innerHTML = '<div class="col-12 text-center py-5 opacity-50">No matches found for this search.</div>';
             renderPagination();
@@ -296,10 +292,18 @@
             </div>`;
 
             if ((index + 1) % 6 === 0) {
-                htmlContent += `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script></div>`;
+                htmlContent += `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins></div>`;
+                adsToPush++;
             }
         });
+
         grid.innerHTML = htmlContent;
+
+        // AdSense Fix: Trigger ads AFTER injecting HTML
+        for(let i = 0; i < adsToPush; i++) {
+            try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        }
+
         renderPagination();
     }
 
