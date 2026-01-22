@@ -90,7 +90,7 @@ def build():
             os.makedirs(match_dir)
 
         # SEO Metadata
-        seo_title = f"{t1} vs {t2} Highlights ({m_date}) - {category}"
+        seo_title = f"{t1} vs {t2} Highlights - {category}"
         seo_desc = f"Watch {t1} vs {t2} match highlights from {m_date}. HD video replays and match report on CricFoot."
         
         # YouTube ID extraction
