@@ -28,6 +28,7 @@
         .google-auto-placed, .ad-top, .adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
         .content-width { max-width: 1000px; margin: 0 auto; width: 100%; }
+        
         /* NAVBAR */
         .navbar { backdrop-filter: blur(12px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0.6rem 0; position: sticky; top: 0; z-index: 1000; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; gap: 15px; }
@@ -39,22 +40,19 @@
         .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
         .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         
-        /* UPDATED CATEGORIES FOR MOBILE SCROLLING */
+        /* CATEGORIES */
         .category-grid { 
             display: flex; 
-            flex-wrap: nowrap; /* Prevent wrapping */
-            overflow-x: auto;  /* Allow horizontal scroll */
+            flex-wrap: nowrap; 
+            overflow-x: auto; 
             overflow-y: hidden;
             gap: 8px; 
             margin: 1rem 0; 
-            padding-bottom: 5px; /* Space for scrollbar if visible */
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            padding-bottom: 5px; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
         }
-        .category-grid::-webkit-scrollbar {
-            display: none; /* Hide scrollbar Chrome/Safari */
-        }
-        
+        .category-grid::-webkit-scrollbar { display: none; }
         .cat-btn { 
             background: var(--bg-card); 
             border: 1px solid var(--border); 
@@ -65,19 +63,23 @@
             transition: 0.2s; 
             font-weight: 500; 
             font-size: 0.8rem; 
-            white-space: nowrap; /* Keep text on one line */
-            flex: 0 0 auto; /* Prevent buttons from shrinking */
+            white-space: nowrap; 
+            flex: 0 0 auto; 
         }
         .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
         
         /* MATCH CARDS */
-        .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; }
+        .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; position: relative; }
         .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
         .thumb-box img.main-thumb { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* PRIORITY BADGE */
+        .priority-badge { position: absolute; top: 8px; right: 8px; background: var(--accent); color: white; border-radius: 4px; font-weight: 800; padding: 2px 8px; font-size: 10px; z-index: 15; letter-spacing: 0.5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.2); }
         .recent-badge { position: absolute; top: 8px; left: 8px; background: #ff0000; color: white; border-radius: 3px; font-weight: 700; display: flex; align-items: center; z-index: 10; padding: 2px 6px; font-size: 10px; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .blink-dot { background: white; border-radius: 50%; animation: blinker 1.2s infinite; width: 5px; height: 5px; }
         @keyframes blinker { 50% { opacity: 0; } }
+        
         .card-content { padding: 0.8rem; }
         .match-title { font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 8px; line-height: 1.3; }
         .match-title b { color: var(--accent); font-weight: 800; }
@@ -86,6 +88,7 @@
         .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; border: 1px solid var(--border); }
         .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
         .page-link.disabled { opacity: 0.4; cursor: not-allowed; }
+        
         footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
         .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
         .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
@@ -112,8 +115,8 @@
 
 <div class="container mt-3 content-width">
     <div class="mb-4">
-        <h1 class="fw-bold h4">Latest Cricket & Football Highlights</h1>
-        <p class="footer-text">Watch HD replays of your favorite matches. Fast loading highlights.</p>
+        <h1 class="fw-bold h4">Top Priority Highlights</h1>
+        <p class="footer-text">Watch HD replays of your favorite teams. Major matches are prioritized at the top.</p>
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
@@ -121,11 +124,16 @@
     <div id="loader" class="text-center py-5" style="display:none;"><div class="spinner-border text-primary"></div></div>
     
     <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
-        {% for m in matches[:18] %}
+        {% for m in matches[:30] %}
         <div class="col">
             <a href="/highlights/{{ m.url_slug }}/" class="match-card">
                 <div class="thumb-box">
-                    <img src="https://img.youtube.com/vi/{{ m.link.split('v=')[1].split('&')[0] if 'v=' in m.link else '' }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
+                    {% if loop.index <= 6 %}
+                    <div class="priority-badge">TOP</div>
+                    {% endif %}
+                    
+                    {% set video_id = m.link.split('v=')[1].split('&')[0] if 'v=' in m.link else '' %}
+                    <img src="https://img.youtube.com/vi/{{ video_id }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
                 </div>
                 <div class="card-content">
                     <span class="match-title">{{ m.team1 }} vs {{ m.team2 }} — <b>{{ m.category }}</b></span>
@@ -188,24 +196,19 @@
         } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
     }
 
-    // DATA HANDLING (Python injects all data here)
+    // DATA HANDLING
     let allMatches = {{ matches | tojson }}; 
     let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 30;
 
-    // Helper to normalize text (handles accents like Mazatlán)
     function normalizeText(text) {
         return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
 
     function init() {
-        // Search Fix: Check URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const q = urlParams.get('q');
-        
-        if (q) {
-            searchInput.value = q;
-        }
+        if (q) { searchInput.value = q; }
 
         renderCategories();
         applyFilters();
@@ -225,8 +228,6 @@
         currentCat = cat;
         currentPage = 1;
         applyFilters();
-        
-        // Mobile UX: Scroll the clicked button into view
         btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
 
@@ -239,17 +240,11 @@
         const query = normalizeText(searchInput.value.trim());
         filteredMatches = allMatches.filter(m => {
             const matchesCat = (currentCat === 'All' || m.category === currentCat);
-            
-            // Search Fix: Use normalized text comparison
             const t1 = normalizeText(m.team1);
             const t2 = normalizeText(m.team2);
             const cat = normalizeText(m.category);
             
-            const matchesSearch = !query || 
-                                 t1.includes(query) || 
-                                 t2.includes(query) || 
-                                 cat.includes(query);
-                                 
+            const matchesSearch = !query || t1.includes(query) || t2.includes(query) || cat.includes(query);
             return matchesCat && matchesSearch;
         });
         updateDisplay();
@@ -262,7 +257,7 @@
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
         let htmlContent = "";
-        let adsToPush = 0; // Counter for ads
+        let adsToPush = 0;
 
         if (pageItems.length === 0) {
             grid.innerHTML = '<div class="col-12 text-center py-5 opacity-50">No matches found for this search.</div>';
@@ -271,6 +266,9 @@
         }
 
         pageItems.forEach((m, index) => {
+            // Check original index for Priority Badge logic
+            const originalIndex = allMatches.indexOf(m);
+            const isPriority = originalIndex >= 0 && originalIndex < 6;
             const isRecent = new Date(m.date) >= threshold;
             const thumbUrl = getYouTubeThumbnail(m.link);
 
@@ -278,7 +276,8 @@
             <div class="col">
                 <a href="/highlights/${m.url_slug}/" class="match-card">
                     <div class="thumb-box">
-                        ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
+                        ${isPriority ? '<div class="priority-badge">TOP</div>' : ''}
+                        ${isRecent && !isPriority ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
                         <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
                     </div>
                     <div class="card-content">
@@ -299,11 +298,9 @@
 
         grid.innerHTML = htmlContent;
 
-        // AdSense Fix: Trigger ads AFTER injecting HTML
         for(let i = 0; i < adsToPush; i++) {
             try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
         }
-
         renderPagination();
     }
 
@@ -318,14 +315,12 @@
         let end = Math.min(totalPages, start + maxVisible - 1);
         if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
 
-        // Prev
         const prev = document.createElement('button');
         prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
         prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
         prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
         container.appendChild(prev);
 
-        // Numbers
         for (let i = start; i <= end; i++) {
             const btn = document.createElement('button'); 
             btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
@@ -334,7 +329,6 @@
             container.appendChild(btn);
         }
 
-        // Next
         const next = document.createElement('button');
         next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
         next.innerHTML = '<i class="bi bi-chevron-right"></i>';
