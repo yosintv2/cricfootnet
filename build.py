@@ -138,6 +138,11 @@ def build():
     with open(os.path.join(OUTPUT_DIR, "CNAME"), "w", encoding="utf-8") as f:
         f.write(DOMAIN)
 
+    # --- ADD ADS.TXT ---
+    print("Generating ads.txt...")
+    with open(os.path.join(OUTPUT_DIR, "ads.txt"), "w", encoding="utf-8") as f:
+        f.write("google.com, pub-5525538810839147, DIRECT, f08c47fec0942fa0")
+
     print(f"--- BUILD SUCCESSFUL: {len(valid_matches)} matches included ---")
 
 if __name__ == "__main__":
