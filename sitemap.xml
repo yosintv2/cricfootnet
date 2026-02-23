@@ -2,8 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.cricfoot.net/</loc><priority>1.0</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/la-galaxy-vs-new-york-city-2026-02-23/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/seattle-sounders-vs-colorado-rapids-2026-02-23/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/america-de-cali-vs-jaguares-de-cordoba-2026-02-23/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/club-atletico-union-de-santa-fe-vs-aldosivi-2026-02-23/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/san-carlos-vs-herediano-2026-02-23/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/csd-xelaju-mc-vs-deportivo-mixco-2026-02-23/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/paraguay-u20-vs-colombia-u20-2026-02-23/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/nottingham-forest-vs-liverpool-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/tottenham-hotspur-vs-arsenal-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/milan-vs-parma-2026-02-22/</loc><priority>0.8</priority></url>
@@ -14,6 +18,7 @@
   <url><loc>https://www.cricfoot.net/highlights/internacional-de-bogota-vs-millonarios-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/bayern-munchen-vs-vfl-wolfsburg-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/central-norte-de-salta-vs-club-atletico-colon-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/accra-hearts-of-oak-vs-berekum-chelsea-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/1o-dezembro-vs-atletico-cp-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/crystal-palace-vs-wolverhampton-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sunderland-vs-fulham-2026-02-22/</loc><priority>0.8</priority></url>
@@ -30,6 +35,7 @@
   <url><loc>https://www.cricfoot.net/highlights/nantes-vs-le-havre-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/nice-vs-lorient-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/rc-strasbourg-vs-olympique-lyonnais-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/twente-vs-groningen-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/feyenoord-vs-sc-telstar-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/kayserispor-vs-antalyaspor-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/gaziantep-fk-vs-trabzonspor-2026-02-22/</loc><priority>0.8</priority></url>
@@ -89,17 +95,23 @@
   <url><loc>https://www.cricfoot.net/highlights/macara-vs-leones-del-norte-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/delfin-vs-deportivo-cuenca-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/independiente-del-valle-vs-guayaquil-city-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/bengaluru-vs-northeast-united-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/kerala-blasters-vs-mumbai-city-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cienciano-vs-alianza-atletico-de-sullana-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/asociacion-deportiva-tarma-vs-universidad-tecnica-de-cajamarca-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/los-chankas-cyc-vs-sport-huancayo-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/club-atletico-grau-vs-adc-juan-pablo-ii-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/cusco-vs-comerciantes-unidos-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/arges-pitesti-vs-farul-constanta-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/a-unirea-04-slobozia-vs-universitatea-craiova-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/brisbane-roar-vs-adelaide-united-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-gharafa-vs-al-shamal-sc-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-rayyan-vs-al-ahli-doha-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-wakrah-vs-al-sadd-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/ayutthaya-united-vs-bg-pathum-united-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/true-bangkok-united-vs-muang-thong-united-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/k-beerschot-va-vs-rwdm-brussels-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/patro-eisden-maasmechelen-vs-sk-beveren-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/le-havre-ac-vs-paris-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/ternana-vs-juventus-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/inter-vs-as-roma-2026-02-22/</loc><priority>0.8</priority></url>
@@ -116,6 +128,8 @@
   <url><loc>https://www.cricfoot.net/highlights/san-lorenzo-vs-estudiantes-de-rio-cuarto-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/velez-sarsfield-vs-river-plate-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/chaco-for-ever-vs-san-telmo-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/club-atletico-chacarita-juniors-vs-gimnasia-jujuy-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/defensores-de-belgrano-vs-godoy-cruz-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/imisli-fk-vs-samax-fk-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sabah-fk-vs-kpz-pfk-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/hsk-zrinjski-mostar-vs-nk-siroki-brijeg-2026-02-22/</loc><priority>0.8</priority></url>
@@ -145,6 +159,8 @@
   <url><loc>https://www.cricfoot.net/highlights/tsg-hoffenheim-ii-u23-vs-viktoria-koln-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/1-lokomotive-leipzig-vs-eilenburg-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/z-meuselwitz-vs-fsv-zwickau-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/samartex-vs-medeama-sc-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/young-apostles-vs-asante-kotoko-sc-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/csd-municipal-vs-antigua-g-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/deportivo-guastatoya-vs-coban-imperial-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/aurora-vs-comunicaciones-2026-02-22/</loc><priority>0.8</priority></url>
@@ -214,6 +230,7 @@
   <url><loc>https://www.cricfoot.net/highlights/penarol-vs-deportivo-maldonado-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/trujillanos-vs-portuguesa-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/caracas-fc-vs-universidad-central-2026-02-22/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/monagas-vs-deportivo-tachira-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sunderland-vs-fulham-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sheffield-united-vs-sheffield-wednesday-2026-02-22/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sc-freiburg-vs-borussia-mgladbach-2026-02-22/</loc><priority>0.8</priority></url>
@@ -353,6 +370,9 @@
   <url><loc>https://www.cricfoot.net/highlights/al-duhail-vs-al-arabi-sc-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-wasl-vs-al-bataeh-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-ittihad-kalba-vs-dibba-al-fujairah-2026-02-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/kas-eupen-vs-royal-francs-borains-2026-02-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/ksc-lokeren-vs-lommel-sk-2026-02-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/koninklijke-lierse-sportkring-vs-kaa-gent-reserve-u23-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/saint-etienne-vs-strasbourg-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fleury-91-vs-dijon-o-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/nantes-vs-montpellier-hsc-2026-02-21/</loc><priority>0.8</priority></url>
@@ -481,6 +501,7 @@
   <url><loc>https://www.cricfoot.net/highlights/lexington-sc-vs-sporting-jacksonville-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/epicentr-dunaivtsi-vs-lnz-cherkasy-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/metalist-1925-vs-kryvbas-kryvyi-rih-2026-02-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/boston-river-vs-albion-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/progreso-vs-nacional-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/rayo-zuliano-vs-academia-puerto-cabello-2026-02-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/barry-town-vs-connahs-quay-nomads-2026-02-21/</loc><priority>0.8</priority></url>
