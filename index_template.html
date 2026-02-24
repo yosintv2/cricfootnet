@@ -38,39 +38,18 @@
         .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
         .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
         .theme-toggle { width: 35px; height: 35px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        
-        /* UPDATED CATEGORIES FOR MOBILE SCROLLING */
         .category-grid { 
-            display: flex; 
-            flex-wrap: nowrap; /* Prevent wrapping */
-            overflow-x: auto;  /* Allow horizontal scroll */
-            overflow-y: hidden;
-            gap: 8px; 
-            margin: 1rem 0; 
-            padding-bottom: 5px; /* Space for scrollbar if visible */
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            display: flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;
+            gap: 8px; margin: 1rem 0; padding-bottom: 5px;
+            scrollbar-width: none; -ms-overflow-style: none;
         }
-        .category-grid::-webkit-scrollbar {
-            display: none; /* Hide scrollbar Chrome/Safari */
-        }
-        
+        .category-grid::-webkit-scrollbar { display: none; }
         .cat-btn { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            color: var(--text-main); 
-            padding: 6px 15px; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            font-weight: 500; 
-            font-size: 0.8rem; 
-            white-space: nowrap; /* Keep text on one line */
-            flex: 0 0 auto; /* Prevent buttons from shrinking */
+            background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); 
+            padding: 6px 15px; border-radius: 50px; cursor: pointer; transition: 0.2s; 
+            font-weight: 500; font-size: 0.8rem; white-space: nowrap; flex: 0 0 auto;
         }
         .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        
-        /* MATCH CARDS */
         .match-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; height: 100%; transition: 0.3s; text-decoration: none; display: block; }
         .match-card:hover { transform: translateY(-4px); border-color: var(--accent); }
         .thumb-box { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
@@ -83,19 +62,30 @@
         .match-title b { color: var(--accent); font-weight: 800; }
         .ad-container { grid-column: 1 / -1; width: 100%; margin: 15px 0; text-align: center; }
         .pagination-container { display: flex; justify-content: center; gap: 6px; margin: 2rem 0; flex-wrap: wrap; }
-        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; border: 1px solid var(--border); }
+        .page-link { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
         .page-link.active { background: var(--accent); color: white; border-color: var(--accent); }
         .page-link.disabled { opacity: 0.4; cursor: not-allowed; }
         footer { background: var(--bg-card); border-top: 1px solid var(--border); margin-top: 4rem; padding: 3rem 0; }
         .footer-heading { font-weight: 800; font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent); }
         .footer-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* Skeleton loader cards */
+        .skeleton-card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+        .skeleton-thumb { aspect-ratio: 16/9; background: linear-gradient(90deg, var(--border) 25%, var(--bg-main) 50%, var(--border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        .skeleton-line { height: 14px; border-radius: 4px; background: linear-gradient(90deg, var(--border) 25%, var(--bg-main) 50%, var(--border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; margin: 8px 12px; }
+        .skeleton-line.short { width: 50%; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        /* Error state */
+        .error-box { background: var(--bg-card); border: 1px solid #ef4444; border-radius: 12px; padding: 2rem; text-align: center; color: #ef4444; }
+
         @media (max-width: 576px) {
             .nav-container { flex-wrap: wrap; }
             .search-wrapper { order: 3; max-width: 100%; }
         }
     </style>
 </head>
-<body data-google-ads-preview="true">
+<body>
 <nav class="navbar">
     <div class="nav-container content-width">
         <a href="/" class="logo-box">
@@ -117,28 +107,8 @@
     </div>
 
     <div class="category-grid" id="categoryContainer"></div>
-    
-    <div id="loader" class="text-center py-5" style="display:none;"><div class="spinner-border text-primary"></div></div>
-    
-    <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid">
-        {% for m in matches[:18] %}
-        <div class="col">
-            <a href="/highlights/{{ m.url_slug }}/" class="match-card">
-                <div class="thumb-box">
-                    <img src="https://img.youtube.com/vi/{{ m.link.split('v=')[1].split('&')[0] if 'v=' in m.link else '' }}/sddefault.jpg" class="main-thumb" alt="match" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <span class="match-title">{{ m.team1 }} vs {{ m.team2 }} — <b>{{ m.category }}</b></span>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>{{ m.date }}</small>
-                        <span class="btn btn-primary btn-sm fw-bold">Watch</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
 
+    <div class="row row-cols-2 row-cols-lg-3 g-4" id="matchGrid"></div>
     <div class="pagination-container" id="pagination"></div>
 </div>
 
@@ -167,7 +137,11 @@
 </footer>
 
 <script>
-    // THEME LOGIC
+    // ─── CONFIG ───────────────────────────────────────────────────────────────
+    // 👇 Replace this with your actual API endpoint
+    const API_URL = "https://yosintv-api.pages.dev/api/matches";
+    // ──────────────────────────────────────────────────────────────────────────
+
     const themeBtn = document.getElementById('themeSwitch');
     const searchInput = document.getElementById('searchInput');
     const doc = document.documentElement;
@@ -188,33 +162,64 @@
         } catch (e) { return "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"; }
     }
 
-    // DATA HANDLING (Python injects all data here)
-    let allMatches = {{ matches | tojson }}; 
-    let filteredMatches = [...allMatches], currentPage = 1, currentCat = 'All';
+    function normalizeText(text) {
+        return (text || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
+    let allMatches = [], filteredMatches = [], currentPage = 1, currentCat = 'All';
     const matchesPerPage = 30;
 
-    // Helper to normalize text (handles accents like Mazatlán)
-    function normalizeText(text) {
-        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    // ─── SKELETON LOADER ──────────────────────────────────────────────────────
+    function showSkeletons(count = 6) {
+        const grid = document.getElementById('matchGrid');
+        grid.innerHTML = Array.from({ length: count }, () => `
+            <div class="col">
+                <div class="skeleton-card">
+                    <div class="skeleton-thumb"></div>
+                    <div class="skeleton-line mt-2"></div>
+                    <div class="skeleton-line short"></div>
+                </div>
+            </div>
+        `).join('');
     }
 
-    function init() {
-        // Search Fix: Check URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const q = urlParams.get('q');
-        
-        if (q) {
-            searchInput.value = q;
+    // ─── FETCH FROM API ───────────────────────────────────────────────────────
+    async function fetchMatches() {
+        showSkeletons(6);
+        try {
+            const res = await fetch(API_URL);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+
+            // Flexible: support { matches: [] } or plain array
+            allMatches = Array.isArray(data) ? data : (data.matches || data.data || []);
+
+            if (!allMatches.length) throw new Error("No matches returned from API");
+
+            filteredMatches = [...allMatches];
+            renderCategories();
+            applyFilters();
+        } catch (err) {
+            console.error("API fetch failed:", err);
+            document.getElementById('matchGrid').innerHTML = `
+                <div class="col-12">
+                    <div class="error-box">
+                        <i class="bi bi-exclamation-triangle-fill fs-2 mb-3 d-block"></i>
+                        <strong>Could not load matches.</strong><br>
+                        <small class="text-muted">${err.message}</small><br><br>
+                        <button class="btn btn-primary btn-sm" onclick="fetchMatches()">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Retry
+                        </button>
+                    </div>
+                </div>`;
         }
-
-        renderCategories();
-        applyFilters();
     }
 
+    // ─── CATEGORIES ───────────────────────────────────────────────────────────
     function renderCategories() {
         const container = document.getElementById('categoryContainer');
-        const cats = ['All', ...new Set(allMatches.map(m => m.category))];
-        container.innerHTML = cats.map(c => 
+        const cats = ['All', ...new Set(allMatches.map(m => m.category).filter(Boolean))];
+        container.innerHTML = cats.map(c =>
             `<button class="cat-btn ${c === currentCat ? 'active' : ''}" onclick="setCategory('${c}', this)">${c}</button>`
         ).join('');
     }
@@ -225,53 +230,42 @@
         currentCat = cat;
         currentPage = 1;
         applyFilters();
-        
-        // Mobile UX: Scroll the clicked button into view
         btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
 
-    searchInput.addEventListener('input', () => {
-        currentPage = 1;
-        applyFilters();
-    });
+    searchInput.addEventListener('input', () => { currentPage = 1; applyFilters(); });
 
     function applyFilters() {
         const query = normalizeText(searchInput.value.trim());
         filteredMatches = allMatches.filter(m => {
             const matchesCat = (currentCat === 'All' || m.category === currentCat);
-            
-            // Search Fix: Use normalized text comparison
             const t1 = normalizeText(m.team1);
             const t2 = normalizeText(m.team2);
             const cat = normalizeText(m.category);
-            
-            const matchesSearch = !query || 
-                                 t1.includes(query) || 
-                                 t2.includes(query) || 
-                                 cat.includes(query);
-                                 
+            const matchesSearch = !query || t1.includes(query) || t2.includes(query) || cat.includes(query);
             return matchesCat && matchesSearch;
         });
         updateDisplay();
     }
 
+    // ─── RENDER CARDS ─────────────────────────────────────────────────────────
     function updateDisplay() {
         const start = (currentPage - 1) * matchesPerPage;
         const pageItems = filteredMatches.slice(start, start + matchesPerPage);
         const grid = document.getElementById('matchGrid');
         const threshold = new Date(new Date().getTime() - (48 * 60 * 60 * 1000));
 
-        let htmlContent = "";
-        let adsToPush = 0; // Counter for ads
-
         if (pageItems.length === 0) {
-            grid.innerHTML = '<div class="col-12 text-center py-5 opacity-50">No matches found for this search.</div>';
+            grid.innerHTML = '<div class="col-12 text-center py-5 opacity-50">No matches found.</div>';
             renderPagination();
             return;
         }
 
+        let htmlContent = "";
+        let adsToPush = 0;
+
         pageItems.forEach((m, index) => {
-            const isRecent = new Date(m.date) >= threshold;
+            const isRecent = m.date ? new Date(m.date) >= threshold : false;
             const thumbUrl = getYouTubeThumbnail(m.link);
 
             htmlContent += `
@@ -279,12 +273,12 @@
                 <a href="/highlights/${m.url_slug}/" class="match-card">
                     <div class="thumb-box">
                         ${isRecent ? '<div class="recent-badge"><div class="blink-dot"></div>RECENT</div>' : ''}
-                        <img src="${thumbUrl}" class="main-thumb" alt="match" loading="lazy">
+                        <img src="${thumbUrl}" class="main-thumb" alt="${m.team1} vs ${m.team2}" loading="lazy">
                     </div>
                     <div class="card-content">
                         <span class="match-title">${m.team1} vs ${m.team2} — <b>${m.category}</b></span>
                         <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>${m.date}</small>
+                            <small class="text-muted" style="font-size: 0.7rem;"><i class="bi bi-calendar3 me-1"></i>${m.date || ''}</small>
                             <span class="btn btn-primary btn-sm fw-bold">Watch</span>
                         </div>
                     </div>
@@ -299,14 +293,14 @@
 
         grid.innerHTML = htmlContent;
 
-        // AdSense Fix: Trigger ads AFTER injecting HTML
-        for(let i = 0; i < adsToPush; i++) {
+        for (let i = 0; i < adsToPush; i++) {
             try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
         }
 
         renderPagination();
     }
 
+    // ─── PAGINATION ───────────────────────────────────────────────────────────
     function renderPagination() {
         const totalPages = Math.ceil(filteredMatches.length / matchesPerPage);
         const container = document.getElementById('pagination');
@@ -318,31 +312,34 @@
         let end = Math.min(totalPages, start + maxVisible - 1);
         if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
 
-        // Prev
         const prev = document.createElement('button');
         prev.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
         prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
-        prev.onclick = () => { if(currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0,0); } };
+        prev.onclick = () => { if (currentPage > 1) { currentPage--; updateDisplay(); window.scrollTo(0, 0); } };
         container.appendChild(prev);
 
-        // Numbers
         for (let i = start; i <= end; i++) {
-            const btn = document.createElement('button'); 
+            const btn = document.createElement('button');
             btn.className = `page-link ${i === currentPage ? 'active' : ''}`;
             btn.innerText = i;
-            btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo(0,0); }; 
+            btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo(0, 0); };
             container.appendChild(btn);
         }
 
-        // Next
         const next = document.createElement('button');
         next.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
         next.innerHTML = '<i class="bi bi-chevron-right"></i>';
-        next.onclick = () => { if(currentPage < totalPages) { currentPage++; updateDisplay(); window.scrollTo(0,0); } };
+        next.onclick = () => { if (currentPage < totalPages) { currentPage++; updateDisplay(); window.scrollTo(0, 0); } };
         container.appendChild(next);
     }
 
-    window.onload = init;
+    // ─── INIT ─────────────────────────────────────────────────────────────────
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const q = urlParams.get('q');
+        if (q) searchInput.value = q;
+        fetchMatches();
+    };
 </script>
 
 <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
