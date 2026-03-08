@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.cricfoot.net/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/genoa-vs-roma-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/slavia-mozyr-vs-arsenal-dzerzhinsk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sparta-rotterdam-vs-pec-zwolle-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/gaziantep-fk-vs-fatih-karagumruk-2026-03-08/</loc><priority>0.8</priority></url>
@@ -30,6 +31,7 @@
   <url><loc>https://www.cricfoot.net/highlights/birmingham-legion-vs-tampa-bay-rowdies-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/san-antonio-vs-phoenix-rising-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/el-paso-locomotive-vs-colorado-springs-switchbacks-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/orange-county-sc-vs-las-vegas-lights-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sacramento-republic-vs-tulsa-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/north-texas-sc-vs-colorado-rapids-2-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/naples-vs-fort-wayne-2026-03-08/</loc><priority>0.8</priority></url>
@@ -43,6 +45,7 @@
   <url><loc>https://www.cricfoot.net/highlights/hwaseong-vs-gimhae-city-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/australia-vs-south-korea-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/iran-vs-philippines-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/samax-fk-vs-imisli-fk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/dynamo-brest-vs-ml-vitebsk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/san-carlos-vs-ld-alajuelense-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/i-levadia-tallinn-vs-kuressaare-2026-03-08/</loc><priority>0.8</priority></url>
@@ -76,17 +79,23 @@
   <url><loc>https://www.cricfoot.net/highlights/pvf-cong-an-nhan-dan-vs-thep-xanh-nam-inh-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/villarreal-vs-elche-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/getafe-vs-real-betis-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/sevilla-vs-rayo-vallecano-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/st-pauli-vs-eintracht-frankfurt-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/1-union-berlin-vs-sv-werder-bremen-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cf-estrela-amadora-vs-gil-vicente-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/konyaspor-vs-kasmpasa-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fulham-vs-southampton-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/port-vale-vs-sunderland-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/leeds-united-vs-norwich-city-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/hnk-hajduk-split-vs-gnk-dinamo-zagreb-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-radnik-surdulica-vs-fk-radnicki-nis-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-crvena-zvezda-vs-fk-napredak-krusevac-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-spartak-subotica-vs-fk-imt-beograd-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/fk-vojvodina-vs-fk-partizan-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/las-palmas-vs-ad-ceuta-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/andorra-vs-sporting-gijon-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/leganes-vs-eibar-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/real-racing-club-vs-cordoba-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/catanzaro-vs-empoli-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/frosinone-vs-sampdoria-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/mantova-vs-juve-stabia-2026-03-08/</loc><priority>0.8</priority></url>
@@ -94,13 +103,16 @@
   <url><loc>https://www.cricfoot.net/highlights/sc-cambuur-vs-jong-utrecht-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/boluspor-vs-igdr-fk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/radomiak-radom-vs-gks-katowice-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/rakow-czestochowa-vs-pogon-szczecin-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/aucas-vs-deportivo-cuenca-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sc-otelul-galati-vs-hermannstadt-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/arges-pitesti-vs-a-unirea-04-slobozia-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/rapid-bucuresti-vs-universitatea-craiova-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/bg-pathum-united-vs-chonburi-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/mtk-budapest-vs-diosgyori-vtk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/qarabag-fk-vs-araz-naxcvan-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cska-sofia-vs-lokomotiv-sofia-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/cs-cartagines-vs-puntarenas-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/apollon-limassol-vs-ael-limassol-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/enosis-neon-paralimniou-vs-aris-limassol-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/apoel-nicosia-vs-anorthosis-famagusta-2026-03-08/</loc><priority>0.8</priority></url>
@@ -108,6 +120,7 @@
   <url><loc>https://www.cricfoot.net/highlights/sv-waldhof-mannheim-vs-tsv-havelse-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/msv-duisburg-vs-1-saarbrucken-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/1-lokomotive-leipzig-vs-carl-zeiss-jena-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/z-meuselwitz-vs-vsg-altglienicke-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/vfl-bochum-1848-ii-vs-sc-wiedenbruck-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/08-homburg-vs-kickers-offenbach-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/accra-hearts-of-oak-vs-basake-holy-stars-2026-03-08/</loc><priority>0.8</priority></url>
@@ -127,15 +140,23 @@
   <url><loc>https://www.cricfoot.net/highlights/polonia-bytom-vs-ruch-chorzow-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/leixoes-sc-vs-uniao-de-leiria-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/maritimo-vs-porto-b-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/torpedo-moscow-vs-rodina-moscow-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/rangers-vs-celtic-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/nk-olimpija-ljubljana-vs-nk-maribor-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/ifk-goteborg-vs-degerfors-if-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/ostersunds-fk-vs-trelleborgs-ff-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/djurgardens-if-vs-if-brommapojkarna-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/falkenbergs-ff-vs-ifk-skovde-fk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/malmo-ff-vs-halmstads-bk-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/varbergs-bois-vs-if-karlstad-fotboll-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/helsingborgs-if-vs-gif-sundsvall-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/if-elfsborg-vs-ik-sirius-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/lexington-sc-vs-dallas-trinity-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/karpaty-lviv-vs-kudrivka-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/polissya-zhytomyr-vs-dynamo-kyiv-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/racing-de-montevideo-vs-cerro-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/ha-noi-vs-cong-an-ha-noi-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/cpd-y-rhyl-1879-vs-caernarfon-town-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/atlas-vs-cd-guadalajara-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/athletic-club-vs-barcelona-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sc-freiburg-vs-bayer-04-leverkusen-2026-03-07/</loc><priority>0.8</priority></url>
@@ -277,6 +298,7 @@
   <url><loc>https://www.cricfoot.net/highlights/fk-sloga-doboj-vs-fk-zeljeznicar-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-borac-banja-luka-vs-nk-siroki-brijeg-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/botafogo-vs-bangu-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/monsoon-vs-guarany-de-bage-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/botafogo-pb-vs-serra-branca-ec-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-septemvri-sofia-vs-cherno-more-varna-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cobreloa-vs-curico-unido-2026-03-07/</loc><priority>0.8</priority></url>
@@ -394,6 +416,7 @@
   <url><loc>https://www.cricfoot.net/highlights/al-bukayriyah-vs-al-adalah-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-faisaly-vs-al-diriyah-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-raed-vs-al-jabalin-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/queen-of-the-south-vs-stenhousemuir-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/dunfermline-athletic-vs-aberdeen-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/msk-zilina-vs-spartak-trnava-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/ns-mura-vs-nd-primorje-2026-03-07/</loc><priority>0.8</priority></url>
