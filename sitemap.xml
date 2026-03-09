@@ -36,6 +36,10 @@
   <url><loc>https://www.cricfoot.net/highlights/caykur-rizespor-vs-antalyaspor-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/konyaspor-vs-kasmpasa-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fenerbahce-vs-samsunspor-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/club-brugge-kv-vs-rsc-anderlecht-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/kaa-gent-vs-kv-mechelen-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/sv-zulte-waregem-vs-standard-liege-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/sint-truidense-vv-vs-cercle-brugge-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fulham-vs-southampton-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/port-vale-vs-sunderland-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/leeds-united-vs-norwich-city-2026-03-08/</loc><priority>0.8</priority></url>
@@ -78,6 +82,7 @@
   <url><loc>https://www.cricfoot.net/highlights/boluspor-vs-igdr-fk-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/bodrum-fk-vs-esenler-erokspor-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/auckland-vs-perth-glory-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/lask-vs-wolfsberger-ac-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sk-rapid-wien-vs-red-bull-salzburg-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sv-ried-vs-fk-austria-wien-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/tsv-hartberg-vs-blau-weiss-linz-2026-03-08/</loc><priority>0.8</priority></url>
@@ -178,7 +183,9 @@
   <url><loc>https://www.cricfoot.net/highlights/msv-duisburg-vs-1-saarbrucken-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/ingolstadt-04-vs-sc-verl-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/hannoverscher-sc-vs-vfb-oldenburg-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/bremer-sv-vs-fsv-schoningen-2011-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/eintracht-norderstedt-vs-st-pauli-ii-u23-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/ssv-jeddeloh-vs-sv-meppen-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/1-lokomotive-leipzig-vs-carl-zeiss-jena-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/z-meuselwitz-vs-vsg-altglienicke-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/vfl-bochum-1848-ii-vs-sc-wiedenbruck-2026-03-08/</loc><priority>0.8</priority></url>
@@ -204,6 +211,7 @@
   <url><loc>https://www.cricfoot.net/highlights/sorrento-vs-benevento-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cavese-vs-az-picerno-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/hellas-verona-u20-vs-frosinone-u20-2026-03-08/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/roma-u20-vs-parma-u20-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/inter-u20-vs-fiorentina-u20-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cagliari-u20-vs-monza-u20-2026-03-08/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fagiano-okayama-vs-kyoto-sanga-2026-03-08/</loc><priority>0.8</priority></url>
@@ -313,6 +321,9 @@
   <url><loc>https://www.cricfoot.net/highlights/psv-eindhoven-vs-az-alkmaar-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/basaksehir-fk-vs-goztepe-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/besiktas-jk-vs-galatasaray-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/oud-heverlee-leuven-vs-kvc-westerlo-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/v-dender-vs-rc-sporting-charleroi-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/royale-union-saint-gilloise-vs-krc-genk-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/aris-thessaloniki-vs-aps-atromitos-athinon-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/dundee-vs-motherwell-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cruz-azul-vs-atletico-san-luis-2026-03-07/</loc><priority>0.8</priority></url>
@@ -465,6 +476,10 @@
   <url><loc>https://www.cricfoot.net/highlights/sv-wehen-wiesbaden-vs-vfb-stuttgart-ii-u21-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/tsg-hoffenheim-ii-u23-vs-rot-weiss-essen-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/ssv-jahn-regensburg-vs-vfl-osnabruck-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/hamburger-sv-ii-u23-vs-sc-weiche-flensburg-08-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/1-phonix-lubeck-vs-sv-drochtersenassel-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/altona-93-vs-vfb-lubeck-2026-03-07/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/blau-weiss-lohne-vs-sv-werder-bremen-ii-u23-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/1-magdeburg-ii-vs-fsv-zwickau-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/greifswalder-vs-berliner-dynamo-2026-03-07/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/hallescher-vs-chemnitzer-2026-03-07/</loc><priority>0.8</priority></url>
