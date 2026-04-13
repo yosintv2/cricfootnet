@@ -9,6 +9,8 @@
   <url><loc>https://www.cricfoot.net/highlights/the-town-vs-minnesota-united-2-2026-04-13/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/rangers-de-talca-vs-san-marcos-de-arica-2026-04-13/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/san-carlos-vs-guadalupe-2026-04-13/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/lnz-cherkasy-vs-shakhtar-donetsk-2026-04-13/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/metaloglobus-bucuresti-vs-fk-csikszereda-miercurea-ciuc-2026-04-13/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/chelsea-vs-manchester-city-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/inter-kashi-vs-mohammedan-sc-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/new-england-revolution-ii-vs-new-york-red-bulls-ii-2026-04-12/</loc><priority>0.8</priority></url>
@@ -146,6 +148,9 @@
   <url><loc>https://www.cricfoot.net/highlights/vancouver-whitecaps-ii-vs-tacoma-defiance-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/spokane-velocity-vs-richmond-kickers-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/av-alta-vs-ac-boise-2026-04-12/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/cska-moscow-vs-sochi-2026-04-12/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/rostov-vs-spartak-moscow-2026-04-12/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/lokomotiv-moscow-vs-dinamo-makhachkala-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/zenit-st-petersburg-vs-krasnodar-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/luton-town-vs-stockport-county-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/daejeon-hana-citizen-vs-gangwon-2026-04-12/</loc><priority>0.8</priority></url>
@@ -195,6 +200,7 @@
   <url><loc>https://www.cricfoot.net/highlights/gutersloh-vs-sc-paderborn-07-ii-u21-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sc-fortuna-koln-vs-schalke-04-ii-u23-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sc-freiburg-ii-u23-vs-eintracht-trier-2026-04-12/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/dreams-vs-eleven-wonders-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/medeama-sc-vs-asante-kotoko-sc-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/antigua-g-vs-csd-municipal-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/cd-marquense-vs-cd-mictlan-2026-04-12/</loc><priority>0.8</priority></url>
@@ -220,7 +226,9 @@
   <url><loc>https://www.cricfoot.net/highlights/team-altamura-vs-giugliano-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/trapani-vs-salernitana-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/potenza-calcio-vs-sorrento-2026-04-12/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/parma-u20-vs-juventus-u20-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fiorentina-u20-vs-sassuolo-u20-2026-04-12/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/frosinone-u20-vs-cagliari-u20-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/urawa-red-diamonds-vs-tokyo-verdy-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/kawasaki-frontale-vs-kashima-antlers-2026-04-12/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/blaublitz-akita-vs-shonan-bellmare-2026-04-12/</loc><priority>0.8</priority></url>
@@ -506,6 +514,7 @@
   <url><loc>https://www.cricfoot.net/highlights/boston-united-vs-truro-city-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/carlisle-united-vs-sutton-united-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/forest-green-rovers-vs-braintree-town-2026-04-11/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/scunthorpe-united-vs-brackley-town-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/southend-united-vs-solihull-moors-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/woking-vs-morecambe-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/yeovil-town-vs-halifax-town-2026-04-11/</loc><priority>0.8</priority></url>
