@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.cricfoot.net/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/1-nurnberg-ii-vs-bayern-munchen-ii-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/gimnasia-y-esgrima-mendoza-vs-ca-lanus-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/tigre-vs-huracan-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/shenzhen-peng-city-vs-beijing-guoan-2026-04-21/</loc><priority>0.8</priority></url>
@@ -18,11 +19,17 @@
   <url><loc>https://www.cricfoot.net/highlights/tianjin-jinmen-tiger-vs-shandong-taishan-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-rudar-prijedor-vs-fk-zeljeznicar-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-jablonec-vs-mlada-boleslav-2026-04-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/mfk-karvina-vs-banik-ostrava-2026-04-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/ac-horsens-vs-esbjerg-fb-2026-04-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/hvidovre-vs-kolding-if-2026-04-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/hillerd-fodbold-vs-lyngby-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/kuressaare-vs-parnu-jk-vaprus-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/dinamo-tbilisi-vs-gagra-2026-04-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/torpedo-kutaisi-vs-samgurali-tskhaltubo-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fk-tukums-2000-vs-b-daugavpils-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/fs-jelgava-vs-fk-auda-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/arges-pitesti-vs-universitatea-cluj-2026-04-21/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.cricfoot.net/highlights/al-diriyah-vs-al-raed-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-arabi-sa-vs-al-bukayriyah-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/al-tai-vs-abha-2026-04-21/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/orebro-sk-vs-ifk-norrkoping-2026-04-21/</loc><priority>0.8</priority></url>
@@ -1663,7 +1670,6 @@
   <url><loc>https://www.cricfoot.net/highlights/nantong-zhiyun-vs-suzhou-dongwu-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/slezsky-opava-vs-zbrojovka-brno-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sk-artis-brno-vs-sellier-and-bellot-vlasim-2026-04-11/</loc><priority>0.8</priority></url>
-  <url><loc>https://www.cricfoot.net/highlights/hillerd-fodbold-vs-ac-horsens-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/aarhus-fremad-vs-boldklubben-af-1893-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/boreham-wood-vs-hartlepool-united-2026-04-11/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/tamworth-vs-york-city-2026-04-11/</loc><priority>0.8</priority></url>
@@ -2775,7 +2781,6 @@
   <url><loc>https://www.cricfoot.net/highlights/zbrojovka-brno-vs-mfk-chrudim-2026-04-04/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/banik-ostrava-b-vs-1fk-pribram-2026-04-04/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sk-hanacka-slavia-kromeriz-vs-sk-artis-brno-2026-04-04/</loc><priority>0.8</priority></url>
-  <url><loc>https://www.cricfoot.net/highlights/ac-horsens-vs-lyngby-2026-04-04/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/i-levadia-tallinn-vs-nomme-united-2026-04-04/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/parnu-jk-vaprus-vs-harju-jalgpallikool-2026-04-04/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/erzgebirge-aue-vs-tsg-hoffenheim-ii-u23-2026-04-04/</loc><priority>0.8</priority></url>
@@ -4983,7 +4988,6 @@
   <url><loc>https://www.cricfoot.net/highlights/sk-slavia-praha-b-vs-1-sk-prostejov-2026-03-15/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/banik-ostrava-b-vs-silon-taborsko-2026-03-15/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/sellier-and-bellot-vlasim-vs-sk-dynamo-ceske-budejovice-2026-03-15/</loc><priority>0.8</priority></url>
-  <url><loc>https://www.cricfoot.net/highlights/hvidovre-vs-kolding-if-2026-03-15/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/paide-linnameeskond-vs-narva-trans-2026-03-15/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/flora-tallinn-vs-nomme-kalju-2026-03-15/</loc><priority>0.8</priority></url>
   <url><loc>https://www.cricfoot.net/highlights/harju-jalgpallikool-vs-i-levadia-tallinn-2026-03-15/</loc><priority>0.8</priority></url>
